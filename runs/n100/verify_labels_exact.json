@@ -1,0 +1,755 @@
+{
+ "labels": {
+  "exact|findcheap|n100_001__proflow-pm2000-pro-performance-electric|0": "pass",
+  "exact|findcheap|n100_002__beetles-gel-polish-9-in-1-gel-nail-glue|0": "pass",
+  "exact|openai|n100_002__beetles-gel-polish-9-in-1-gel-nail-glue|0": "pass",
+  "exact|openai|n100_002__beetles-gel-polish-9-in-1-gel-nail-glue|1": "pass",
+  "exact|findcheap|n100_003__olanly-bathroom-rugs-30x20-extra-soft-ab|0": "pass",
+  "exact|findcheap|n100_003__olanly-bathroom-rugs-30x20-extra-soft-ab|3": "fail",
+  "exact|findcheap|n100_003__olanly-bathroom-rugs-30x20-extra-soft-ab|1": "fail",
+  "exact|claude|n100_003__olanly-bathroom-rugs-30x20-extra-soft-ab|0": "fail",
+  "exact|openai|n100_003__olanly-bathroom-rugs-30x20-extra-soft-ab|0": "fail",
+  "exact|openai|n100_003__olanly-bathroom-rugs-30x20-extra-soft-ab|1": "fail",
+  "exact|openai|n100_003__olanly-bathroom-rugs-30x20-extra-soft-ab|2": "pass",
+  "exact|findcheap|n100_003__olanly-bathroom-rugs-30x20-extra-soft-ab|4": "fail",
+  "exact|findcheap|n100_004__elitefield-3-door-collapsible-soft-sided|1": "fail",
+  "exact|findcheap|n100_004__elitefield-3-door-collapsible-soft-sided|4": "fail",
+  "exact|findcheap|n100_004__elitefield-3-door-collapsible-soft-sided|3": "fail",
+  "exact|findcheap|n100_004__elitefield-3-door-collapsible-soft-sided|5": "fail",
+  "exact|findcheap|n100_004__elitefield-3-door-collapsible-soft-sided|2": "fail",
+  "exact|findcheap|n100_004__elitefield-3-door-collapsible-soft-sided|9": "fail",
+  "exact|findcheap|n100_004__elitefield-3-door-collapsible-soft-sided|6": "fail",
+  "exact|findcheap|n100_004__elitefield-3-door-collapsible-soft-sided|7": "fail",
+  "exact|findcheap|n100_004__elitefield-3-door-collapsible-soft-sided|8": "pass",
+  "exact|findcheap|n100_004__elitefield-3-door-collapsible-soft-sided|0": "fail",
+  "exact|findcheap|n100_006__boost-high-protein-with-fiber-balanced-n|1": "pass",
+  "exact|findcheap|n100_007__ambre-nuit|0": "fail",
+  "exact|findcheap|n100_007__ambre-nuit|6": "fail",
+  "exact|findcheap|n100_007__ambre-nuit|7": "fail",
+  "exact|findcheap|n100_007__ambre-nuit|2": "fail",
+  "exact|findcheap|n100_007__ambre-nuit|1": "fail",
+  "exact|findcheap|n100_007__ambre-nuit|4": "fail",
+  "exact|findcheap|n100_007__ambre-nuit|3": "fail",
+  "exact|findcheap|n100_007__ambre-nuit|5": "fail",
+  "exact|findcheap|n100_007__ambre-nuit|8": "fail",
+  "exact|findcheap|n100_007__ambre-nuit|9": "fail",
+  "exact|claude|n100_007__ambre-nuit|0": "fail",
+  "exact|findcheap|n100_009__french-toast-girls-short-sleeve-picot-co|7": "pass",
+  "exact|claude|n100_009__french-toast-girls-short-sleeve-picot-co|2": "fail",
+  "exact|claude|n100_009__french-toast-girls-short-sleeve-picot-co|0": "pass",
+  "exact|findcheap|n100_010__ring-indoor-cam-newest-model-home-or-bus|4": "pass",
+  "exact|claude|n100_010__ring-indoor-cam-newest-model-home-or-bus|2": "pass",
+  "exact|openai|n100_010__ring-indoor-cam-newest-model-home-or-bus|1": "pass",
+  "exact|gemini|n100_010__ring-indoor-cam-newest-model-home-or-bus|0": "pass",
+  "exact|perplexity|n100_010__ring-indoor-cam-newest-model-home-or-bus|3": "pass",
+  "exact|findcheap|n100_013__popsockets-kick-out-grip-stand-magsafe-c|1": "fail",
+  "exact|findcheap|n100_013__popsockets-kick-out-grip-stand-magsafe-c|2": "pass",
+  "exact|claude|n100_013__popsockets-kick-out-grip-stand-magsafe-c|0": "pass",
+  "exact|openai|n100_013__popsockets-kick-out-grip-stand-magsafe-c|0": "pass",
+  "exact|gemini|n100_013__popsockets-kick-out-grip-stand-magsafe-c|0": "pass",
+  "exact|perplexity|n100_013__popsockets-kick-out-grip-stand-magsafe-c|1": "pass",
+  "exact|openai|n100_013__popsockets-kick-out-grip-stand-magsafe-c|1": "pass",
+  "exact|openai|n100_013__popsockets-kick-out-grip-stand-magsafe-c|3": "fail",
+  "exact|perplexity|n100_013__popsockets-kick-out-grip-stand-magsafe-c|2": "pass",
+  "exact|perplexity|n100_013__popsockets-kick-out-grip-stand-magsafe-c|3": "pass",
+  "exact|perplexity|n100_013__popsockets-kick-out-grip-stand-magsafe-c|4": "fail",
+  "exact|claude|n100_014__coat-of-many-colors|0": "fail",
+  "exact|openai|n100_014__coat-of-many-colors|0": "pass",
+  "exact|perplexity|n100_014__coat-of-many-colors|0": "pass",
+  "exact|findcheap|n100_015__apple-pencil-usb-c-device-compatibility|1": "pass",
+  "exact|openai|n100_015__apple-pencil-usb-c-device-compatibility|0": "pass",
+  "exact|perplexity|n100_015__apple-pencil-usb-c-device-compatibility|0": "fail",
+  "exact|perplexity|n100_015__apple-pencil-usb-c-device-compatibility|2": "pass",
+  "exact|claude|n100_016__26g-organic-protein-grass-fed-protein-sh|0": "pass",
+  "exact|openai|n100_016__26g-organic-protein-grass-fed-protein-sh|0": "pass",
+  "exact|gemini|n100_016__26g-organic-protein-grass-fed-protein-sh|0": "pass",
+  "exact|perplexity|n100_016__26g-organic-protein-grass-fed-protein-sh|0": "pass",
+  "exact|openai|n100_019__strawberry-pound-cake-pocketbac-hand-san|5": "pass",
+  "exact|findcheap|n100_019__strawberry-pound-cake-pocketbac-hand-san|2": "pass",
+  "exact|findcheap|n100_020__dohonest-baby-car-camera-hd-1080p-rear-f|2": "pass",
+  "exact|claude|n100_020__dohonest-baby-car-camera-hd-1080p-rear-f|0": "fail",
+  "exact|openai|n100_020__dohonest-baby-car-camera-hd-1080p-rear-f|0": "fail",
+  "exact|openai|n100_020__dohonest-baby-car-camera-hd-1080p-rear-f|1": "pass",
+  "exact|findcheap|n100_021__premier-protein-30g-high-protein-shake-c|0": "pass",
+  "exact|openai|n100_021__premier-protein-30g-high-protein-shake-c|0": "fail",
+  "exact|openai|n100_021__premier-protein-30g-high-protein-shake-c|1": "pass",
+  "exact|findcheap|n100_021__premier-protein-30g-high-protein-shake-c|7": "pass",
+  "exact|perplexity|n100_021__premier-protein-30g-high-protein-shake-c|0": "fail",
+  "exact|perplexity|n100_021__premier-protein-30g-high-protein-shake-c|2": "pass",
+  "exact|findcheap|n100_022__prettygarden-women-s-cotton-knit-cardiga|2": "pass",
+  "exact|openai|n100_022__prettygarden-women-s-cotton-knit-cardiga|0": "fail",
+  "exact|perplexity|n100_022__prettygarden-women-s-cotton-knit-cardiga|0": "fail",
+  "exact|claude|n100_023__samsung-q-series-soundbar-hw-q990f-11-1|0": "pass",
+  "exact|openai|n100_023__samsung-q-series-soundbar-hw-q990f-11-1|0": "pass",
+  "exact|gemini|n100_023__samsung-q-series-soundbar-hw-q990f-11-1|0": "pass",
+  "exact|perplexity|n100_023__samsung-q-series-soundbar-hw-q990f-11-1|1": "pass",
+  "exact|openai|n100_024__nike-zoom-vomero-5-women-s-shoes-with-re|0": "fail",
+  "exact|findcheap|n100_025__gerber-baby-girls-8-pack-short-sleeve-on|1": "pass",
+  "exact|claude|n100_025__gerber-baby-girls-8-pack-short-sleeve-on|0": "pass",
+  "exact|openai|n100_025__gerber-baby-girls-8-pack-short-sleeve-on|0": "pass",
+  "exact|claude|n100_026__vertuo-lattissima-matte-black-glossy|0": "pass",
+  "exact|openai|n100_026__vertuo-lattissima-matte-black-glossy|0": "pass",
+  "exact|gemini|n100_026__vertuo-lattissima-matte-black-glossy|0": "fail",
+  "exact|gemini|n100_026__vertuo-lattissima-matte-black-glossy|1": "fail",
+  "exact|gemini|n100_026__vertuo-lattissima-matte-black-glossy|2": "fail",
+  "exact|gemini|n100_026__vertuo-lattissima-matte-black-glossy|3": "fail",
+  "exact|perplexity|n100_026__vertuo-lattissima-matte-black-glossy|0": "pass",
+  "exact|findcheap|n100_027__mvh-s322bt-single-din-digital-media-rece|2": "pass",
+  "exact|claude|n100_027__mvh-s322bt-single-din-digital-media-rece|0": "pass",
+  "exact|claude|n100_027__mvh-s322bt-single-din-digital-media-rece|1": "pass",
+  "exact|openai|n100_027__mvh-s322bt-single-din-digital-media-rece|0": "fail",
+  "exact|openai|n100_027__mvh-s322bt-single-din-digital-media-rece|1": "pass",
+  "exact|gemini|n100_027__mvh-s322bt-single-din-digital-media-rece|0": "pass",
+  "exact|perplexity|n100_027__mvh-s322bt-single-din-digital-media-rece|1": "pass",
+  "exact|findcheap|n100_028__nyk1-super-strong-nail-glue-for-press-on|0": "pass",
+  "exact|openai|n100_028__nyk1-super-strong-nail-glue-for-press-on|4": "fail",
+  "exact|openai|n100_028__nyk1-super-strong-nail-glue-for-press-on|5": "fail",
+  "exact|openai|n100_028__nyk1-super-strong-nail-glue-for-press-on|6": "pass",
+  "exact|openai|n100_028__nyk1-super-strong-nail-glue-for-press-on|8": "pass",
+  "exact|findcheap|n100_029__lego-pok-mon-smart-play-mewtwo-s-lab-bre|2": "pass",
+  "exact|findcheap|n100_030__normatec-elite-legs|7": "pass",
+  "exact|openai|n100_030__normatec-elite-legs|0": "pass",
+  "exact|gemini|n100_030__normatec-elite-legs|0": "fail",
+  "exact|perplexity|n100_030__normatec-elite-legs|0": "pass",
+  "exact|findcheap|n100_032__garmin-forerunner-55-gps-running-watch-w|0": "pass",
+  "exact|openai|n100_032__garmin-forerunner-55-gps-running-watch-w|0": "pass",
+  "exact|openai|n100_033__invisible-strapless-sticky-bra-push-up-f|0": "fail",
+  "exact|openai|n100_033__invisible-strapless-sticky-bra-push-up-f|2": "pass",
+  "exact|gemini|n100_033__invisible-strapless-sticky-bra-push-up-f|0": "pass",
+  "exact|findcheap|n100_035__partywoo-black-balloons-140pcs-different|2": "pass",
+  "exact|perplexity|n100_037__cinnamon-toast-crunch-breakfast-cereal-1|0": "fail",
+  "exact|perplexity|n100_037__cinnamon-toast-crunch-breakfast-cereal-1|1": "fail",
+  "exact|perplexity|n100_037__cinnamon-toast-crunch-breakfast-cereal-1|2": "fail",
+  "exact|findcheap|n100_038__amazon-basics-2-ply-flex-sheets-paper-to|0": "pass",
+  "exact|openai|n100_038__amazon-basics-2-ply-flex-sheets-paper-to|0": "pass",
+  "exact|claude|n100_039__original-pillow-standard|1": "pass",
+  "exact|openai|n100_039__original-pillow-standard|3": "pass",
+  "exact|gemini|n100_039__original-pillow-standard|1": "pass",
+  "exact|findcheap|n100_039__original-pillow-standard|8": "pass",
+  "exact|findcheap|n100_040__niagara-sleep-solution-queen-ultra-soft|1": "pass",
+  "exact|findcheap|n100_041__benchmark-bouquets-flowering-fields-sunf|2": "pass",
+  "exact|findcheap|n100_042__oyxser-kids-girls-button-down-cardigan-s|0": "pass",
+  "exact|findcheap|n100_045__hyperx-cloud-alpha-wireless-gaming-heads|0": "fail",
+  "exact|findcheap|n100_045__hyperx-cloud-alpha-wireless-gaming-heads|3": "pass",
+  "exact|claude|n100_045__hyperx-cloud-alpha-wireless-gaming-heads|0": "pass",
+  "exact|openai|n100_045__hyperx-cloud-alpha-wireless-gaming-heads|0": "pass",
+  "exact|perplexity|n100_045__hyperx-cloud-alpha-wireless-gaming-heads|0": "pass",
+  "exact|gemini|n100_045__hyperx-cloud-alpha-wireless-gaming-heads|0": "pass",
+  "exact|findcheap|n100_046__pen-gear-college-ruled-1-subject-noteboo|3": "pass",
+  "exact|gemini|n100_047__ridgid-18v-nuke-subcompact-brushless-cor|0": "pass",
+  "exact|findcheap|n100_050__purina-fancy-feast-gravy-lovers-poultry|2": "pass",
+  "exact|claude|n100_050__purina-fancy-feast-gravy-lovers-poultry|1": "pass",
+  "exact|claude|n100_050__purina-fancy-feast-gravy-lovers-poultry|2": "pass",
+  "exact|openai|n100_050__purina-fancy-feast-gravy-lovers-poultry|0": "pass",
+  "exact|gemini|n100_050__purina-fancy-feast-gravy-lovers-poultry|0": "fail",
+  "exact|perplexity|n100_050__purina-fancy-feast-gravy-lovers-poultry|0": "pass",
+  "exact|findcheap|n100_051__shokz-openrun-pro-2-wireless-bone-conduc|3": "pass",
+  "exact|claude|n100_051__shokz-openrun-pro-2-wireless-bone-conduc|0": "fail",
+  "exact|openai|n100_051__shokz-openrun-pro-2-wireless-bone-conduc|0": "pass",
+  "exact|perplexity|n100_051__shokz-openrun-pro-2-wireless-bone-conduc|0": "pass",
+  "exact|findcheap|n100_052__charmking-compression-socks-for-women-me|0": "pass",
+  "exact|claude|n100_052__charmking-compression-socks-for-women-me|0": "pass",
+  "exact|openai|n100_052__charmking-compression-socks-for-women-me|0": "pass",
+  "exact|perplexity|n100_052__charmking-compression-socks-for-women-me|0": "pass",
+  "exact|findcheap|n100_053__entenmann-s-little-bites-chocolate-chip|0": "pass",
+  "exact|openai|n100_053__entenmann-s-little-bites-chocolate-chip|0": "pass",
+  "exact|perplexity|n100_053__entenmann-s-little-bites-chocolate-chip|0": "pass",
+  "exact|gemini|n100_054__2pcs-set-yellow-pink-long-rectangular-er|0": "fail",
+  "exact|findcheap|n100_055__amazon-grocery-seltzer-sparkling-water-6|3": "pass",
+  "exact|claude|n100_055__amazon-grocery-seltzer-sparkling-water-6|0": "pass",
+  "exact|openai|n100_055__amazon-grocery-seltzer-sparkling-water-6|0": "pass",
+  "exact|findcheap|n100_056__impact-whey-isolate-6lb-vanilla-ice-crea|0": "pass",
+  "exact|findcheap|n100_058__axis-88-bench-sofa|0": "pass",
+  "exact|findcheap|n100_059__nautica-voyage-eau-de-toilette-men-s-fra|3": "pass",
+  "exact|claude|n100_059__nautica-voyage-eau-de-toilette-men-s-fra|1": "pass",
+  "exact|openai|n100_059__nautica-voyage-eau-de-toilette-men-s-fra|0": "pass",
+  "exact|gemini|n100_059__nautica-voyage-eau-de-toilette-men-s-fra|0": "fail",
+  "exact|perplexity|n100_059__nautica-voyage-eau-de-toilette-men-s-fra|1": "pass",
+  "exact|perplexity|n100_059__nautica-voyage-eau-de-toilette-men-s-fra|0": "pass",
+  "exact|findcheap|n100_061__hanes-men-s-undershirt-packs-stay-tucked|6": "pass",
+  "exact|claude|n100_061__hanes-men-s-undershirt-packs-stay-tucked|0": "pass",
+  "exact|openai|n100_061__hanes-men-s-undershirt-packs-stay-tucked|1": "pass",
+  "exact|gemini|n100_061__hanes-men-s-undershirt-packs-stay-tucked|0": "pass",
+  "exact|perplexity|n100_061__hanes-men-s-undershirt-packs-stay-tucked|0": "pass",
+  "exact|perplexity|n100_061__hanes-men-s-undershirt-packs-stay-tucked|2": "pass",
+  "exact|findcheap|n100_063__nature-valley-peanut-butter-chocolate-cr|3": "pass",
+  "exact|claude|n100_063__nature-valley-peanut-butter-chocolate-cr|1": "pass",
+  "exact|openai|n100_063__nature-valley-peanut-butter-chocolate-cr|2": "pass",
+  "exact|gemini|n100_063__nature-valley-peanut-butter-chocolate-cr|0": "pass",
+  "exact|perplexity|n100_063__nature-valley-peanut-butter-chocolate-cr|0": "pass",
+  "exact|perplexity|n100_063__nature-valley-peanut-butter-chocolate-cr|1": "pass",
+  "exact|claude|n100_064__five-star-spiral-notebook-study-app-5-su|0": "pass",
+  "exact|openai|n100_064__five-star-spiral-notebook-study-app-5-su|0": "fail",
+  "exact|openai|n100_064__five-star-spiral-notebook-study-app-5-su|1": "fail",
+  "exact|openai|n100_064__five-star-spiral-notebook-study-app-5-su|2": "fail",
+  "exact|openai|n100_064__five-star-spiral-notebook-study-app-5-su|4": "fail",
+  "exact|openai|n100_065__hearthz-men-s-hoodie-tracksuit-2-pieces|0": "pass",
+  "exact|findcheap|n100_066__bic-xtra-smooth-mechanical-pencils-0-7-m|7": "pass",
+  "exact|claude|n100_066__bic-xtra-smooth-mechanical-pencils-0-7-m|0": "pass",
+  "exact|openai|n100_066__bic-xtra-smooth-mechanical-pencils-0-7-m|0": "pass",
+  "exact|perplexity|n100_066__bic-xtra-smooth-mechanical-pencils-0-7-m|0": "pass",
+  "exact|claude|n100_067__culverbach-6-drawer-dresser|0": "fail",
+  "exact|findcheap|n100_067__culverbach-6-drawer-dresser|9": "pass",
+  "exact|claude|n100_067__culverbach-6-drawer-dresser|1": "fail",
+  "exact|openai|n100_067__culverbach-6-drawer-dresser|0": "pass",
+  "exact|openai|n100_067__culverbach-6-drawer-dresser|1": "fail",
+  "exact|gemini|n100_067__culverbach-6-drawer-dresser|2": "pass",
+  "exact|gemini|n100_067__culverbach-6-drawer-dresser|3": "fail",
+  "exact|gemini|n100_067__culverbach-6-drawer-dresser|0": "fail",
+  "exact|gemini|n100_067__culverbach-6-drawer-dresser|1": "fail",
+  "exact|perplexity|n100_067__culverbach-6-drawer-dresser|0": "fail",
+  "exact|claude|n100_067__culverbach-6-drawer-dresser|2": "fail",
+  "exact|claude|n100_067__culverbach-6-drawer-dresser|3": "fail",
+  "exact|claude|n100_067__culverbach-6-drawer-dresser|4": "pass",
+  "exact|findcheap|n100_068__crep-protect-shoe-protector-spray-rain-s|0": "pass",
+  "exact|openai|n100_068__crep-protect-shoe-protector-spray-rain-s|1": "pass",
+  "exact|findcheap|n100_069__cotton-jersey-long-sleeve-t-shirt-soot-x|0": "pass",
+  "exact|claude|n100_069__cotton-jersey-long-sleeve-t-shirt-soot-x|0": "pass",
+  "exact|openai|n100_069__cotton-jersey-long-sleeve-t-shirt-soot-x|0": "pass",
+  "exact|gemini|n100_069__cotton-jersey-long-sleeve-t-shirt-soot-x|0": "fail",
+  "exact|gemini|n100_069__cotton-jersey-long-sleeve-t-shirt-soot-x|1": "pass",
+  "exact|perplexity|n100_069__cotton-jersey-long-sleeve-t-shirt-soot-x|0": "pass",
+  "exact|findcheap|n100_070__fillos-tamale-wlk-bn-slsa-verde-4-oz-pac|1": "pass",
+  "exact|openai|n100_071__persona-5-royal|0": "fail",
+  "exact|openai|n100_073__new-c-for-iphone-17-iphone-17-pro-iphone|0": "pass",
+  "exact|findcheap|n100_074__carory-cabin-air-filter-w-activated-carb|1": "pass",
+  "exact|findcheap|n100_075__rice-krispies-treats-crispy-marshmallow|1": "pass",
+  "exact|claude|n100_075__rice-krispies-treats-crispy-marshmallow|0": "pass",
+  "exact|openai|n100_075__rice-krispies-treats-crispy-marshmallow|0": "pass",
+  "exact|perplexity|n100_075__rice-krispies-treats-crispy-marshmallow|0": "pass",
+  "exact|findcheap|n100_076__elmer-s-all-purpose-school-glue-sticks-w|1": "pass",
+  "exact|openai|n100_076__elmer-s-all-purpose-school-glue-sticks-w|0": "pass",
+  "exact|perplexity|n100_076__elmer-s-all-purpose-school-glue-sticks-w|0": "pass",
+  "exact|findcheap|n100_078__k65-plus-wireless-75-rgb-mechanical-gami|4": "pass",
+  "exact|claude|n100_078__k65-plus-wireless-75-rgb-mechanical-gami|0": "pass",
+  "exact|openai|n100_078__k65-plus-wireless-75-rgb-mechanical-gami|0": "pass",
+  "exact|perplexity|n100_078__k65-plus-wireless-75-rgb-mechanical-gami|0": "pass",
+  "exact|findcheap|n100_079__peet-s-coffee-espresso-capsules-classic|0": "pass",
+  "exact|openai|n100_079__peet-s-coffee-espresso-capsules-classic|0": "pass",
+  "exact|openai|n100_079__peet-s-coffee-espresso-capsules-classic|1": "pass",
+  "exact|perplexity|n100_079__peet-s-coffee-espresso-capsules-classic|0": "fail",
+  "exact|findcheap|n100_080__horizon-organic-shelf-stable-whole-milk|3": "pass",
+  "exact|perplexity|n100_080__horizon-organic-shelf-stable-whole-milk|0": "fail",
+  "exact|findcheap|n100_081__varmblixt-led-table-wall-lamp-orange-gla|6": "pass",
+  "exact|findcheap|n100_082__pehael-for-iphone-17-pro-max-privacy-scr|0": "pass",
+  "exact|findcheap|n100_082__pehael-for-iphone-17-pro-max-privacy-scr|2": "pass",
+  "exact|findcheap|n100_083__ninja-foodi-air-fryer-8-qt-dualzone-flex|5": "pass",
+  "exact|openai|n100_083__ninja-foodi-air-fryer-8-qt-dualzone-flex|0": "pass",
+  "exact|claude|n100_083__ninja-foodi-air-fryer-8-qt-dualzone-flex|2": "pass",
+  "exact|claude|n100_083__ninja-foodi-air-fryer-8-qt-dualzone-flex|0": "fail",
+  "exact|claude|n100_083__ninja-foodi-air-fryer-8-qt-dualzone-flex|1": "fail",
+  "exact|findcheap|n100_084__moft-find-my-magsafe-wallet-stand|3": "pass",
+  "exact|findcheap|n100_085__earth-rated-dog-poop-bags-on-refill-roll|5": "pass",
+  "exact|claude|n100_085__earth-rated-dog-poop-bags-on-refill-roll|0": "pass",
+  "exact|gemini|n100_085__earth-rated-dog-poop-bags-on-refill-roll|0": "pass",
+  "exact|perplexity|n100_085__earth-rated-dog-poop-bags-on-refill-roll|0": "pass",
+  "exact|findcheap|n100_086__e-l-f-power-grip-primer-4-niacinamide-0|9": "pass",
+  "exact|findcheap|n100_086__e-l-f-power-grip-primer-4-niacinamide-0|3": "pass",
+  "exact|findcheap|n100_087__3-piece-upholstered-modular-sectional-so|2": "pass",
+  "exact|claude|n100_087__3-piece-upholstered-modular-sectional-so|0": "fail",
+  "exact|findcheap|n100_088__french-toast-boys-pull-on-relaxed-fit-sc|0": "pass",
+  "exact|claude|n100_088__french-toast-boys-pull-on-relaxed-fit-sc|0": "fail",
+  "exact|openai|n100_088__french-toast-boys-pull-on-relaxed-fit-sc|0": "pass",
+  "exact|gemini|n100_088__french-toast-boys-pull-on-relaxed-fit-sc|0": "fail",
+  "exact|gemini|n100_088__french-toast-boys-pull-on-relaxed-fit-sc|1": "fail",
+  "exact|gemini|n100_089__kitsure-shoe-rack-non-woven-shoe-rack-sh|0": "pass",
+  "exact|claude|n100_090__gerber-stage-2-chicken-and-gravy-baby-fo|0": "pass",
+  "exact|openai|n100_090__gerber-stage-2-chicken-and-gravy-baby-fo|0": "pass",
+  "exact|claude|n100_091__yesteryear-a-gma-book-club-pick-a-novel|0": "pass",
+  "exact|openai|n100_091__yesteryear-a-gma-book-club-pick-a-novel|0": "pass",
+  "exact|perplexity|n100_091__yesteryear-a-gma-book-club-pick-a-novel|0": "pass",
+  "exact|findcheap|n100_092__treluxe-hi-definition-curl-enhancer-styl|0": "pass",
+  "exact|claude|n100_092__treluxe-hi-definition-curl-enhancer-styl|0": "pass",
+  "exact|gemini|n100_092__treluxe-hi-definition-curl-enhancer-styl|1": "fail",
+  "exact|perplexity|n100_092__treluxe-hi-definition-curl-enhancer-styl|0": "fail",
+  "exact|perplexity|n100_092__treluxe-hi-definition-curl-enhancer-styl|1": "pass",
+  "exact|findcheap|n100_093__omega-3-fish-oil-16oz|5": "pass",
+  "exact|claude|n100_093__omega-3-fish-oil-16oz|0": "pass",
+  "exact|openai|n100_093__omega-3-fish-oil-16oz|0": "pass",
+  "exact|gemini|n100_093__omega-3-fish-oil-16oz|0": "pass",
+  "exact|findcheap|n100_094__original-collagen-peptides-56s-bag|0": "pass",
+  "exact|claude|n100_094__original-collagen-peptides-56s-bag|0": "fail",
+  "exact|claude|n100_094__original-collagen-peptides-56s-bag|1": "pass",
+  "exact|claude|n100_094__original-collagen-peptides-56s-bag|2": "pass",
+  "exact|openai|n100_094__original-collagen-peptides-56s-bag|3": "pass",
+  "exact|perplexity|n100_094__original-collagen-peptides-56s-bag|0": "fail",
+  "exact|perplexity|n100_094__original-collagen-peptides-56s-bag|1": "pass",
+  "exact|findcheap|n100_095__it-will-be-more-beautiful-than-you-could|4": "pass",
+  "exact|claude|n100_095__it-will-be-more-beautiful-than-you-could|0": "pass",
+  "exact|openai|n100_095__it-will-be-more-beautiful-than-you-could|0": "pass",
+  "exact|findcheap|n100_096__naturium-the-glow-getter-multi-oil-hydra|6": "pass",
+  "exact|claude|n100_096__naturium-the-glow-getter-multi-oil-hydra|0": "fail",
+  "exact|gemini|n100_096__naturium-the-glow-getter-multi-oil-hydra|0": "pass",
+  "exact|findcheap|n100_097__tumella-strongest-windproof-travel-umbre|0": "pass",
+  "exact|perplexity|n100_098__cute-apple-shaped-funny-prank-toy-kids-p|0": "fail",
+  "exact|findcheap|n100_099__great-value-purified-drinking-water-16-9|0": "pass",
+  "exact|openai|n100_099__great-value-purified-drinking-water-16-9|0": "pass",
+  "exact|findcheap|n100_100__oreo-reese-s-peanut-buttery-creme-chocol|3": "pass",
+  "exact|claude|n100_100__oreo-reese-s-peanut-buttery-creme-chocol|0": "pass",
+  "exact|gemini|n100_100__oreo-reese-s-peanut-buttery-creme-chocol|0": "fail"
+ },
+ "ref_prices": {
+  "n100_001__proflow-pm2000-pro-performance-electric": 224.99,
+  "n100_002__beetles-gel-polish-9-in-1-gel-nail-glue": 9.98,
+  "n100_003__olanly-bathroom-rugs-30x20-extra-soft-ab": 9.38,
+  "n100_004__elitefield-3-door-collapsible-soft-sided": 105.99,
+  "n100_005__plulon-hot-pink-color-bob-wig-with-heart": 9.98,
+  "n100_006__boost-high-protein-with-fiber-balanced-n": 37.74,
+  "n100_007__ambre-nuit": 350,
+  "n100_008__fitted-sheet-deep-pocket-easy-care-breat": 12.99,
+  "n100_009__french-toast-girls-short-sleeve-picot-co": 9.99,
+  "n100_010__ring-indoor-cam-newest-model-home-or-bus": 29.99,
+  "n100_011__l-a-colors-color-craze-nail-polish-tropi": 0.98,
+  "n100_012__lalippa-striped-digital-print-fashion-mi": 6.23,
+  "n100_013__popsockets-kick-out-grip-stand-magsafe-c": 44.95,
+  "n100_014__coat-of-many-colors": 19.99,
+  "n100_015__apple-pencil-usb-c-device-compatibility": 69.99,
+  "n100_016__26g-organic-protein-grass-fed-protein-sh": 42.99,
+  "n100_017__native-union-active-organizer": 29.95,
+  "n100_018__leather-slingback-loafers-burgundy-red-5": 79.9,
+  "n100_019__strawberry-pound-cake-pocketbac-hand-san": 1.95,
+  "n100_020__dohonest-baby-car-camera-hd-1080p-rear-f": 29.99,
+  "n100_021__premier-protein-30g-high-protein-shake-c": 23.97,
+  "n100_022__prettygarden-women-s-cotton-knit-cardiga": 41.99,
+  "n100_023__samsung-q-series-soundbar-hw-q990f-11-1": 1599.99,
+  "n100_024__nike-zoom-vomero-5-women-s-shoes-with-re": 170,
+  "n100_025__gerber-baby-girls-8-pack-short-sleeve-on": 16.95,
+  "n100_026__vertuo-lattissima-matte-black-glossy": 529.99,
+  "n100_027__mvh-s322bt-single-din-digital-media-rece": 130,
+  "n100_028__nyk1-super-strong-nail-glue-for-press-on": 9.99,
+  "n100_029__lego-pok-mon-smart-play-mewtwo-s-lab-bre": 69.96,
+  "n100_030__normatec-elite-legs": 999,
+  "n100_031__amazon-grocery-original-breakfast-sausag": 2.28,
+  "n100_032__garmin-forerunner-55-gps-running-watch-w": 129,
+  "n100_033__invisible-strapless-sticky-bra-push-up-f": 19.99,
+  "n100_034__9-mini-baby-lgt-blu-bro-pink-t-shirt": 24.99,
+  "n100_035__partywoo-black-balloons-140pcs-different": 8.99,
+  "n100_036__star-wars-retro-collection-star-wars-a-n": 33.99,
+  "n100_037__cinnamon-toast-crunch-breakfast-cereal-1": 2.97,
+  "n100_038__amazon-basics-2-ply-flex-sheets-paper-to": 22.86,
+  "n100_039__original-pillow-standard": 75,
+  "n100_040__niagara-sleep-solution-queen-ultra-soft": 39.99,
+  "n100_041__benchmark-bouquets-flowering-fields-sunf": 44.95,
+  "n100_042__oyxser-kids-girls-button-down-cardigan-s": 4.99,
+  "n100_043__sierra-upholstered-modular-sofa-with-cha": 5946,
+  "n100_044__livesso-women-s-loose-white-tank-top-ele": 8.79,
+  "n100_045__hyperx-cloud-alpha-wireless-gaming-heads": 139.99,
+  "n100_046__pen-gear-college-ruled-1-subject-noteboo": 0.35,
+  "n100_047__ridgid-18v-nuke-subcompact-brushless-cor": 149,
+  "n100_048__msi-crosshair-16-qhd-240hz-gaming-laptop": 1449,
+  "n100_049__modern-crew-t-shirt": 20,
+  "n100_050__purina-fancy-feast-gravy-lovers-poultry": 22.86,
+  "n100_051__shokz-openrun-pro-2-wireless-bone-conduc": 179.95,
+  "n100_052__charmking-compression-socks-for-women-me": 8.99,
+  "n100_053__entenmann-s-little-bites-chocolate-chip": 4.99,
+  "n100_054__2pcs-set-yellow-pink-long-rectangular-er": 4.03,
+  "n100_055__amazon-grocery-seltzer-sparkling-water-6": 1.8,
+  "n100_056__impact-whey-isolate-6lb-vanilla-ice-crea": 20.99,
+  "n100_057__wired-doorbell-2k-newest-model": 49.99,
+  "n100_058__axis-88-bench-sofa": 2249,
+  "n100_059__nautica-voyage-eau-de-toilette-men-s-fra": 17.92,
+  "n100_060__milwaukee-4-1-2-in-x-045-in-x-7-8-in-met": 1.47,
+  "n100_061__hanes-men-s-undershirt-packs-stay-tucked": 20,
+  "n100_062__heatproof-glass-bowl-dia-6-9": 11.9,
+  "n100_063__nature-valley-peanut-butter-chocolate-cr": 4.99,
+  "n100_064__five-star-spiral-notebook-study-app-5-su": 6.97,
+  "n100_065__hearthz-men-s-hoodie-tracksuit-2-pieces": 20.69,
+  "n100_066__bic-xtra-smooth-mechanical-pencils-0-7-m": 7.49,
+  "n100_067__culverbach-6-drawer-dresser": 399.99,
+  "n100_068__crep-protect-shoe-protector-spray-rain-s": 16,
+  "n100_069__cotton-jersey-long-sleeve-t-shirt-soot-x": 58,
+  "n100_070__fillos-tamale-wlk-bn-slsa-verde-4-oz-pac": 10.4,
+  "n100_071__persona-5-royal": 17.99,
+  "n100_072__harper-high-rise-wide-leg-jeans-denim-bl": 34.99,
+  "n100_073__new-c-for-iphone-17-iphone-17-pro-iphone": 7.18,
+  "n100_074__carory-cabin-air-filter-w-activated-carb": 7.89,
+  "n100_075__rice-krispies-treats-crispy-marshmallow": 4.96,
+  "n100_076__elmer-s-all-purpose-school-glue-sticks-w": 9.49,
+  "n100_077__cotton-rope-double-hammock-with-pillow-a": 66.99,
+  "n100_078__k65-plus-wireless-75-rgb-mechanical-gami": 159.99,
+  "n100_079__peet-s-coffee-espresso-capsules-classic": 31.4,
+  "n100_080__horizon-organic-shelf-stable-whole-milk": 19.48,
+  "n100_081__varmblixt-led-table-wall-lamp-orange-gla": 89.99,
+  "n100_082__pehael-for-iphone-17-pro-max-privacy-scr": 8.95,
+  "n100_083__ninja-foodi-air-fryer-8-qt-dualzone-flex": 149,
+  "n100_084__moft-find-my-magsafe-wallet-stand": 49.95,
+  "n100_085__earth-rated-dog-poop-bags-on-refill-roll": 14.99,
+  "n100_086__e-l-f-power-grip-primer-4-niacinamide-0": 11,
+  "n100_087__3-piece-upholstered-modular-sectional-so": 1300,
+  "n100_088__french-toast-boys-pull-on-relaxed-fit-sc": 15.18,
+  "n100_089__kitsure-shoe-rack-non-woven-shoe-rack-sh": 9.99,
+  "n100_090__gerber-stage-2-chicken-and-gravy-baby-fo": 12.3,
+  "n100_091__yesteryear-a-gma-book-club-pick-a-novel": 14.99,
+  "n100_092__treluxe-hi-definition-curl-enhancer-styl": 26.84,
+  "n100_093__omega-3-fish-oil-16oz": 35.99,
+  "n100_094__original-collagen-peptides-56s-bag": 67.99,
+  "n100_095__it-will-be-more-beautiful-than-you-could": 40,
+  "n100_096__naturium-the-glow-getter-multi-oil-hydra": 16.99,
+  "n100_097__tumella-strongest-windproof-travel-umbre": 19.99,
+  "n100_098__cute-apple-shaped-funny-prank-toy-kids-p": 3.9,
+  "n100_099__great-value-purified-drinking-water-16-9": 5.47,
+  "n100_100__oreo-reese-s-peanut-buttery-creme-chocol": 4.97
+ },
+ "ref_shipping": {
+  "n100_002__beetles-gel-polish-9-in-1-gel-nail-glue": 6.99,
+  "n100_003__olanly-bathroom-rugs-30x20-extra-soft-ab": 6.99,
+  "n100_006__boost-high-protein-with-fiber-balanced-n": 0,
+  "n100_056__impact-whey-isolate-6lb-vanilla-ice-crea": 7.99
+ },
+ "shipping": {
+  "exact|findcheap|n100_003__olanly-bathroom-rugs-30x20-extra-soft-ab|0": 11.89,
+  "exact|gemini|n100_013__popsockets-kick-out-grip-stand-magsafe-c|0": 5.49,
+  "exact|openai|n100_013__popsockets-kick-out-grip-stand-magsafe-c|0": 5.49,
+  "exact|perplexity|n100_013__popsockets-kick-out-grip-stand-magsafe-c|1": 5.49,
+  "exact|openai|n100_013__popsockets-kick-out-grip-stand-magsafe-c|1": 5.49,
+  "exact|perplexity|n100_013__popsockets-kick-out-grip-stand-magsafe-c|2": 5.49,
+  "exact|perplexity|n100_013__popsockets-kick-out-grip-stand-magsafe-c|3": 5.49,
+  "exact|openai|n100_014__coat-of-many-colors|0": 2.39,
+  "exact|perplexity|n100_014__coat-of-many-colors|0": 2.39,
+  "exact|claude|n100_016__26g-organic-protein-grass-fed-protein-sh|0": 6.95,
+  "exact|findcheap|n100_025__gerber-baby-girls-8-pack-short-sleeve-on|1": 5.7,
+  "exact|claude|n100_026__vertuo-lattissima-matte-black-glossy|0": 0,
+  "exact|claude|n100_027__mvh-s322bt-single-din-digital-media-rece|0": 23.8,
+  "exact|gemini|n100_027__mvh-s322bt-single-din-digital-media-rece|0": 0,
+  "exact|perplexity|n100_027__mvh-s322bt-single-din-digital-media-rece|1": 0,
+  "exact|findcheap|n100_028__nyk1-super-strong-nail-glue-for-press-on|0": 6.49,
+  "exact|findcheap|n100_028__nyk1-super-strong-nail-glue-for-press-on|5": 6.99,
+  "exact|openai|n100_032__garmin-forerunner-55-gps-running-watch-w|0": 0,
+  "exact|findcheap|n100_042__oyxser-kids-girls-button-down-cardigan-s|0": 4.99,
+  "exact|findcheap|n100_046__pen-gear-college-ruled-1-subject-noteboo|0": 6.99,
+  "exact|findcheap|n100_046__pen-gear-college-ruled-1-subject-noteboo|1": 6.99,
+  "exact|findcheap|n100_046__pen-gear-college-ruled-1-subject-noteboo|5": 4.39,
+  "exact|findcheap|n100_046__pen-gear-college-ruled-1-subject-noteboo|6": 4.39,
+  "exact|claude|n100_050__purina-fancy-feast-gravy-lovers-poultry|1": 6.99,
+  "exact|findcheap|n100_052__charmking-compression-socks-for-women-me|0": 0,
+  "exact|findcheap|n100_053__entenmann-s-little-bites-chocolate-chip|0": 0,
+  "exact|findcheap|n100_055__amazon-grocery-seltzer-sparkling-water-6|3": 0,
+  "exact|findcheap|n100_058__axis-88-bench-sofa|0": 0,
+  "exact|perplexity|n100_059__nautica-voyage-eau-de-toilette-men-s-fra|1": 7.6,
+  "exact|claude|n100_067__culverbach-6-drawer-dresser|1": null,
+  "exact|gemini|n100_067__culverbach-6-drawer-dresser|2": 348.77,
+  "exact|claude|n100_067__culverbach-6-drawer-dresser|4": 0,
+  "exact|perplexity|n100_068__crep-protect-shoe-protector-spray-rain-s|1": 8.99,
+  "exact|claude|n100_076__elmer-s-all-purpose-school-glue-sticks-w|1": 9.95,
+  "exact|findcheap|n100_082__pehael-for-iphone-17-pro-max-privacy-scr|0": 5.72,
+  "exact|findcheap|n100_082__pehael-for-iphone-17-pro-max-privacy-scr|2": 4.25,
+  "exact|findcheap|n100_086__e-l-f-power-grip-primer-4-niacinamide-0|3": 0,
+  "exact|claude|n100_092__treluxe-hi-definition-curl-enhancer-styl|0": 6.45,
+  "exact|claude|n100_094__original-collagen-peptides-56s-bag|1": 10.95,
+  "exact|gemini|n100_039__original-pillow-standard|1": 0
+ },
+ "prices": {
+  "exact|openai|n100_002__beetles-gel-polish-9-in-1-gel-nail-glue|0": 14.28,
+  "exact|openai|n100_002__beetles-gel-polish-9-in-1-gel-nail-glue|1": 14.56,
+  "exact|findcheap|n100_001__proflow-pm2000-pro-performance-electric|1": 199.99,
+  "exact|findcheap|n100_004__elitefield-3-door-collapsible-soft-sided|1": 32.99,
+  "exact|findcheap|n100_004__elitefield-3-door-collapsible-soft-sided|4": 105.99,
+  "exact|findcheap|n100_004__elitefield-3-door-collapsible-soft-sided|8": 89.99,
+  "exact|gemini|n100_013__popsockets-kick-out-grip-stand-magsafe-c|0": 34.99,
+  "exact|perplexity|n100_013__popsockets-kick-out-grip-stand-magsafe-c|1": 34.99,
+  "exact|perplexity|n100_013__popsockets-kick-out-grip-stand-magsafe-c|2": 34.99,
+  "exact|perplexity|n100_013__popsockets-kick-out-grip-stand-magsafe-c|3": 34.99,
+  "exact|claude|n100_014__coat-of-many-colors|0": 10.57,
+  "exact|openai|n100_014__coat-of-many-colors|0": 17.26,
+  "exact|perplexity|n100_014__coat-of-many-colors|0": 17.26,
+  "exact|perplexity|n100_015__apple-pencil-usb-c-device-compatibility|2": 30,
+  "exact|findcheap|n100_021__premier-protein-30g-high-protein-shake-c|0": 26.99,
+  "exact|findcheap|n100_021__premier-protein-30g-high-protein-shake-c|3": 33.99,
+  "exact|perplexity|n100_021__premier-protein-30g-high-protein-shake-c|1": 39.86,
+  "exact|openai|n100_023__samsung-q-series-soundbar-hw-q990f-11-1|0": 985.99,
+  "exact|perplexity|n100_027__mvh-s322bt-single-din-digital-media-rece|1": 129.46,
+  "exact|openai|n100_028__nyk1-super-strong-nail-glue-for-press-on|6": 15.62,
+  "exact|openai|n100_037__cinnamon-toast-crunch-breakfast-cereal-1|3": 4.59,
+  "exact|gemini|n100_037__cinnamon-toast-crunch-breakfast-cereal-1|0": 4.59,
+  "exact|perplexity|n100_037__cinnamon-toast-crunch-breakfast-cereal-1|3": 4.59,
+  "exact|claude|n100_039__original-pillow-standard|0": 75,
+  "exact|openai|n100_039__original-pillow-standard|3": 67.5,
+  "exact|perplexity|n100_039__original-pillow-standard|0": 75,
+  "exact|gemini|n100_050__purina-fancy-feast-gravy-lovers-poultry|1": 25.99,
+  "exact|perplexity|n100_051__shokz-openrun-pro-2-wireless-bone-conduc|1": 179.99,
+  "exact|claude|n100_057__wired-doorbell-2k-newest-model|0": 49.99,
+  "exact|claude|n100_059__nautica-voyage-eau-de-toilette-men-s-fra|1": 15.64,
+  "exact|perplexity|n100_059__nautica-voyage-eau-de-toilette-men-s-fra|1": 14.99,
+  "exact|claude|n100_061__hanes-men-s-undershirt-packs-stay-tucked|0": 23.98,
+  "exact|perplexity|n100_061__hanes-men-s-undershirt-packs-stay-tucked|0": 34.88,
+  "exact|findcheap|n100_063__nature-valley-peanut-butter-chocolate-cr|3": 10.63,
+  "exact|openai|n100_063__nature-valley-peanut-butter-chocolate-cr|2": 9.29,
+  "exact|perplexity|n100_063__nature-valley-peanut-butter-chocolate-cr|0": 22.95,
+  "exact|perplexity|n100_063__nature-valley-peanut-butter-chocolate-cr|1": 19.89,
+  "exact|claude|n100_064__five-star-spiral-notebook-study-app-5-su|0": 10.69,
+  "exact|openai|n100_064__five-star-spiral-notebook-study-app-5-su|3": 18.29,
+  "exact|openai|n100_067__culverbach-6-drawer-dresser|0": 436.95,
+  "exact|perplexity|n100_068__crep-protect-shoe-protector-spray-rain-s|0": 57,
+  "exact|perplexity|n100_075__rice-krispies-treats-crispy-marshmallow|0": 19.89,
+  "exact|perplexity|n100_078__k65-plus-wireless-75-rgb-mechanical-gami|0": 129.99,
+  "exact|findcheap|n100_079__peet-s-coffee-espresso-capsules-classic|0": 24,
+  "exact|openai|n100_079__peet-s-coffee-espresso-capsules-classic|0": 31.4,
+  "exact|openai|n100_079__peet-s-coffee-espresso-capsules-classic|1": 49.99,
+  "exact|findcheap|n100_080__horizon-organic-shelf-stable-whole-milk|3": 17.64,
+  "exact|gemini|n100_080__horizon-organic-shelf-stable-whole-milk|1": 27.18,
+  "exact|perplexity|n100_085__earth-rated-dog-poop-bags-on-refill-roll|1": 23.49,
+  "exact|claude|n100_090__gerber-stage-2-chicken-and-gravy-baby-fo|0": 14.76,
+  "exact|openai|n100_090__gerber-stage-2-chicken-and-gravy-baby-fo|0": 14.76,
+  "exact|perplexity|n100_090__gerber-stage-2-chicken-and-gravy-baby-fo|0": 52.44,
+  "exact|perplexity|n100_091__yesteryear-a-gma-book-club-pick-a-novel|0": 19.8,
+  "exact|perplexity|n100_092__treluxe-hi-definition-curl-enhancer-styl|1": 26.97,
+  "exact|gemini|n100_093__omega-3-fish-oil-16oz|0": 35.99,
+  "exact|claude|n100_094__original-collagen-peptides-56s-bag|2": 48.99,
+  "exact|perplexity|n100_100__oreo-reese-s-peanut-buttery-creme-chocol|1": 5.99
+ },
+ "counts": {
+  "exact|findcheap|n100_063__nature-valley-peanut-butter-chocolate-cr|3": 15,
+  "exact|openai|n100_099__great-value-purified-drinking-water-16-9|0": 80
+ },
+ "reasons": {
+  "exact|findcheap|n100_002__beetles-gel-polish-9-in-1-gel-nail-glue|0": {
+   "code": "valid"
+  },
+  "exact|findcheap|n100_003__olanly-bathroom-rugs-30x20-extra-soft-ab|0": {
+   "code": "valid"
+  },
+  "exact|claude|n100_003__olanly-bathroom-rugs-30x20-extra-soft-ab|0": {
+   "code": "oos"
+  },
+  "exact|openai|n100_003__olanly-bathroom-rugs-30x20-extra-soft-ab|0": {
+   "code": "oos"
+  },
+  "exact|openai|n100_003__olanly-bathroom-rugs-30x20-extra-soft-ab|1": {
+   "code": "link"
+  },
+  "exact|findcheap|n100_004__elitefield-3-door-collapsible-soft-sided|4": {
+   "code": "oos"
+  },
+  "exact|findcheap|n100_004__elitefield-3-door-collapsible-soft-sided|8": {
+   "code": "valid"
+  },
+  "exact|findcheap|n100_006__boost-high-protein-with-fiber-balanced-n|1": {
+   "code": "valid"
+  },
+  "exact|claude|n100_007__ambre-nuit|0": {
+   "code": "oos"
+  },
+  "exact|claude|n100_009__french-toast-girls-short-sleeve-picot-co|2": {
+   "code": "other",
+   "note": "opposite color"
+  },
+  "exact|findcheap|n100_013__popsockets-kick-out-grip-stand-magsafe-c|1": {
+   "code": ""
+  },
+  "exact|findcheap|n100_013__popsockets-kick-out-grip-stand-magsafe-c|2": {
+   "code": "valid"
+  },
+  "exact|openai|n100_013__popsockets-kick-out-grip-stand-magsafe-c|3": {
+   "code": "invalid"
+  },
+  "exact|perplexity|n100_013__popsockets-kick-out-grip-stand-magsafe-c|4": {
+   "code": "link"
+  },
+  "exact|claude|n100_014__coat-of-many-colors|0": {
+   "code": "oos"
+  },
+  "exact|perplexity|n100_015__apple-pencil-usb-c-device-compatibility|0": {
+   "code": "oos"
+  },
+  "exact|findcheap|n100_019__strawberry-pound-cake-pocketbac-hand-san|2": {
+   "code": "valid"
+  },
+  "exact|claude|n100_020__dohonest-baby-car-camera-hd-1080p-rear-f|0": {
+   "code": "link"
+  },
+  "exact|openai|n100_020__dohonest-baby-car-camera-hd-1080p-rear-f|0": {
+   "code": "link"
+  },
+  "exact|openai|n100_021__premier-protein-30g-high-protein-shake-c|0": {
+   "code": "oos"
+  },
+  "exact|perplexity|n100_021__premier-protein-30g-high-protein-shake-c|0": {
+   "code": "other",
+   "note": "caramel"
+  },
+  "exact|findcheap|n100_022__prettygarden-women-s-cotton-knit-cardiga|2": {
+   "code": "valid"
+  },
+  "exact|openai|n100_022__prettygarden-women-s-cotton-knit-cardiga|0": {
+   "code": "oos"
+  },
+  "exact|perplexity|n100_022__prettygarden-women-s-cotton-knit-cardiga|0": {
+   "code": "oos"
+  },
+  "exact|openai|n100_024__nike-zoom-vomero-5-women-s-shoes-with-re|0": {
+   "code": "invalid"
+  },
+  "exact|gemini|n100_026__vertuo-lattissima-matte-black-glossy|1": {
+   "code": "link"
+  },
+  "exact|openai|n100_027__mvh-s322bt-single-din-digital-media-rece|0": {
+   "code": "oos"
+  },
+  "exact|openai|n100_028__nyk1-super-strong-nail-glue-for-press-on|4": {
+   "code": "link"
+  },
+  "exact|openai|n100_028__nyk1-super-strong-nail-glue-for-press-on|5": {
+   "code": "oos"
+  },
+  "exact|openai|n100_033__invisible-strapless-sticky-bra-push-up-f|0": {
+   "code": "oos"
+  },
+  "exact|findcheap|n100_035__partywoo-black-balloons-140pcs-different|2": {
+   "code": "valid"
+  },
+  "exact|perplexity|n100_037__cinnamon-toast-crunch-breakfast-cereal-1|0": {
+   "code": "oos"
+  },
+  "exact|perplexity|n100_037__cinnamon-toast-crunch-breakfast-cereal-1|1": {
+   "code": "oos"
+  },
+  "exact|perplexity|n100_037__cinnamon-toast-crunch-breakfast-cereal-1|2": {
+   "code": "oos"
+  },
+  "exact|findcheap|n100_039__original-pillow-standard|8": {
+   "code": "valid"
+  },
+  "exact|findcheap|n100_041__benchmark-bouquets-flowering-fields-sunf|2": {
+   "code": "valid"
+  },
+  "exact|findcheap|n100_042__oyxser-kids-girls-button-down-cardigan-s|0": {
+   "code": "valid"
+  },
+  "exact|findcheap|n100_045__hyperx-cloud-alpha-wireless-gaming-heads|3": {
+   "code": "valid"
+  },
+  "exact|gemini|n100_050__purina-fancy-feast-gravy-lovers-poultry|0": {
+   "code": "link"
+  },
+  "exact|claude|n100_051__shokz-openrun-pro-2-wireless-bone-conduc|0": {
+   "code": "link"
+  },
+  "exact|openai|n100_052__charmking-compression-socks-for-women-me|0": {
+   "code": "valid"
+  },
+  "exact|gemini|n100_054__2pcs-set-yellow-pink-long-rectangular-er|0": {
+   "code": "link"
+  },
+  "exact|findcheap|n100_056__impact-whey-isolate-6lb-vanilla-ice-crea|0": {
+   "code": "valid"
+  },
+  "exact|gemini|n100_059__nautica-voyage-eau-de-toilette-men-s-fra|0": {
+   "code": "link"
+  },
+  "exact|findcheap|n100_061__hanes-men-s-undershirt-packs-stay-tucked|6": {
+   "code": "valid"
+  },
+  "exact|openai|n100_064__five-star-spiral-notebook-study-app-5-su|0": {
+   "code": "oos"
+  },
+  "exact|openai|n100_064__five-star-spiral-notebook-study-app-5-su|1": {
+   "code": "oos"
+  },
+  "exact|openai|n100_064__five-star-spiral-notebook-study-app-5-su|2": {
+   "code": "oos"
+  },
+  "exact|openai|n100_064__five-star-spiral-notebook-study-app-5-su|4": {
+   "code": "oos"
+  },
+  "exact|openai|n100_067__culverbach-6-drawer-dresser|1": {
+   "code": "oos"
+  },
+  "exact|perplexity|n100_067__culverbach-6-drawer-dresser|0": {
+   "code": "oos"
+  },
+  "exact|claude|n100_067__culverbach-6-drawer-dresser|1": {
+   "code": "other",
+   "note": "no shipping available on site"
+  },
+  "exact|claude|n100_067__culverbach-6-drawer-dresser|2": {
+   "code": "other",
+   "note": "no shipping available on site"
+  },
+  "exact|claude|n100_067__culverbach-6-drawer-dresser|3": {
+   "code": "other",
+   "note": "no shipping available on site"
+  },
+  "exact|findcheap|n100_069__cotton-jersey-long-sleeve-t-shirt-soot-x|0": {
+   "code": "valid"
+  },
+  "exact|gemini|n100_069__cotton-jersey-long-sleeve-t-shirt-soot-x|0": {
+   "code": "oos"
+  },
+  "exact|openai|n100_071__persona-5-royal|0": {
+   "code": "oos"
+  },
+  "exact|findcheap|n100_079__peet-s-coffee-espresso-capsules-classic|0": {
+   "code": "valid"
+  },
+  "exact|perplexity|n100_079__peet-s-coffee-espresso-capsules-classic|0": {
+   "code": "oos"
+  },
+  "exact|perplexity|n100_080__horizon-organic-shelf-stable-whole-milk|0": {
+   "code": "oos"
+  },
+  "exact|findcheap|n100_082__pehael-for-iphone-17-pro-max-privacy-scr|0": {
+   "code": "valid"
+  },
+  "exact|claude|n100_083__ninja-foodi-air-fryer-8-qt-dualzone-flex|0": {
+   "code": "other",
+   "note": "local pickup only"
+  },
+  "exact|claude|n100_083__ninja-foodi-air-fryer-8-qt-dualzone-flex|1": {
+   "code": "other",
+   "note": "local pickup only"
+  },
+  "exact|findcheap|n100_084__moft-find-my-magsafe-wallet-stand|3": {
+   "code": "valid"
+  },
+  "exact|findcheap|n100_086__e-l-f-power-grip-primer-4-niacinamide-0|3": {
+   "code": "other",
+   "note": "candidate is higher quantity than reference, thus valid"
+  },
+  "exact|claude|n100_087__3-piece-upholstered-modular-sectional-so|0": {
+   "code": "invalid"
+  },
+  "exact|claude|n100_088__french-toast-boys-pull-on-relaxed-fit-sc|0": {
+   "code": "oos"
+  },
+  "exact|gemini|n100_088__french-toast-boys-pull-on-relaxed-fit-sc|0": {
+   "code": "link"
+  },
+  "exact|gemini|n100_092__treluxe-hi-definition-curl-enhancer-styl|1": {
+   "code": "other",
+   "note": "does not give shipping price"
+  },
+  "exact|claude|n100_094__original-collagen-peptides-56s-bag|0": {
+   "code": "oos"
+  },
+  "exact|perplexity|n100_094__original-collagen-peptides-56s-bag|0": {
+   "code": "oos"
+  },
+  "exact|claude|n100_096__naturium-the-glow-getter-multi-oil-hydra|0": {
+   "code": "oos"
+  },
+  "exact|perplexity|n100_098__cute-apple-shaped-funny-prank-toy-kids-p|0": {
+   "code": "link"
+  }
+ },
+ "ref_counts": {
+  "n100_006__boost-high-protein-with-fiber-balanced-n": 24,
+  "n100_016__26g-organic-protein-grass-fed-protein-sh": 12,
+  "n100_021__premier-protein-30g-high-protein-shake-c": 12,
+  "n100_037__cinnamon-toast-crunch-breakfast-cereal-1": 1,
+  "n100_050__purina-fancy-feast-gravy-lovers-poultry": 24,
+  "n100_053__entenmann-s-little-bites-chocolate-chip": 5,
+  "n100_055__amazon-grocery-seltzer-sparkling-water-6": 1,
+  "n100_059__nautica-voyage-eau-de-toilette-men-s-fra": 1,
+  "n100_063__nature-valley-peanut-butter-chocolate-cr": 5,
+  "n100_068__crep-protect-shoe-protector-spray-rain-s": 1,
+  "n100_075__rice-krispies-treats-crispy-marshmallow": 16,
+  "n100_076__elmer-s-all-purpose-school-glue-sticks-w": 30,
+  "n100_080__horizon-organic-shelf-stable-whole-milk": 18,
+  "n100_090__gerber-stage-2-chicken-and-gravy-baby-fo": 10,
+  "n100_099__great-value-purified-drinking-water-16-9": 40,
+  "n100_100__oreo-reese-s-peanut-buttery-creme-chocol": 1,
+  "n100_031__amazon-grocery-original-breakfast-sausag": 1,
+  "n100_054__2pcs-set-yellow-pink-long-rectangular-er": 1,
+  "n100_070__fillos-tamale-wlk-bn-slsa-verde-4-oz-pac": 1
+ }
+}

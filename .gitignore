@@ -1,0 +1,7 @@
+.env
+.venv/
+__pycache__/
+.DS_Store
+# per-run outputs are local — EXCEPT the published audit trail
+runs/*
+!runs/n100/

@@ -1,0 +1,554 @@
+{
+ "n100_001__proflow-pm2000-pro-performance-electric": {
+  "status": "ok",
+  "in_stock": false,
+  "displayed_price": 224.99,
+  "mandatory_shipping": 0
+ },
+ "n100_003__olanly-bathroom-rugs-30x20-extra-soft-ab": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 9.38,
+  "mandatory_shipping": null
+ },
+ "n100_002__beetles-gel-polish-9-in-1-gel-nail-glue": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 9.98,
+  "mandatory_shipping": null
+ },
+ "n100_004__elitefield-3-door-collapsible-soft-sided": {
+  "status": "ok-alternate-fetch",
+  "in_stock": true,
+  "displayed_price": 105.99,
+  "mandatory_shipping": 0
+ },
+ "n100_005__plulon-hot-pink-color-bob-wig-with-heart": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 9.98,
+  "mandatory_shipping": null
+ },
+ "n100_006__boost-high-protein-with-fiber-balanced-n": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 37.74,
+  "mandatory_shipping": 0
+ },
+ "n100_007__ambre-nuit": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 350.0,
+  "mandatory_shipping": null
+ },
+ "n100_008__fitted-sheet-deep-pocket-easy-care-breat": {
+  "status": "ok-alternate-fetch",
+  "in_stock": true,
+  "displayed_price": null,
+  "mandatory_shipping": null
+ },
+ "n100_009__french-toast-girls-short-sleeve-picot-co": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 9.99,
+  "mandatory_shipping": null
+ },
+ "n100_012__lalippa-striped-digital-print-fashion-mi": {
+  "status": "ok-alternate-fetch",
+  "in_stock": false,
+  "displayed_price": null,
+  "mandatory_shipping": null
+ },
+ "n100_010__ring-indoor-cam-newest-model-home-or-bus": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 29.99,
+  "mandatory_shipping": null
+ },
+ "n100_011__l-a-colors-color-craze-nail-polish-tropi": {
+  "status": "ok-alternate-fetch",
+  "in_stock": false,
+  "displayed_price": 1.12,
+  "mandatory_shipping": null
+ },
+ "n100_015__apple-pencil-usb-c-device-compatibility": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 69.99,
+  "mandatory_shipping": 0
+ },
+ "n100_016__26g-organic-protein-grass-fed-protein-sh": {
+  "status": "ok-alternate-fetch",
+  "in_stock": true,
+  "displayed_price": 42.99,
+  "mandatory_shipping": null
+ },
+ "n100_013__popsockets-kick-out-grip-stand-magsafe-c": {
+  "status": "ok-rendered-retry",
+  "in_stock": true,
+  "displayed_price": 44.95,
+  "mandatory_shipping": 0
+ },
+ "n100_014__coat-of-many-colors": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 19.99,
+  "mandatory_shipping": null
+ },
+ "n100_018__leather-slingback-loafers-burgundy-red-5": {
+  "status": "ok-alternate-fetch",
+  "in_stock": true,
+  "displayed_price": 79.9,
+  "mandatory_shipping": null
+ },
+ "n100_019__strawberry-pound-cake-pocketbac-hand-san": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 1.95,
+  "mandatory_shipping": null
+ },
+ "n100_017__native-union-active-organizer": {
+  "status": "ok-rendered-retry",
+  "in_stock": true,
+  "displayed_price": 29.95,
+  "mandatory_shipping": 0
+ },
+ "n100_020__dohonest-baby-car-camera-hd-1080p-rear-f": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 29.99,
+  "mandatory_shipping": null
+ },
+ "n100_022__prettygarden-women-s-cotton-knit-cardiga": {
+  "status": "ok-alternate-fetch",
+  "in_stock": null,
+  "displayed_price": null,
+  "mandatory_shipping": null
+ },
+ "n100_021__premier-protein-30g-high-protein-shake-c": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 23.97,
+  "mandatory_shipping": null
+ },
+ "n100_024__nike-zoom-vomero-5-women-s-shoes-with-re": {
+  "status": "error",
+  "detail": "AttributeError: 'NoneType' object has no attribute 'group'"
+ },
+ "n100_023__samsung-q-series-soundbar-hw-q990f-11-1": {
+  "status": "error"
+ },
+ "n100_025__gerber-baby-girls-8-pack-short-sleeve-on": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 16.95,
+  "mandatory_shipping": null
+ },
+ "n100_026__vertuo-lattissima-matte-black-glossy": {
+  "status": "ok",
+  "in_stock": null,
+  "displayed_price": null,
+  "mandatory_shipping": null
+ },
+ "n100_027__mvh-s322bt-single-din-digital-media-rece": {
+  "status": "ok",
+  "in_stock": false,
+  "displayed_price": 130.0,
+  "mandatory_shipping": 0
+ },
+ "n100_029__lego-pok-mon-smart-play-mewtwo-s-lab-bre": {
+  "status": "blocked"
+ },
+ "n100_030__normatec-elite-legs": {
+  "status": "blocked"
+ },
+ "n100_028__nyk1-super-strong-nail-glue-for-press-on": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 9.99,
+  "mandatory_shipping": null
+ },
+ "n100_031__amazon-grocery-original-breakfast-sausag": {
+  "status": "ok",
+  "in_stock": false,
+  "displayed_price": null,
+  "mandatory_shipping": null
+ },
+ "n100_034__9-mini-baby-lgt-blu-bro-pink-t-shirt": {
+  "status": "blocked"
+ },
+ "n100_032__garmin-forerunner-55-gps-running-watch-w": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 129.0,
+  "mandatory_shipping": 0
+ },
+ "n100_033__invisible-strapless-sticky-bra-push-up-f": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 19.99,
+  "mandatory_shipping": null
+ },
+ "n100_036__star-wars-retro-collection-star-wars-a-n": {
+  "status": "blocked"
+ },
+ "n100_035__partywoo-black-balloons-140pcs-different": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 8.99,
+  "mandatory_shipping": null
+ },
+ "n100_037__cinnamon-toast-crunch-breakfast-cereal-1": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 2.97,
+  "mandatory_shipping": null
+ },
+ "n100_038__amazon-basics-2-ply-flex-sheets-paper-to": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 22.86,
+  "mandatory_shipping": null
+ },
+ "n100_039__original-pillow-standard": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 67.5,
+  "mandatory_shipping": 0
+ },
+ "n100_040__niagara-sleep-solution-queen-ultra-soft": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 39.99,
+  "mandatory_shipping": 0
+ },
+ "n100_041__benchmark-bouquets-flowering-fields-sunf": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 44.95,
+  "mandatory_shipping": 11.49
+ },
+ "n100_042__oyxser-kids-girls-button-down-cardigan-s": {
+  "status": "blocked"
+ },
+ "n100_045__hyperx-cloud-alpha-wireless-gaming-heads": {
+  "status": "blocked"
+ },
+ "n100_044__livesso-women-s-loose-white-tank-top-ele": {
+  "status": "ok",
+  "in_stock": false,
+  "displayed_price": null,
+  "mandatory_shipping": null
+ },
+ "n100_046__pen-gear-college-ruled-1-subject-noteboo": {
+  "status": "blocked"
+ },
+ "n100_049__modern-crew-t-shirt": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 20.0,
+  "mandatory_shipping": null
+ },
+ "n100_047__ridgid-18v-nuke-subcompact-brushless-cor": {
+  "status": "ok-alternate-fetch",
+  "in_stock": null,
+  "displayed_price": null,
+  "mandatory_shipping": null
+ },
+ "n100_050__purina-fancy-feast-gravy-lovers-poultry": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 22.86,
+  "mandatory_shipping": null
+ },
+ "n100_051__shokz-openrun-pro-2-wireless-bone-conduc": {
+  "status": "ok-alternate-fetch",
+  "in_stock": true,
+  "displayed_price": null,
+  "mandatory_shipping": 0
+ },
+ "n100_053__entenmann-s-little-bites-chocolate-chip": {
+  "status": "ok-alternate-fetch",
+  "in_stock": false,
+  "displayed_price": 3.5,
+  "mandatory_shipping": null
+ },
+ "n100_048__msi-crosshair-16-qhd-240hz-gaming-laptop": {
+  "status": "ok-alternate-fetch",
+  "in_stock": null,
+  "displayed_price": null,
+  "mandatory_shipping": null
+ },
+ "n100_052__charmking-compression-socks-for-women-me": {
+  "status": "error",
+  "detail": "AttributeError: 'NoneType' object has no attribute 'group'"
+ },
+ "n100_054__2pcs-set-yellow-pink-long-rectangular-er": {
+  "status": "ok-alternate-fetch",
+  "in_stock": null,
+  "displayed_price": null,
+  "mandatory_shipping": null
+ },
+ "n100_056__impact-whey-isolate-6lb-vanilla-ice-crea": {
+  "status": "error",
+  "detail": "AttributeError: 'NoneType' object has no attribute 'group'"
+ },
+ "n100_055__amazon-grocery-seltzer-sparkling-water-6": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 1.8,
+  "mandatory_shipping": null
+ },
+ "n100_057__wired-doorbell-2k-newest-model": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 49.99,
+  "mandatory_shipping": 0
+ },
+ "n100_059__nautica-voyage-eau-de-toilette-men-s-fra": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 17.51,
+  "mandatory_shipping": null
+ },
+ "n100_043__sierra-upholstered-modular-sofa-with-cha": {
+  "status": "ok-alternate-fetch",
+  "in_stock": true,
+  "displayed_price": null,
+  "mandatory_shipping": null
+ },
+ "n100_061__hanes-men-s-undershirt-packs-stay-tucked": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 20.0,
+  "mandatory_shipping": null
+ },
+ "n100_058__axis-88-bench-sofa": {
+  "status": "ok-alternate-fetch",
+  "in_stock": null,
+  "displayed_price": 2249.0,
+  "mandatory_shipping": null
+ },
+ "n100_062__heatproof-glass-bowl-dia-6-9": {
+  "status": "ok-alternate-fetch",
+  "in_stock": true,
+  "displayed_price": 11.9,
+  "mandatory_shipping": null
+ },
+ "n100_063__nature-valley-peanut-butter-chocolate-cr": {
+  "status": "ok-alternate-fetch",
+  "in_stock": false,
+  "displayed_price": 4.99,
+  "mandatory_shipping": null
+ },
+ "n100_064__five-star-spiral-notebook-study-app-5-su": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 6.97,
+  "mandatory_shipping": null
+ },
+ "n100_065__hearthz-men-s-hoodie-tracksuit-2-pieces": {
+  "status": "blocked"
+ },
+ "n100_060__milwaukee-4-1-2-in-x-045-in-x-7-8-in-met": {
+  "status": "ok-alternate-fetch",
+  "in_stock": null,
+  "displayed_price": null,
+  "mandatory_shipping": null
+ },
+ "n100_066__bic-xtra-smooth-mechanical-pencils-0-7-m": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 7.44,
+  "mandatory_shipping": null
+ },
+ "n100_067__culverbach-6-drawer-dresser": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 399.99,
+  "mandatory_shipping": null
+ },
+ "n100_068__crep-protect-shoe-protector-spray-rain-s": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 16.0,
+  "mandatory_shipping": null
+ },
+ "n100_069__cotton-jersey-long-sleeve-t-shirt-soot-x": {
+  "status": "error",
+  "detail": "AttributeError: 'NoneType' object has no attribute 'group'"
+ },
+ "n100_070__fillos-tamale-wlk-bn-slsa-verde-4-oz-pac": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 10.4,
+  "mandatory_shipping": null
+ },
+ "n100_072__harper-high-rise-wide-leg-jeans-denim-bl": {
+  "status": "error"
+ },
+ "n100_073__new-c-for-iphone-17-iphone-17-pro-iphone": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 7.18,
+  "mandatory_shipping": null
+ },
+ "n100_074__carory-cabin-air-filter-w-activated-carb": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 7.89,
+  "mandatory_shipping": null
+ },
+ "n100_075__rice-krispies-treats-crispy-marshmallow": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 4.96,
+  "mandatory_shipping": null
+ },
+ "n100_078__k65-plus-wireless-75-rgb-mechanical-gami": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 159.99,
+  "mandatory_shipping": 0
+ },
+ "n100_076__elmer-s-all-purpose-school-glue-sticks-w": {
+  "status": "ok-alternate-fetch",
+  "in_stock": true,
+  "displayed_price": 9.49,
+  "mandatory_shipping": 3.0
+ },
+ "n100_071__persona-5-royal": {
+  "status": "ok-rendered-retry",
+  "in_stock": null,
+  "displayed_price": null,
+  "mandatory_shipping": null
+ },
+ "n100_081__varmblixt-led-table-wall-lamp-orange-gla": {
+  "status": "ok",
+  "in_stock": null,
+  "displayed_price": 89.99,
+  "mandatory_shipping": null
+ },
+ "n100_077__cotton-rope-double-hammock-with-pillow-a": {
+  "status": "error",
+  "detail": "AttributeError: 'NoneType' object has no attribute 'group'"
+ },
+ "n100_079__peet-s-coffee-espresso-capsules-classic": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 31.4,
+  "mandatory_shipping": null
+ },
+ "n100_080__horizon-organic-shelf-stable-whole-milk": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 19.48,
+  "mandatory_shipping": null
+ },
+ "n100_082__pehael-for-iphone-17-pro-max-privacy-scr": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 8.95,
+  "mandatory_shipping": null
+ },
+ "n100_083__ninja-foodi-air-fryer-8-qt-dualzone-flex": {
+  "status": "ok-alternate-fetch",
+  "in_stock": true,
+  "displayed_price": 149.0,
+  "mandatory_shipping": null
+ },
+ "n100_085__earth-rated-dog-poop-bags-on-refill-roll": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 14.99,
+  "mandatory_shipping": null
+ },
+ "n100_084__moft-find-my-magsafe-wallet-stand": {
+  "status": "ok-rendered-retry",
+  "in_stock": true,
+  "displayed_price": 49.95,
+  "mandatory_shipping": 0
+ },
+ "n100_086__e-l-f-power-grip-primer-4-niacinamide-0": {
+  "status": "ok-alternate-fetch",
+  "in_stock": true,
+  "displayed_price": 11.0,
+  "mandatory_shipping": 5.99
+ },
+ "n100_087__3-piece-upholstered-modular-sectional-so": {
+  "status": "ok-rendered-retry",
+  "in_stock": true,
+  "displayed_price": 1300.0,
+  "mandatory_shipping": 0
+ },
+ "n100_088__french-toast-boys-pull-on-relaxed-fit-sc": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 15.18,
+  "mandatory_shipping": null
+ },
+ "n100_089__kitsure-shoe-rack-non-woven-shoe-rack-sh": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 9.99,
+  "mandatory_shipping": null
+ },
+ "n100_090__gerber-stage-2-chicken-and-gravy-baby-fo": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 12.3,
+  "mandatory_shipping": null
+ },
+ "n100_091__yesteryear-a-gma-book-club-pick-a-novel": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 14.99,
+  "mandatory_shipping": null
+ },
+ "n100_093__omega-3-fish-oil-16oz": {
+  "status": "ok-alternate-fetch",
+  "in_stock": true,
+  "displayed_price": 35.99,
+  "mandatory_shipping": null
+ },
+ "n100_094__original-collagen-peptides-56s-bag": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": null,
+  "mandatory_shipping": null
+ },
+ "n100_095__it-will-be-more-beautiful-than-you-could": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 40.0,
+  "mandatory_shipping": null
+ },
+ "n100_096__naturium-the-glow-getter-multi-oil-hydra": {
+  "status": "ok-alternate-fetch",
+  "in_stock": true,
+  "displayed_price": 15.19,
+  "mandatory_shipping": null
+ },
+ "n100_097__tumella-strongest-windproof-travel-umbre": {
+  "status": "error",
+  "detail": "AttributeError: 'NoneType' object has no attribute 'group'"
+ },
+ "n100_092__treluxe-hi-definition-curl-enhancer-styl": {
+  "status": "ok-alternate-fetch",
+  "in_stock": null,
+  "displayed_price": null,
+  "mandatory_shipping": null
+ },
+ "n100_099__great-value-purified-drinking-water-16-9": {
+  "status": "blocked"
+ },
+ "n100_098__cute-apple-shaped-funny-prank-toy-kids-p": {
+  "status": "error"
+ },
+ "n100_100__oreo-reese-s-peanut-buttery-creme-chocol": {
+  "status": "ok",
+  "in_stock": true,
+  "displayed_price": 4.97,
+  "mandatory_shipping": null
+ }
+}

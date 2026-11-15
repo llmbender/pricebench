@@ -1,0 +1,119 @@
+{
+ "meta": {
+  "track": "exact",
+  "n_tasks": 100,
+  "n_opportunity_tasks": 76,
+  "n_no_opportunity_tasks": 24,
+  "judge_panel": {
+   "claude": "claude-opus-5",
+   "openai": "gpt-5.6-sol",
+   "gemini": "gemini-3.5-flash"
+  },
+  "universal_judge_prompts": {
+   "exact": "You are evaluating whether a candidate listing is the IDENTICAL product as a reference product.\nACCEPT only if the candidate is the same brand, same model/style, and same per-item size/capacity as the reference. A different colorway of the same model is acceptable \u2014 EXCEPT for fashion/apparel/footwear products, where the candidate must match the color and design shown. For apparel/footwear/wearables the garment or shoe SIZE is a variant \u2014 never a reason to reject. Pack/unit QUANTITY is NOT part of identity: a different pack or unit count of the identical item \u2014 including a multi-pack or bundle consisting ONLY of that item \u2014 is ACCEPTABLE (value is scored on price per unit by the pipeline, not by you). Per-item capacity, volume, and size DO remain part of identity: REJECT mini/travel sizes, different capacities, bundles that include other products, other models or lines from the same brand, and counterfeit or replica versions.\nCondition: reject ONLY if the listing explicitly states used, refurbished, pre-owned, or for-parts. Do NOT infer condition from photos or terse titles. When a marketplace-stated condition is provided, trust it: 'Open box' / 'New other' / no-box / damaged-box grades mean a NEW item and are acceptable.\nReturn ONLY JSON: {\"verdict\": \"ACCEPT\" or \"REJECT\", \"pack_count\": <TOTAL number of identical base units in the candidate listing, counted in the same base unit as the reference \u2014 e.g. 2 for a 2-pack; a listing of 4 packs of 500 swabs against a 500-count reference is 2000; null if unclear>, \"reason\": \"<20 words\"}",
+   "equiv": "You are evaluating whether a candidate product is a reasonable substitute for a reference product from the perspective of a typical shopper.\nDetermine whether the candidate:\n- serves the same primary purpose;\n- is the same general product type;\n- preserves the important functional characteristics of the reference product;\n- is not materially lower quality than the reference, incomplete, counterfeit, or otherwise non-comparable. A quality objection must rest on AFFIRMATIVE evidence in the listing (stated specs that fall short, missing components, counterfeit indications such as an implausible brand/model claim). Being unbranded or an unfamiliar brand is NOT evidence of lower quality, and specifications absent from a terse listing title are UNKNOWN \u2014 not evidence the product lacks them;\n- physical size, capacity, dimensions, apparel sizing, AND pack/unit count are NONESSENTIAL for equivalence \u2014 a different size, capacity, or pack count of an otherwise comparable product still qualifies (different counts are scored on price-per-unit by the pipeline, not by you);\n- variant and formulation differences within the same brand's comparable product family are NONESSENTIAL unless they change the product's primary purpose or product type;\n- is NEW: reject on condition ONLY if the listing explicitly states used, refurbished, pre-owned, or for-parts \u2014 never inferred from photos or terse titles; a marketplace-stated 'Open box' / 'New other' / no-box / damaged-box grade means NEW and is acceptable;\n- may differ in brand, appearance, or nonessential features \u2014 EXCEPT for fashion/apparel/footwear products, where appearance matters: judge visual similarity from the images. The candidate should have a closely similar overall look to the reference \u2014 same kind of garment worn the same way, similar style and aesthetic. The candidate and reference should be the same general color, but need not match exactly. REJECT only when the look is clearly different from the reference.\nReturn ONLY JSON: {\"verdict\": \"ACCEPT\" or \"REJECT\", \"pack_count\": <TOTAL number of identical base units in the candidate listing, counted in the same base unit as the reference \u2014 e.g. 2 for a 2-pack; a listing of 4 packs of 500 swabs against a 500-count reference is 2000; null if unclear>, \"reason\": \"<20 words\"}"
+  },
+  "protocol": {
+   "output_cap": "up to 10 listings per task (extras truncated)",
+   "invocations": "one invocation per task, no agent re-attempts; a single transport-level retry is allowed only when the vendor API 5xxs before producing any output",
+   "reasoning_effort": "provider defaults; no effort/verbosity overrides",
+   "tool_config": "claude: web_search_20260209 + web_fetch_20260209, max_uses 12 each, pause_turn continuation cap 8; openai: web_search; gemini: google_search grounding; perplexity: Agent API built-in search, preset=high, real image input (normalized base64 data URI); findcheap: /search as shipped (exact track: exact_brand=True)",
+   "image_transport": "product image attached as base64 of the harness-normalized image (retailer CDNs bot-wall URL fetchers)",
+   "max_execution": "findcheap 360s HTTP timeout; baselines 600s HTTP timeout per call",
+   "geography": "US retailers, US-shippable; buyer location for calculated shipping pinned to ZIP 10001 (a generic major-metro US ZIP with no personal association; manual checks enter the same ZIP in retailer shipping estimators; calculated shipping varies by destination, disclosed in limitations)",
+   "currency": "USD",
+   "shipping_basis": "non-Prime / no membership programs (2026-08-29 ruling, consistent with the no-membership-prices rule): Amazon >= $35 ships free, under $35 resolved by manual logged-out checks at ZIP 10001 in the pre-run reference-shipping pass, which pins every reference's non-deterministic shipping BEFORE searches; a Prime counterfactual (all Amazon shipping $0, ~75% of US Amazon shoppers have Prime) is reported separately",
+   "transport": "the claude searcher column runs through the Message Batches API (2026-08-28) \u2014 identical model/tools/prompts, tokens billed at 50% batch rates (per-search fees unchanged); chosen over halving that column's N, which would have thinned the pooled oracle on the skipped tasks and broken column comparability. Its per-task latency is not measurable under batch scheduling (latency_s=null; the rehearsal's interactive medians are the cited latency figures). The batch analog of the single transport-level retry re-submits errored/expired batch results once. All other columns are interactive HTTP",
+   "pack_normalization": "multi-pack references (2026-08-26): candidates with different pack counts qualify on the equivalence track and are scored on landed price PER UNIT \u2014 (item + mandatory shipping) / pack count \u2014 matching production's price-per-count display; the exact track still requires the same count",
+   "shipping_policies": "hard-coded published thresholds (2026-08-26): Amazon/Walmart/Target/Best Buy free >= $35 (under: Walmart $6.99, Target $5.99, Amazon/Best Buy vary); Kohl's free >= $49 else $8.95; Macy's free >= $49; Chewy free >= $49 else $4.99; Shein free >= $29; Sephora free >= $50; Apple and Nordstrom always free",
+   "shipping": "LANDED COST (2026-08-25): 'cheaper' = item price + mandatory shipping for a single-item order to a US address, no paid memberships. Shipping resolves via the locked retailer policy table, then human verification; agent-reported shipping used elsewhere; unknown shipping resolved at the price frontier (R&D: human audit; final run: automated page-text extraction). The REFERENCE is landed too: origin page's item price + its own mandatory shipping under the same rules.",
+   "discounts": "no coupons, promo codes, membership-gated prices, or first-order/new-customer WELCOME prices (AliExpress/Temu/Shein-style) \u2014 the basis is the standing price available to any shopper",
+   "condition": "new only (no used/refurbished/open-box)",
+   "marketplace_sellers": "allowed (Amazon/Walmart/eBay third-party sellers count)",
+   "findcheap_prices": "Findcheap item prices are vendor-API sourced and treated as verified; its shipping and stock are audited like everyone else's"
+  },
+  "shipping_basis": "non-Prime / no membership programs; ref shipping pre-verified (--ref-shipping: locked policy table, else manual logged-out check at ZIP 10001)"
+ },
+ "systems": {
+  "findcheap": {
+   "tasks_run": 100,
+   "savings_capture_pct_mean": 79.6,
+   "savings_capture_ci95": [
+    71.1,
+    87.6
+   ],
+   "savings_found_pct_mean": 29.9,
+   "success_rate_pct": 84.2,
+   "best_price_recall_pct": 71.1,
+   "median_latency_s": 15.2,
+   "cost_usd_total": 3.0,
+   "cost_usd_per_search": 0.03,
+   "tokens_in": null,
+   "tokens_out": null
+  },
+  "claude": {
+   "tasks_run": 100,
+   "savings_capture_pct_mean": 24.9,
+   "savings_capture_ci95": [
+    16.9,
+    33.7
+   ],
+   "savings_found_pct_mean": 8.2,
+   "success_rate_pct": 39.5,
+   "best_price_recall_pct": 13.2,
+   "median_latency_s": null,
+   "cost_usd_total": 102.93,
+   "cost_usd_per_search": 1.029,
+   "tokens_in": 34836647,
+   "tokens_out": 506473
+  },
+  "openai": {
+   "tasks_run": 100,
+   "savings_capture_pct_mean": 37.0,
+   "savings_capture_ci95": [
+    28.5,
+    45.7
+   ],
+   "savings_found_pct_mean": 13.0,
+   "success_rate_pct": 61.8,
+   "best_price_recall_pct": 14.5,
+   "median_latency_s": 40.1,
+   "cost_usd_total": 43.2,
+   "cost_usd_per_search": 0.432,
+   "tokens_in": 7597602,
+   "tokens_out": 181315
+  },
+  "gemini": {
+   "tasks_run": 100,
+   "savings_capture_pct_mean": 10.7,
+   "savings_capture_ci95": [
+    5.1,
+    17.2
+   ],
+   "savings_found_pct_mean": 3.5,
+   "success_rate_pct": 19.7,
+   "best_price_recall_pct": 5.3,
+   "median_latency_s": 58.8,
+   "cost_usd_total": 5.7,
+   "cost_usd_per_search": 0.057,
+   "tokens_in": 464466,
+   "tokens_out": 10251
+  },
+  "perplexity": {
+   "tasks_run": 100,
+   "savings_capture_pct_mean": 20.7,
+   "savings_capture_ci95": [
+    12.8,
+    29.1
+   ],
+   "savings_found_pct_mean": 7.5,
+   "success_rate_pct": 35.5,
+   "best_price_recall_pct": 9.2,
+   "median_latency_s": 51.4,
+   "cost_usd_total": 24.55,
+   "cost_usd_per_search": 0.246,
+   "tokens_in": 10315378,
+   "tokens_out": 199880
+  }
+ }
+}

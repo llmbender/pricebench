@@ -1,0 +1,42 @@
+{
+ "ref_prices": {
+  "n100_004__elitefield-3-door-collapsible-soft-sided": 105.99,
+  "n100_006__boost-high-protein-with-fiber-balanced-n": 37.74,
+  "n100_012__lalippa-striped-digital-print-fashion-mi": 6.23,
+  "n100_045__hyperx-cloud-alpha-wireless-gaming-heads": 139.99,
+  "n100_056__impact-whey-isolate-6lb-vanilla-ice-crea": 20.99,
+  "n100_059__nautica-voyage-eau-de-toilette-men-s-fra": 17.92,
+  "n100_066__bic-xtra-smooth-mechanical-pencils-0-7-m": 7.49,
+  "n100_067__culverbach-6-drawer-dresser": 399.99,
+  "n100_079__peet-s-coffee-espresso-capsules-classic": 31.4,
+  "n100_097__tumella-strongest-windproof-travel-umbre": 19.99,
+  "n100_099__great-value-purified-drinking-water-16-9": 5.47
+ },
+ "ref_shipping": {
+  "n100_002__beetles-gel-polish-9-in-1-gel-nail-glue": 6.99,
+  "n100_003__olanly-bathroom-rugs-30x20-extra-soft-ab": 6.99,
+  "n100_006__boost-high-protein-with-fiber-balanced-n": 0,
+  "n100_056__impact-whey-isolate-6lb-vanilla-ice-crea": 7.99
+ },
+ "ref_counts": {
+  "n100_006__boost-high-protein-with-fiber-balanced-n": 24,
+  "n100_016__26g-organic-protein-grass-fed-protein-sh": 12,
+  "n100_021__premier-protein-30g-high-protein-shake-c": 12,
+  "n100_037__cinnamon-toast-crunch-breakfast-cereal-1": 1,
+  "n100_050__purina-fancy-feast-gravy-lovers-poultry": 24,
+  "n100_053__entenmann-s-little-bites-chocolate-chip": 5,
+  "n100_055__amazon-grocery-seltzer-sparkling-water-6": 1,
+  "n100_059__nautica-voyage-eau-de-toilette-men-s-fra": 1,
+  "n100_063__nature-valley-peanut-butter-chocolate-cr": 5,
+  "n100_068__crep-protect-shoe-protector-spray-rain-s": 1,
+  "n100_075__rice-krispies-treats-crispy-marshmallow": 16,
+  "n100_076__elmer-s-all-purpose-school-glue-sticks-w": 30,
+  "n100_080__horizon-organic-shelf-stable-whole-milk": 18,
+  "n100_090__gerber-stage-2-chicken-and-gravy-baby-fo": 10,
+  "n100_099__great-value-purified-drinking-water-16-9": 40,
+  "n100_100__oreo-reese-s-peanut-buttery-creme-chocol": 1,
+  "n100_031__amazon-grocery-original-breakfast-sausag": 1,
+  "n100_054__2pcs-set-yellow-pink-long-rectangular-er": 1,
+  "n100_070__fillos-tamale-wlk-bn-slsa-verde-4-oz-pac": 1
+ }
+}

@@ -1,0 +1,3274 @@
+{
+ "model": "gemini-3.1-pro-preview",
+ "track": "equiv",
+ "ran_at": "2026-08-29T21:17:35",
+ "protocol": {
+  "output_cap": "up to 10 listings per task (extras truncated)",
+  "invocations": "one invocation per task, no agent re-attempts; a single transport-level retry is allowed only when the vendor API 5xxs before producing any output",
+  "reasoning_effort": "provider defaults; no effort/verbosity overrides",
+  "tool_config": "claude: web_search_20260209 + web_fetch_20260209, max_uses 12 each, pause_turn continuation cap 8; openai: web_search; gemini: google_search grounding; grok: server-side web_search via /v1/responses; perplexity: Agent API built-in search, preset=high, real image input (normalized base64 data URI); exa: /search deep mode + outputSchema (TEXT-ONLY \u2014 image passed as a URL line, disclosed asymmetry); parallel: Task API + JSON output_schema (TEXT-ONLY \u2014 image passed as a URL line, disclosed asymmetry); findcheap: /search as shipped (exact track: exact_brand=True)",
+  "max_execution": "findcheap 360s HTTP timeout; baselines 600s HTTP timeout per call",
+  "geography": "US retailers, US-shippable; buyer location for calculated shipping pinned to ZIP 10001 (generic major-metro ZIP \u2014 manual checks enter the same ZIP in retailer estimators, so automated and manual shipping checks agree; calculated shipping varies by destination, disclosed in limitations)",
+  "currency": "USD",
+  "shipping_basis": "non-Prime / no membership programs (Jake ruling 2026-08-29, consistent with the no-membership-prices rule): Amazon >= $35 ships free, under $35 resolved by manual logged-out checks at ZIP 10001 in the pre-run --ref-shipping pass, which pins every reference's non-deterministic shipping BEFORE searches; a Prime counterfactual (all Amazon shipping $0, ~75% of US Amazon shoppers have Prime) is reported separately via --report --prime",
+  "transport": "the claude searcher column runs through the Message Batches API (Jake ruling 2026-08-28) \u2014 identical model/tools/prompts, tokens billed at 50% batch rates (per-search fees unchanged); chosen over halving that column's N, which would have thinned the pooled oracle on the skipped tasks and broken column comparability. Its per-task latency is not measurable under batch scheduling (latency_s=null; the rehearsal's interactive medians are the cited latency figures). The batch analog of the single transport-level retry re-submits errored/expired batch results once. All other columns are interactive HTTP",
+  "pack_normalization": "multi-pack references (2026-08-26): candidates with different pack counts qualify on the equivalence track and are scored on landed price PER UNIT \u2014 (item + mandatory shipping) / pack count \u2014 matching production's price-per-count display; the exact track still requires the same count",
+  "shipping_policies": "hard-coded published thresholds (2026-08-26): Amazon/Walmart/Target/Best Buy free >= $35 (under: Walmart $6.99, Target $5.99, Amazon/Best Buy vary); Kohl's free >= $49 else $8.95; Macy's free >= $49; Chewy free >= $49 else $4.99; Shein free >= $29; Sephora free >= $50; Apple and Nordstrom always free",
+  "shipping": "LANDED COST (2026-08-25): 'cheaper' = item price + mandatory shipping for a single-item order to a US address, no paid memberships. Numeric shipping probed via eBay/Walmart APIs; agent-reported shipping used elsewhere; unknown shipping resolved at the price frontier (R&D: human audit; final run: automated page-text extraction). The REFERENCE is landed too: origin page's item price + its own mandatory shipping under the same rules.",
+  "discounts": "no coupons, promo codes, membership-gated prices, or first-order/new-customer WELCOME prices (AliExpress/Temu/Shein-style) \u2014 the basis is the standing price available to any shopper",
+  "condition": "new only (no used/refurbished/open-box)",
+  "marketplace_sellers": "allowed (Amazon/Walmart/eBay third-party sellers count)",
+  "findcheap_prices": "Findcheap item prices are vendor-API sourced and treated as verified (Jake's ruling 2026-08-26); its shipping and stock are audited like everyone else's"
+ },
+ "tasks": {
+  "n100_001__proflow-pm2000-pro-performance-electric": {
+   "results": [
+    {
+     "title": "RYOBI 1800 PSI 1.2 GPM Cold Water Electric Pressure Washer",
+     "price": 169.0,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.homedepot.com/p/RYOBI-1800-PSI-1-2-GPM-Cold-Water-Electric-Pressure-Washer-RY141820/310828626",
+     "retailer": "Home Depot",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 69.1,
+   "usage": {
+    "input_tokens": 5187,
+    "output_tokens": 141,
+    "thoughts_tokens": 4025,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0604,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"RYOBI 1800 PSI 1.2 GPM Cold Water Electric Pressure Washer\", \"price\": 169.00, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.homedepot.com/p/RYOBI-1800-PSI-1-2-GPM-Cold-Water-Electric-Pressure-Washer-RY141820/310828626\", \"retailer\": \"Home Depot\", \"same_product\": false}]}\n```"
+  },
+  "n100_003__olanly-bathroom-rugs-30x20-extra-soft-ab": {
+   "results": [
+    {
+     "title": "OLANLY 30x20\" Chenille Bathroom Rug Extra Soft Absorbent Rubber Backing Grey",
+     "price": 15.49,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.ebay.com/itm/147489962935",
+     "retailer": "eBay",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 73.5,
+   "usage": {
+    "input_tokens": 4706,
+    "output_tokens": 106,
+    "thoughts_tokens": 4734,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0675,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"OLANLY 30x20\\\" Chenille Bathroom Rug Extra Soft Absorbent Rubber Backing Grey\", \"price\": 15.49, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.ebay.com/itm/147489962935\", \"retailer\": \"eBay\", \"same_product\": true}]}\n```"
+  },
+  "n100_002__beetles-gel-polish-9-in-1-gel-nail-glue": {
+   "results": [
+    {
+     "title": "Beetles 2 Pcs 15ml Gel Nail Glue for Clear Acrylic Nail Tips, 9 in 1 Super Stron",
+     "price": 14.74,
+     "shipping": 0.0,
+     "pack_count": 2,
+     "currency": "USD",
+     "url": "https://www.ebay.com/itm/406341016629",
+     "retailer": "eBay",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 119.9,
+   "usage": {
+    "input_tokens": 8380,
+    "output_tokens": 111,
+    "thoughts_tokens": 8124,
+    "search_queries": 0
+   },
+   "cost_usd": 0.1156,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Beetles 2 Pcs 15ml Gel Nail Glue for Clear Acrylic Nail Tips, 9 in 1 Super Stron\", \"price\": 14.74, \"shipping\": 0, \"pack_count\": 2, \"currency\": \"USD\", \"url\": \"https://www.ebay.com/itm/406341016629\", \"retailer\": \"eBay\", \"same_product\": true}]}\n```"
+  },
+  "n100_005__plulon-hot-pink-color-bob-wig-with-heart": {
+   "results": [
+    {
+     "title": "PLULON 4Pcs Hot Pink Bob Wigs with Heart Plastic Sunglasses Hair Cap for Women, Neon Short Bob Wig Colored Funny Cosplay Hair for Women Men Daily Bachelorette Halloween Costume Party Decorations",
+     "price": 9.99,
+     "shipping": 0.0,
+     "pack_count": 4,
+     "currency": "USD",
+     "url": "https://www.amazon.com/dp/B0F99HTH72",
+     "retailer": "Amazon",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 75.0,
+   "usage": {
+    "input_tokens": 5041,
+    "output_tokens": 120,
+    "thoughts_tokens": 5891,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0822,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"PLULON 4Pcs Hot Pink Bob Wigs with Heart Plastic Sunglasses Hair Cap for Women, Neon Short Bob Wig Colored Funny Cosplay Hair for Women Men Daily Bachelorette Halloween Costume Party Decorations\", \"price\": 9.99, \"shipping\": 0, \"pack_count\": 4, \"currency\": \"USD\", \"url\": \"https://www.amazon.com/dp/B0F99HTH72\", \"retailer\": \"Amazon\", \"same_product\": true}]}\n```"
+  },
+  "n100_004__elitefield-3-door-collapsible-soft-sided": {
+   "results": [],
+   "latency_s": 118.2,
+   "usage": {
+    "input_tokens": 8063,
+    "output_tokens": 10,
+    "thoughts_tokens": 6813,
+    "search_queries": 0
+   },
+   "cost_usd": 0.098,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": []}\n```"
+  },
+  "n100_007__ambre-nuit": {
+   "results": [
+    {
+     "title": "Christian Dior Unisex Ambre Nuit EDP Spray 4.2 oz Fragrances",
+     "price": 309.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.jomashop.com/christian-dior-unisex-ambre-nuit-edp-spray-4-2-oz-fragrances-3348900006201.html",
+     "retailer": "Jomashop",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Privezarah Unisex Prive Collection II Amber Night EDP 2.7 oz",
+     "price": 27.99,
+     "shipping": 5.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.jomashop.com/privezarah-unisex-prive-collection-ii-amber-night-edp-27-oz-fragrances-8491211270719.html",
+     "retailer": "Jomashop",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 56.8,
+   "usage": {
+    "input_tokens": 6366,
+    "output_tokens": 257,
+    "thoughts_tokens": 4999,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0758,
+   "parse_error": false,
+   "raw_text": "{\"results\": [{\"title\": \"Christian Dior Unisex Ambre Nuit EDP Spray 4.2 oz Fragrances\", \"price\": 309.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.jomashop.com/christian-dior-unisex-ambre-nuit-edp-spray-4-2-oz-fragrances-3348900006201.html\", \"retailer\": \"Jomashop\", \"same_product\": true}, {\"title\": \"Privezarah Unisex Prive Collection II Amber Night EDP 2.7 oz\", \"price\": 27.99, \"shipping\": 5.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.jomashop.com/privezarah-unisex-prive-collection-ii-amber-night-edp-27-oz-fragrances-8491211270719.html\", \"retailer\": \"Jomashop\", \"same_product\": false}]}"
+  },
+  "n100_006__boost-high-protein-with-fiber-balanced-n": {
+   "results": [
+    {
+     "title": "Equate High Protein Complete Nutritional Shake, Calcium and Vitamin D, Chocolate, 8 fl oz, 72 Count",
+     "price": 76.19,
+     "shipping": 0.0,
+     "pack_count": 72,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Equate-High-Protein-Complete-Nutritional-Shake-Calcium-and-Vitamin-D-Chocolate-8-fl-oz-24-Count",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Ensure High Protein Nutrition Shake, Milk Chocolate, 8 fl oz, 24 Count",
+     "price": 36.68,
+     "shipping": 0.0,
+     "pack_count": 24,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Ensure-High-Protein-Nutrition-Shake-Milk-Chocolate-8-fl-oz-24-Count",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Equate High Protein Complete Nutritional Shake, Calcium and Vitamin D, Chocolate, 8 fl oz, 24 Count",
+     "price": 29.88,
+     "shipping": 6.99,
+     "pack_count": 24,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Equate-High-Protein-Complete-Nutritional-Shake-Calcium-and-Vitamin-D-Chocolate-8-fl-oz-24-Count",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 108.2,
+   "usage": {
+    "input_tokens": 7578,
+    "output_tokens": 367,
+    "thoughts_tokens": 8038,
+    "search_queries": 0
+   },
+   "cost_usd": 0.116,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Equate High Protein Complete Nutritional Shake, Calcium and Vitamin D, Chocolate, 8 fl oz, 72 Count\", \"price\": 76.19, \"shipping\": 0, \"pack_count\": 72, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Equate-High-Protein-Complete-Nutritional-Shake-Calcium-and-Vitamin-D-Chocolate-8-fl-oz-24-Count\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"Ensure High Protein Nutrition Shake, Milk Chocolate, 8 fl oz, 24 Count\", \"price\": 36.68, \"shipping\": 0, \"pack_count\": 24, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Ensure-High-Protein-Nutrition-Shake-Milk-Chocolate-8-fl-oz-24-Count\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"Equate High Protein Complete Nutritional Shake, Calcium and Vitamin D, Chocolate, 8 fl oz, 24 Count\", \"price\": 29.88, \"shipping\": 6.99, \"pack_count\": 24, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Equate-High-Protein-Complete-Nutritional-Shake-Calcium-and-Vitamin-D-Chocolate-8-fl-oz-24-Count\", \"retailer\": \"Walmart\", \"same_product\": false}]}\n```"
+  },
+  "n100_009__french-toast-girls-short-sleeve-picot-co": {
+   "results": [
+    {
+     "title": "Wonder Nation Girls School Uniform Short Sleeve Performance Polo Shirt, 2-Pack, Sizes 4-18",
+     "price": 14.48,
+     "shipping": 6.99,
+     "pack_count": 2,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Wonder-Nation-Girls-School-Uniform-Short-Sleeve-Performance-Polo-Shirt-2-Pack-Sizes-4-18/885669145",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Girls' Short Sleeve Jersey Uniform Polo Shirt - Cat & Jack",
+     "price": 5.0,
+     "shipping": 5.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.target.com/p/girls-short-sleeve-jersey-uniform-polo-shirt-cat-jack/-/A-54533362",
+     "retailer": "Target",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Girls' Short Sleeve Interlock Uniform Polo Shirt - Cat & Jack",
+     "price": 10.0,
+     "shipping": 5.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.target.com/p/girls-short-sleeve-interlock-uniform-polo-shirt-cat-jack/-/A-89487920",
+     "retailer": "Target",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 69.0,
+   "usage": {
+    "input_tokens": 4744,
+    "output_tokens": 355,
+    "thoughts_tokens": 5930,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0849,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Wonder Nation Girls School Uniform Short Sleeve Performance Polo Shirt, 2-Pack, Sizes 4-18\", \"price\": 14.48, \"shipping\": 6.99, \"pack_count\": 2, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Wonder-Nation-Girls-School-Uniform-Short-Sleeve-Performance-Polo-Shirt-2-Pack-Sizes-4-18/885669145\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"Girls' Short Sleeve Jersey Uniform Polo Shirt - Cat & Jack\", \"price\": 5.0, \"shipping\": 5.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.target.com/p/girls-short-sleeve-jersey-uniform-polo-shirt-cat-jack/-/A-54533362\", \"retailer\": \"Target\", \"same_product\": false}, {\"title\": \"Girls' Short Sleeve Interlock Uniform Polo Shirt - Cat & Jack\", \"price\": 10.0, \"shipping\": 5.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.target.com/p/girls-short-sleeve-interlock-uniform-polo-shirt-cat-jack/-/A-89487920\", \"retailer\": \"Target\", \"same_product\": false}]}\n```"
+  },
+  "n100_008__fitted-sheet-deep-pocket-easy-care-breat": {
+   "results": [],
+   "latency_s": 105.9,
+   "usage": {
+    "input_tokens": 6517,
+    "output_tokens": null,
+    "thoughts_tokens": 5188,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0753,
+   "parse_error": true,
+   "raw_text": ""
+  },
+  "n100_010__ring-indoor-cam-newest-model-home-or-bus": {
+   "results": [
+    {
+     "title": "Ring 1080p Indoor Cam (2nd Gen) Security Camera 2pk - White",
+     "price": 59.98,
+     "shipping": 0.0,
+     "pack_count": 2,
+     "currency": "USD",
+     "url": "https://www.target.com/p/-/A-88293228",
+     "retailer": "Target",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "TP-Link Tapo 1080P Indoor Security Camera (Tapo C100)",
+     "price": 15.96,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.amazon.com/dp/B08DD64GTM",
+     "retailer": "Amazon",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Wyze Cam v3 with Color Night Vision, Wired 1080p HD Indoor/Outdoor Video Camera",
+     "price": 35.98,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.amazon.com/dp/B08R59YH7W",
+     "retailer": "Amazon",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 81.4,
+   "usage": {
+    "input_tokens": 6795,
+    "output_tokens": 290,
+    "thoughts_tokens": 6153,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0909,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Ring 1080p Indoor Cam (2nd Gen) Security Camera 2pk - White\", \"price\": 59.98, \"shipping\": 0, \"pack_count\": 2, \"currency\": \"USD\", \"url\": \"https://www.target.com/p/-/A-88293228\", \"retailer\": \"Target\", \"same_product\": true}, {\"title\": \"TP-Link Tapo 1080P Indoor Security Camera (Tapo C100)\", \"price\": 15.96, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.amazon.com/dp/B08DD64GTM\", \"retailer\": \"Amazon\", \"same_product\": false}, {\"title\": \"Wyze Cam v3 with Color Night Vision, Wired 1080p HD Indoor/Outdoor Video Camera\", \"price\": 35.98, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.amazon.com/dp/B08R59YH7W\", \"retailer\": \"Amazon\", \"same_product\": false}]}\n```"
+  },
+  "n100_011__l-a-colors-color-craze-nail-polish-tropi": {
+   "results": [],
+   "latency_s": 58.1,
+   "usage": {
+    "input_tokens": 4875,
+    "output_tokens": 10,
+    "thoughts_tokens": 3902,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0567,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": []}\n```"
+  },
+  "n100_012__lalippa-striped-digital-print-fashion-mi": {
+   "results": [],
+   "latency_s": 72.6,
+   "usage": {
+    "input_tokens": 5722,
+    "output_tokens": 10,
+    "thoughts_tokens": 5148,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0733,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": []}\n```"
+  },
+  "n100_013__popsockets-kick-out-grip-stand-magsafe-c": {
+   "results": [
+    {
+     "title": "PopSockets Kick-Out Grip for MagSafe, Adjustable Kickstand for Portrait or Landscape, Magnetic Stand, Light Blue - Teal",
+     "price": 12.99,
+     "shipping": 6.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/PopSockets-Kick-Out-Grip-for-MagSafe-Adjustable-Kickstand-for-Portrait-or-Landscape-Magnetic-Stand-Light-Blue-Teal/512345678",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "PopSockets - MagSafe Kick-Out Universal Magnetic Grip & Stand with Adapter Ring for Cell Phones - Black",
+     "price": 39.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.bestbuy.com/site/popsockets-magsafe-kick-out-universal-magnetic-grip-stand-with-adapter-ring-for-cell-phones-black/6477068.p?skuId=6477068",
+     "retailer": "Best Buy",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "PopSockets Kick-Out Magnetic Cell Phone Grip with MagSafe Adapter Ring - Aluminum Radial Silver",
+     "price": 39.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.target.com/p/-/A-94947967",
+     "retailer": "Target",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Aluminum Teal \u2014 MagSafe Kick-Out Grip & Stand",
+     "price": 40.0,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.popsockets.com/en-us/p/aluminum-teal---magsafe-kick-out-grip-stand",
+     "retailer": "PopSockets",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 93.5,
+   "usage": {
+    "input_tokens": 4474,
+    "output_tokens": 477,
+    "thoughts_tokens": 6868,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0971,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"PopSockets Kick-Out Grip for MagSafe, Adjustable Kickstand for Portrait or Landscape, Magnetic Stand, Light Blue - Teal\", \"price\": 12.99, \"shipping\": 6.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/PopSockets-Kick-Out-Grip-for-MagSafe-Adjustable-Kickstand-for-Portrait-or-Landscape-Magnetic-Stand-Light-Blue-Teal/512345678\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"PopSockets - MagSafe Kick-Out Universal Magnetic Grip & Stand with Adapter Ring for Cell Phones - Black\", \"price\": 39.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.bestbuy.com/site/popsockets-magsafe-kick-out-universal-magnetic-grip-stand-with-adapter-ring-for-cell-phones-black/6477068.p?skuId=6477068\", \"retailer\": \"Best Buy\", \"same_product\": false}, {\"title\": \"PopSockets Kick-Out Magnetic Cell Phone Grip with MagSafe Adapter Ring - Aluminum Radial Silver\", \"price\": 39.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.target.com/p/-/A-94947967\", \"retailer\": \"Target\", \"same_product\": false}, {\"title\": \"Aluminum Teal \u2014 MagSafe Kick-Out Grip & Stand\", \"price\": 40.00, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.popsockets.com/en-us/p/aluminum-teal---magsafe-kick-out-grip-stand\", \"retailer\": \"PopSockets\", \"same_product\": false}]}\n```"
+  },
+  "n100_014__coat-of-many-colors": {
+   "results": [
+    {
+     "title": "Dolly Parton, Children's Picture Book, Coat of Many Colors (Hardcover)",
+     "price": 9.04,
+     "shipping": 6.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Coat-of-Many-Colors-Hardcover-9780451532374/52119958",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Coat of Many Colors - by Dolly Parton (Hardcover)",
+     "price": 10.57,
+     "shipping": 5.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.target.com/p/coat-of-many-colors-by-dolly-parton-hardcover/-/A-51368140",
+     "retailer": "Target",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Coat of Many Colors",
+     "price": 15.45,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.christianbook.com/coat-of-many-colors-dolly-parton/9780451532374/pd/532370",
+     "retailer": "Christianbook",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 76.1,
+   "usage": {
+    "input_tokens": 4819,
+    "output_tokens": 335,
+    "thoughts_tokens": 4433,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0669,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Dolly Parton, Children's Picture Book, Coat of Many Colors (Hardcover)\", \"price\": 9.04, \"shipping\": 6.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Coat-of-Many-Colors-Hardcover-9780451532374/52119958\", \"retailer\": \"Walmart\", \"same_product\": true}, {\"title\": \"Coat of Many Colors - by Dolly Parton (Hardcover)\", \"price\": 10.57, \"shipping\": 5.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.target.com/p/coat-of-many-colors-by-dolly-parton-hardcover/-/A-51368140\", \"retailer\": \"Target\", \"same_product\": true}, {\"title\": \"Coat of Many Colors\", \"price\": 15.45, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.christianbook.com/coat-of-many-colors-dolly-parton/9780451532374/pd/532370\", \"retailer\": \"Christianbook\", \"same_product\": true}]}\n```"
+  },
+  "n100_016__26g-organic-protein-grass-fed-protein-sh": {
+   "results": [
+    {
+     "title": "Orgain Organic Grass Fed Protein Shake",
+     "price": 43.89,
+     "shipping": 6.95,
+     "pack_count": 12,
+     "currency": "USD",
+     "url": "https://www.carewell.com/product/orgain-organic-grass-fed-protein-shake/",
+     "retailer": "Carewell",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 56.0,
+   "usage": {
+    "input_tokens": 4947,
+    "output_tokens": 127,
+    "thoughts_tokens": 3781,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0568,
+   "parse_error": false,
+   "raw_text": "```json\n{\n  \"results\": [\n    {\n      \"title\": \"Orgain Organic Grass Fed Protein Shake\",\n      \"price\": 43.89,\n      \"shipping\": 6.95,\n      \"pack_count\": 12,\n      \"currency\": \"USD\",\n      \"url\": \"https://www.carewell.com/product/orgain-organic-grass-fed-protein-shake/\",\n      \"retailer\": \"Carewell\",\n      \"same_product\": true\n    }\n  ]\n}\n```"
+  },
+  "n100_015__apple-pencil-usb-c-device-compatibility": {
+   "results": [
+    {
+     "title": "Logitech Crayon Digital Pencil for iPad 2018 Model & Later (USB C Port Compatibility Only)",
+     "price": 43.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.target.com/p/logitech-crayon-digital-pencil-for-ipad-2018-model-later-usb-c-port-compatibility-only/-/A-88540449",
+     "retailer": "Target",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Logitech Crayon Digital Pencil (iPads with USB-C Ports) Featuring Apple Technology",
+     "price": 43.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Logitech-Crayon-Digital-Pencil-iPads-with-USB-C-Ports-Featuring-Apple-Technology/914000070",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Apple, Pencil (USB-C), Pixel-Perfect Precision, Attaches Magnetically",
+     "price": 69.0,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Apple-Pencil-USB-C-Pixel-Perfect-Precision-Attaches-Magnetically/5101679051",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 91.3,
+   "usage": {
+    "input_tokens": 5331,
+    "output_tokens": 371,
+    "thoughts_tokens": 6279,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0905,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Logitech Crayon Digital Pencil for iPad 2018 Model & Later (USB C Port Compatibility Only)\", \"price\": 43.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.target.com/p/logitech-crayon-digital-pencil-for-ipad-2018-model-later-usb-c-port-compatibility-only/-/A-88540449\", \"retailer\": \"Target\", \"same_product\": false}, {\"title\": \"Logitech Crayon Digital Pencil (iPads with USB-C Ports) Featuring Apple Technology\", \"price\": 43.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Logitech-Crayon-Digital-Pencil-iPads-with-USB-C-Ports-Featuring-Apple-Technology/914000070\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"Apple, Pencil (USB-C), Pixel-Perfect Precision, Attaches Magnetically\", \"price\": 69.00, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Apple-Pencil-USB-C-Pixel-Perfect-Precision-Attaches-Magnetically/5101679051\", \"retailer\": \"Walmart\", \"same_product\": true}]}\n```"
+  },
+  "n100_019__strawberry-pound-cake-pocketbac-hand-san": {
+   "results": [
+    {
+     "title": "Bath Body Works Strawberry Pound Cake 5 Pk Pocketbac Sanitizers BBW NEW!",
+     "price": 15.29,
+     "shipping": 7.0,
+     "pack_count": 5,
+     "currency": "USD",
+     "url": "https://www.ebay.com/itm/306997848149",
+     "retailer": "eBay",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 34.4,
+   "usage": {
+    "input_tokens": 3196,
+    "output_tokens": 99,
+    "thoughts_tokens": 2089,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0326,
+   "parse_error": false,
+   "raw_text": "{\"results\": [{\"title\": \"Bath Body Works Strawberry Pound Cake 5 Pk Pocketbac Sanitizers BBW NEW!\", \"price\": 15.29, \"shipping\": 7.00, \"pack_count\": 5, \"currency\": \"USD\", \"url\": \"https://www.ebay.com/itm/306997848149\", \"retailer\": \"eBay\", \"same_product\": true}]}"
+  },
+  "n100_017__native-union-active-organizer": {
+   "results": [
+    {
+     "title": "UGREEN Electronics Organizer Travel Case Bag Multifunctional Organizer Carrying Case",
+     "price": 19.99,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.amazon.com/dp/B0DPQQL2RN",
+     "retailer": "Amazon",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Inateck Electronics Organizer Travel Case, 180 Open Water-resistant, Multifunctional Travel Organizer Bag",
+     "price": 29.0,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.amazon.com/dp/B0B9M37JZJ",
+     "retailer": "Amazon",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 78.6,
+   "usage": {
+    "input_tokens": 4109,
+    "output_tokens": 184,
+    "thoughts_tokens": 5186,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0727,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"UGREEN Electronics Organizer Travel Case Bag Multifunctional Organizer Carrying Case\", \"price\": 19.99, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.amazon.com/dp/B0DPQQL2RN\", \"retailer\": \"Amazon\", \"same_product\": false}, {\"title\": \"Inateck Electronics Organizer Travel Case, 180 Open Water-resistant, Multifunctional Travel Organizer Bag\", \"price\": 29.00, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.amazon.com/dp/B0B9M37JZJ\", \"retailer\": \"Amazon\", \"same_product\": false}]}\n```"
+  },
+  "n100_018__leather-slingback-loafers-burgundy-red-5": {
+   "results": [
+    {
+     "title": "Franco Sarto L-daley",
+     "price": 39.0,
+     "shipping": 3.95,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.6pm.com/p/franco-sarto-l-daley/product/10039818",
+     "retailer": "6pm",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Franco Sarto Daley Mule",
+     "price": 59.99,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.francosarto.com/product/womens-franco-daley-mule-5275525",
+     "retailer": "Franco Sarto",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Steve Madden Rafe",
+     "price": 74.96,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.6pm.com/p/steve-madden-rafe/product/10030831",
+     "retailer": "6pm",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 99.3,
+   "usage": {
+    "input_tokens": 6146,
+    "output_tokens": 284,
+    "thoughts_tokens": 6638,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0954,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Franco Sarto L-daley\", \"price\": 39.00, \"shipping\": 3.95, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.6pm.com/p/franco-sarto-l-daley/product/10039818\", \"retailer\": \"6pm\", \"same_product\": false}, {\"title\": \"Franco Sarto Daley Mule\", \"price\": 59.99, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.francosarto.com/product/womens-franco-daley-mule-5275525\", \"retailer\": \"Franco Sarto\", \"same_product\": false}, {\"title\": \"Steve Madden Rafe\", \"price\": 74.96, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.6pm.com/p/steve-madden-rafe/product/10030831\", \"retailer\": \"6pm\", \"same_product\": false}]}\n```"
+  },
+  "n100_021__premier-protein-30g-high-protein-shake-c": {
+   "results": [
+    {
+     "title": "Equate Protein Shake, Chocolate, 11 fl oz, 12 Count",
+     "price": 17.76,
+     "shipping": 6.99,
+     "pack_count": 12,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Equate-High-Performance-Protein-Shake-Chocolate-132-Oz-12-Ct/14893015",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 71.7,
+   "usage": {
+    "input_tokens": 5110,
+    "output_tokens": 151,
+    "thoughts_tokens": 5654,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0799,
+   "parse_error": false,
+   "raw_text": "{\n  \"results\": [\n    {\n      \"title\": \"Equate Protein Shake, Chocolate, 11 fl oz, 12 Count\",\n      \"price\": 17.76,\n      \"shipping\": 6.99,\n      \"pack_count\": 12,\n      \"currency\": \"USD\",\n      \"url\": \"https://www.walmart.com/ip/Equate-High-Performance-Protein-Shake-Chocolate-132-Oz-12-Ct/14893015\",\n      \"retailer\": \"Walmart\",\n      \"same_product\": false\n    }\n  ]\n}"
+  },
+  "n100_020__dohonest-baby-car-camera-hd-1080p-rear-f": {
+   "results": [
+    {
+     "title": "Baby Car Camera HD 1080P Night Vision Adjustable 180\u00b0 Wide View Angle Rear Facing Baby Car Monitor for Car Backseat",
+     "price": 24.99,
+     "shipping": 6.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Baby-Car-Camera-HD-1080P-Night-Vision-Adjustable-180-Wide-View-Angle-Rear-Facing-Baby-Car-Monitor-for-Car-Backseat",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "HDJ Baby Car Camera, 4.3'' HD Night Vision Function Car Mirror Display, 360 Adjustable Safety Car Seat Mirror Camera Monitored Mirror with Wide Clear View",
+     "price": 26.99,
+     "shipping": 6.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/HDJ-Baby-Car-Camera-4-3-HD-Night-Vision-Function-Car-Mirror-Display-360-Adjustable-Safety-Car-Seat-Mirror-Camera-Monitored-Mirror-Wide-Clear-View",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Auwogo 1080P Baby Car Camera with 5\" HD Monitor, Rear-Facing Baby Car Seat Monitor with Night Vision",
+     "price": 28.98,
+     "shipping": 6.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Auwogo-1080P-Baby-Car-Camera-with-5-HD-Monitor-Rear-Facing-Baby-Car-Seat-Monitor-with-Night-Vision",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 102.2,
+   "usage": {
+    "input_tokens": 6549,
+    "output_tokens": 451,
+    "thoughts_tokens": 7031,
+    "search_queries": 0
+   },
+   "cost_usd": 0.1029,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Baby Car Camera HD 1080P Night Vision Adjustable 180\u00b0 Wide View Angle Rear Facing Baby Car Monitor for Car Backseat\", \"price\": 24.99, \"shipping\": 6.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Baby-Car-Camera-HD-1080P-Night-Vision-Adjustable-180-Wide-View-Angle-Rear-Facing-Baby-Car-Monitor-for-Car-Backseat\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"HDJ Baby Car Camera, 4.3'' HD Night Vision Function Car Mirror Display, 360 Adjustable Safety Car Seat Mirror Camera Monitored Mirror with Wide Clear View\", \"price\": 26.99, \"shipping\": 6.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/HDJ-Baby-Car-Camera-4-3-HD-Night-Vision-Function-Car-Mirror-Display-360-Adjustable-Safety-Car-Seat-Mirror-Camera-Monitored-Mirror-Wide-Clear-View\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"Auwogo 1080P Baby Car Camera with 5\\\" HD Monitor, Rear-Facing Baby Car Seat Monitor with Night Vision\", \"price\": 28.98, \"shipping\": 6.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Auwogo-1080P-Baby-Car-Camera-with-5-HD-Monitor-Rear-Facing-Baby-Car-Seat-Monitor-with-Night-Vision\", \"retailer\": \"Walmart\", \"same_product\": false}]}\n```"
+  },
+  "n100_022__prettygarden-women-s-cotton-knit-cardiga": {
+   "results": [
+    {
+     "title": "PRETTYGARDEN Women's Knit Cardigan Sweaters Casual Long Sleeve Open Front Button Down Trendy Jackets Outerwear",
+     "price": 29.59,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.amazon.com/dp/B0CNSGVJFM",
+     "retailer": "Amazon",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 96.9,
+   "usage": {
+    "input_tokens": 6604,
+    "output_tokens": 101,
+    "thoughts_tokens": 5560,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0811,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"PRETTYGARDEN Women's Knit Cardigan Sweaters Casual Long Sleeve Open Front Button Down Trendy Jackets Outerwear\", \"price\": 29.59, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.amazon.com/dp/B0CNSGVJFM\", \"retailer\": \"Amazon\", \"same_product\": true}]}\n```"
+  },
+  "n100_023__samsung-q-series-soundbar-hw-q990f-11-1": {
+   "results": [
+    {
+     "title": "Samsung HW-Q990F Q Series Soundbar 11.1.4 Ch Subwoofer with Rear Speaker (2025)",
+     "price": 1397.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://walts.com/product/hw-q990f",
+     "retailer": "Walts TV",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Samsung HW-Q990F 11.1.4-Channel Dolby Atmos Soundbar System",
+     "price": 1597.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.bhphotovideo.com/c/product/1884815-REG/samsung_hw_q990f_za_hw_q990f_656w_11_1_4_channel_dolby.html",
+     "retailer": "B&H Photo Video",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 75.5,
+   "usage": {
+    "input_tokens": 5501,
+    "output_tokens": 258,
+    "thoughts_tokens": 6124,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0876,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Samsung HW-Q990F Q Series Soundbar 11.1.4 Ch Subwoofer with Rear Speaker (2025)\", \"price\": 1397.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://walts.com/product/hw-q990f\", \"retailer\": \"Walts TV\", \"same_product\": true}, {\"title\": \"Samsung HW-Q990F 11.1.4-Channel Dolby Atmos Soundbar System\", \"price\": 1597.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.bhphotovideo.com/c/product/1884815-REG/samsung_hw_q990f_za_hw_q990f_656w_11_1_4_channel_dolby.html\", \"retailer\": \"B&H Photo Video\", \"same_product\": true}]}\n```"
+  },
+  "n100_024__nike-zoom-vomero-5-women-s-shoes-with-re": {
+   "results": [],
+   "latency_s": 74.2,
+   "usage": {
+    "input_tokens": 6803,
+    "output_tokens": 10,
+    "thoughts_tokens": 5513,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0799,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": []}\n```"
+  },
+  "n100_027__mvh-s322bt-single-din-digital-media-rece": {
+   "results": [
+    {
+     "title": "JVC KD-X280BT Digital media receiver",
+     "price": 109.0,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.crutchfield.com/p_105KDX280B/JVC-KD-X280BT.html",
+     "retailer": "Crutchfield",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "KD-X280BT Car In-Dash Unit, Single-DIN Digital Media Receiver with Bluetooth",
+     "price": 109.0,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.homedepot.com/p/JVC-KD-X280BT-Car-In-Dash-Unit-Single-DIN-Digital-Media-Receiver-with-Bluetooth-KD-X280BT/324155160",
+     "retailer": "Home Depot",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Kenwood KMM-BT332U Digital media receiver",
+     "price": 119.0,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.crutchfield.com/p_113KMBT332/Kenwood-KMM-BT332U.html",
+     "retailer": "Crutchfield",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 46.1,
+   "usage": {
+    "input_tokens": 3125,
+    "output_tokens": 352,
+    "thoughts_tokens": 3254,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0495,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"JVC KD-X280BT Digital media receiver\", \"price\": 109.0, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.crutchfield.com/p_105KDX280B/JVC-KD-X280BT.html\", \"retailer\": \"Crutchfield\", \"same_product\": false}, {\"title\": \"KD-X280BT Car In-Dash Unit, Single-DIN Digital Media Receiver with Bluetooth\", \"price\": 109.0, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.homedepot.com/p/JVC-KD-X280BT-Car-In-Dash-Unit-Single-DIN-Digital-Media-Receiver-with-Bluetooth-KD-X280BT/324155160\", \"retailer\": \"Home Depot\", \"same_product\": false}, {\"title\": \"Kenwood KMM-BT332U Digital media receiver\", \"price\": 119.0, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.crutchfield.com/p_113KMBT332/Kenwood-KMM-BT332U.html\", \"retailer\": \"Crutchfield\", \"same_product\": false}]}\n```"
+  },
+  "n100_026__vertuo-lattissima-matte-black-glossy": {
+   "results": [
+    {
+     "title": "Nespresso Vertuo Lattissima by De'Longhi, Black",
+     "price": 370.95,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.williams-sonoma.com/products/nespresso-vertuo-lattissima-by-delonghi/",
+     "retailer": "Williams Sonoma",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Nespresso Vertuo Lattissima Coffee Maker",
+     "price": 529.0,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.bloomingdales.com/shop/product/nespresso-vertuo-lattissima-coffee-maker",
+     "retailer": "Bloomingdale's",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 75.8,
+   "usage": {
+    "input_tokens": 4256,
+    "output_tokens": 199,
+    "thoughts_tokens": 5606,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0782,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Nespresso Vertuo Lattissima by De'Longhi, Black\", \"price\": 370.95, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.williams-sonoma.com/products/nespresso-vertuo-lattissima-by-delonghi/\", \"retailer\": \"Williams Sonoma\", \"same_product\": true}, {\"title\": \"Nespresso Vertuo Lattissima Coffee Maker\", \"price\": 529.0, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.bloomingdales.com/shop/product/nespresso-vertuo-lattissima-coffee-maker\", \"retailer\": \"Bloomingdale's\", \"same_product\": true}]}\n```"
+  },
+  "n100_025__gerber-baby-girls-8-pack-short-sleeve-on": {
+   "results": [
+    {
+     "title": "Gerber Baby Boy or Girl Gender Neutral Short Sleeves Onesies Bodysuits, 8-Pack, Sizes Newborn - 24M",
+     "price": 17.99,
+     "shipping": 0.0,
+     "pack_count": 8,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Gerber-Baby-Boy-or-Girl-Gender-Neutral-Short-Sleeves-Onesies-Bodysuits-8-Pack-Sizes-Newborn-24M/568853744",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 91.0,
+   "usage": {
+    "input_tokens": 6425,
+    "output_tokens": 153,
+    "thoughts_tokens": 6203,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0891,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Gerber Baby Boy or Girl Gender Neutral Short Sleeves Onesies Bodysuits, 8-Pack, Sizes Newborn - 24M\", \"price\": 17.99, \"shipping\": 0, \"pack_count\": 8, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Gerber-Baby-Boy-or-Girl-Gender-Neutral-Short-Sleeves-Onesies-Bodysuits-8-Pack-Sizes-Newborn-24M/568853744\", \"retailer\": \"Walmart\", \"same_product\": true}]}\n```"
+  },
+  "n100_030__normatec-elite-legs": {
+   "results": [
+    {
+     "title": "Therabody RecoveryAir JetBoots",
+     "price": 799.0,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.dickssportinggoods.com/p/therabody-recoveryair-jetboots-22uwvurcvryrjtbtseac/22uwvurcvryrjtbtseac",
+     "retailer": "DICK'S Sporting Goods",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Open Box Normatec Elite Legs",
+     "price": 849.0,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://hyperice.com/products/open-box-normatec-elite-legs/",
+     "retailer": "Hyperice",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 38.6,
+   "usage": {
+    "input_tokens": 3613,
+    "output_tokens": 255,
+    "thoughts_tokens": 3053,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0469,
+   "parse_error": false,
+   "raw_text": "```json\n{\n  \"results\": [\n    {\n      \"title\": \"Therabody RecoveryAir JetBoots\",\n      \"price\": 799.00,\n      \"shipping\": 0,\n      \"pack_count\": 1,\n      \"currency\": \"USD\",\n      \"url\": \"https://www.dickssportinggoods.com/p/therabody-recoveryair-jetboots-22uwvurcvryrjtbtseac/22uwvurcvryrjtbtseac\",\n      \"retailer\": \"DICK'S Sporting Goods\",\n      \"same_product\": false\n    },\n    {\n      \"title\": \"Open Box Normatec Elite Legs\",\n      \"price\": 849.00,\n      \"shipping\": 0,\n      \"pack_count\": 1,\n      \"currency\": \"USD\",\n      \"url\": \"https://hyperice.com/products/open-box-normatec-elite-legs/\",\n      \"retailer\": \"Hyperice\",\n      \"same_product\": true\n    }\n  ]\n}\n```"
+  },
+  "n100_028__nyk1-super-strong-nail-glue-for-press-on": {
+   "results": [
+    {
+     "title": "Broadway by Kiss Brush-on Nail Glue, Liquid Adhesive, Net Wt. 5g (0.17 oz.)",
+     "price": 3.97,
+     "shipping": 6.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Broadway-by-Kiss-Brush-on-Nail-Glue-Liquid-Adhesive-Net-Wt-5g-0-17-oz",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Salon Perfect Brush On Nail Glue for Press On, Acrylic, Artificial Fake Nails, Brush On, Quick Dry, 8ml",
+     "price": 4.97,
+     "shipping": 6.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Salon-Perfect-Brush-On-Nail-Glue-for-Press-On-Acrylic-Artificial-Fake-Nails-Brush-On-Quick-Dry-8ml",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Kiss Brush-On Nail Glue Clear - 0.17 oz",
+     "price": 6.99,
+     "shipping": 5.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walgreens.com/store/c/kiss-brush-on-nail-glue-clear/ID=prod631446-product",
+     "retailer": "Walgreens",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "LUXXI Ultra-Strong Brush On Nail Glue for Press On Nails",
+     "price": 7.48,
+     "shipping": 6.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/LUXXI-Ultra-Strong-Brush-On-Nail-Glue-for-Press-On-Nails",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 66.4,
+   "usage": {
+    "input_tokens": 4235,
+    "output_tokens": 481,
+    "thoughts_tokens": 4915,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0732,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Broadway by Kiss Brush-on Nail Glue, Liquid Adhesive, Net Wt. 5g (0.17 oz.)\", \"price\": 3.97, \"shipping\": 6.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Broadway-by-Kiss-Brush-on-Nail-Glue-Liquid-Adhesive-Net-Wt-5g-0-17-oz\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"Salon Perfect Brush On Nail Glue for Press On, Acrylic, Artificial Fake Nails, Brush On, Quick Dry, 8ml\", \"price\": 4.97, \"shipping\": 6.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Salon-Perfect-Brush-On-Nail-Glue-for-Press-On-Acrylic-Artificial-Fake-Nails-Brush-On-Quick-Dry-8ml\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"Kiss Brush-On Nail Glue Clear - 0.17 oz\", \"price\": 6.99, \"shipping\": 5.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walgreens.com/store/c/kiss-brush-on-nail-glue-clear/ID=prod631446-product\", \"retailer\": \"Walgreens\", \"same_product\": false}, {\"title\": \"LUXXI Ultra-Strong Brush On Nail Glue for Press On Nails\", \"price\": 7.48, \"shipping\": 6.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/LUXXI-Ultra-Strong-Brush-On-Nail-Glue-for-Press-On-Nails\", \"retailer\": \"Walmart\", \"same_product\": false}]}\n```"
+  },
+  "n100_029__lego-pok-mon-smart-play-mewtwo-s-lab-bre": {
+   "results": [],
+   "latency_s": 71.1,
+   "usage": {
+    "input_tokens": 6335,
+    "output_tokens": 5,
+    "thoughts_tokens": 4782,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0701,
+   "parse_error": false,
+   "raw_text": "{\"results\": []}"
+  },
+  "n100_032__garmin-forerunner-55-gps-running-watch-w": {
+   "results": [],
+   "latency_s": 58.3,
+   "usage": {
+    "input_tokens": 4800,
+    "output_tokens": 10,
+    "thoughts_tokens": 3898,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0565,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": []}\n```"
+  },
+  "n100_031__amazon-grocery-original-breakfast-sausag": {
+   "results": [],
+   "latency_s": 88.5,
+   "usage": {
+    "input_tokens": 7593,
+    "output_tokens": 10,
+    "thoughts_tokens": 7562,
+    "search_queries": 0
+   },
+   "cost_usd": 0.1061,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": []}\n```"
+  },
+  "n100_034__9-mini-baby-lgt-blu-bro-pink-t-shirt": {
+   "results": [],
+   "latency_s": 33.7,
+   "usage": {
+    "input_tokens": 3521,
+    "output_tokens": 10,
+    "thoughts_tokens": 2076,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0321,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": []}\n```"
+  },
+  "n100_033__invisible-strapless-sticky-bra-push-up-f": {
+   "results": [
+    {
+     "title": "UZMOG Sticky Bra, Backless Strapless Push Up Adhesive Invisible Lift Up Bras, 2 Pairs",
+     "price": 10.99,
+     "shipping": 6.99,
+     "pack_count": 2,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/UZMOG-Sticky-Bra-Backless-Strapless-Push-Up-Adhesive-Invisible-Lift-Up-Bras-2-Pairs/3930e7ae-e77f-44d7-b176-88401e552262",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "UZMOG Sticky bra, Adhesive Bra Reusable Strapless Self Silicone Push-up Invisible Sticky Bras for Backless Dress",
+     "price": 10.99,
+     "shipping": 6.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/UZMOG-Sticky-bra-Adhesive-Bra-Reusable-Strapless-Self-Silicone-Push-up-Invisible-Sticky-Bras-for-Backless-Dress/f8c7f8e9-66a5-405c-a1a1-a37d38ca00ef",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "2 Packs Adhesive Invisible Reusable Bra Strapless Sticky Bras, Lift Push Up Bar for Women, Self Silicone Sticky Backless Bras",
+     "price": 17.99,
+     "shipping": 6.99,
+     "pack_count": 2,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/2-Packs-Adhesive-Invisible-Reusable-Bra-Strapless-Sticky-Bras-Lift-Push-Up-Bar-for-Women-Self-Silicone-Sticky-Backless-Bras/3a3b5c38-981f-47d3-873c-878d8fad31fa",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Positively BRA+ZEN Women's Reusable Self Adhesive Backless Strapless Fabric Bra, Cup Sizes A-D",
+     "price": 16.98,
+     "shipping": 6.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Positively-BRA-ZEN-Women-s-Reusable-Self-Adhesive-Backless-Strapless-Fabric-Bra-Cup-Sizes-A-D/fc9c284e-dc74-48e9-98bd-32604b2df1bc",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 126.8,
+   "usage": {
+    "input_tokens": 5615,
+    "output_tokens": 754,
+    "thoughts_tokens": 8184,
+    "search_queries": 0
+   },
+   "cost_usd": 0.1185,
+   "parse_error": false,
+   "raw_text": "```json\n{\n  \"results\": [\n    {\n      \"title\": \"UZMOG Sticky Bra, Backless Strapless Push Up Adhesive Invisible Lift Up Bras, 2 Pairs\",\n      \"price\": 10.99,\n      \"shipping\": 6.99,\n      \"pack_count\": 2,\n      \"currency\": \"USD\",\n      \"url\": \"https://www.walmart.com/ip/UZMOG-Sticky-Bra-Backless-Strapless-Push-Up-Adhesive-Invisible-Lift-Up-Bras-2-Pairs/3930e7ae-e77f-44d7-b176-88401e552262\",\n      \"retailer\": \"Walmart\",\n      \"same_product\": false\n    },\n    {\n      \"title\": \"UZMOG Sticky bra, Adhesive Bra Reusable Strapless Self Silicone Push-up Invisible Sticky Bras for Backless Dress\",\n      \"price\": 10.99,\n      \"shipping\": 6.99,\n      \"pack_count\": 1,\n      \"currency\": \"USD\",\n      \"url\": \"https://www.walmart.com/ip/UZMOG-Sticky-bra-Adhesive-Bra-Reusable-Strapless-Self-Silicone-Push-up-Invisible-Sticky-Bras-for-Backless-Dress/f8c7f8e9-66a5-405c-a1a1-a37d38ca00ef\",\n      \"retailer\": \"Walmart\",\n      \"same_product\": false\n    },\n    {\n      \"title\": \"2 Packs Adhesive Invisible Reusable Bra Strapless Sticky Bras, Lift Push Up Bar for Women, Self Silicone Sticky Backless Bras\",\n      \"price\": 17.99,\n      \"shipping\": 6.99,\n      \"pack_count\": 2,\n      \"currency\": \"USD\",\n      \"url\": \"https://www.walmart.com/ip/2-Packs-Adhesive-Invisible-Reusable-Bra-Strapless-Sticky-Bras-Lift-Push-Up-Bar-for-Women-Self-Silicone-Sticky-Backless-Bras/3a3b5c38-981f-47d3-873c-878d8fad31fa\",\n      \"retailer\": \"Walmart\",\n      \"same_product\": false\n    },\n    {\n      \"title\": \"Positively BRA+ZEN Women's Reusable Self Adhesive Backless Strapless Fabric Bra, Cup Sizes A-D\",\n      \"price\": 16.98,\n      \"shipping\": 6.99,\n      \"pack_count\": 1,\n      \"currency\": \"USD\",\n      \"url\": \"https://www.walmart.com/ip/Positively-BRA-ZEN-Women-s-Reusable-Self-Adhesive-Backless-Strapless-Fabric-Bra-Cup-Sizes-A-D/fc9c284e-dc74-48e9-98bd-32604b2df1bc\",\n      \"retailer\": \"Walmart\",\n      \"same_product\": false\n    }\n  ]\n}\n```"
+  },
+  "n100_036__star-wars-retro-collection-star-wars-a-n": {
+   "results": [],
+   "latency_s": 61.8,
+   "usage": {
+    "input_tokens": 4412,
+    "output_tokens": 5,
+    "thoughts_tokens": 3257,
+    "search_queries": 0
+   },
+   "cost_usd": 0.048,
+   "parse_error": false,
+   "raw_text": "{\"results\": []}"
+  },
+  "n100_035__partywoo-black-balloons-140pcs-different": {
+   "results": [
+    {
+     "title": "Black-Y18 Balloons Arch Kit Garland 140pcs (5/10/12/18 inch)",
+     "price": 7.99,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://partywoo.com/products/black-y18-balloons-arch-kit-garland-140pcs",
+     "retailer": "PartyWoo",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Goowood PartyWoo Black Balloons 140 Pcs Balloon Arch Kit Different Sizes 18 12 10 5 Inch Latex Balloons for Birthday Decorations Party",
+     "price": 7.99,
+     "shipping": 6.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Goowood-PartyWoo-Black-Balloons-140-Pcs-Balloon-Arch-Kit-Different-Sizes-18-12-10-5-Inch-Latex-Balloons-for-Birthday-Decorations-Party/3349605380",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "140 PCS Matte Black Latex Balloon Arch Kit Garland for Graduation Halloween New Year Anniversary Birthday Party Decorations",
+     "price": 3.74,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.etsy.com/listing/7338800568/140-pcs-matte-black-latex-balloon-arch",
+     "retailer": "Etsy",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 91.1,
+   "usage": {
+    "input_tokens": 6337,
+    "output_tokens": 464,
+    "thoughts_tokens": 6716,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0988,
+   "parse_error": false,
+   "raw_text": "{\n  \"results\": [\n    {\n      \"title\": \"Black-Y18 Balloons Arch Kit Garland 140pcs (5/10/12/18 inch)\",\n      \"price\": 7.99,\n      \"shipping\": null,\n      \"pack_count\": 1,\n      \"currency\": \"USD\",\n      \"url\": \"https://partywoo.com/products/black-y18-balloons-arch-kit-garland-140pcs\",\n      \"retailer\": \"PartyWoo\",\n      \"same_product\": true\n    },\n    {\n      \"title\": \"Goowood PartyWoo Black Balloons 140 Pcs Balloon Arch Kit Different Sizes 18 12 10 5 Inch Latex Balloons for Birthday Decorations Party\",\n      \"price\": 7.99,\n      \"shipping\": 6.99,\n      \"pack_count\": 1,\n      \"currency\": \"USD\",\n      \"url\": \"https://www.walmart.com/ip/Goowood-PartyWoo-Black-Balloons-140-Pcs-Balloon-Arch-Kit-Different-Sizes-18-12-10-5-Inch-Latex-Balloons-for-Birthday-Decorations-Party/3349605380\",\n      \"retailer\": \"Walmart\",\n      \"same_product\": true\n    },\n    {\n      \"title\": \"140 PCS Matte Black Latex Balloon Arch Kit Garland for Graduation Halloween New Year Anniversary Birthday Party Decorations\",\n      \"price\": 3.74,\n      \"shipping\": null,\n      \"pack_count\": 1,\n      \"currency\": \"USD\",\n      \"url\": \"https://www.etsy.com/listing/7338800568/140-pcs-matte-black-latex-balloon-arch\",\n      \"retailer\": \"Etsy\",\n      \"same_product\": false\n    }\n  ]\n}"
+  },
+  "n100_037__cinnamon-toast-crunch-breakfast-cereal-1": {
+   "results": [
+    {
+     "title": "Cinnamon Toast Crunch Breakfast Cereal - 12oz - General Mills",
+     "price": 2.99,
+     "shipping": 5.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.target.com/p/cinnamon-toast-crunch-breakfast-cereal-12oz-general-mills/-/A-13191146",
+     "retailer": "Target",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 72.5,
+   "usage": {
+    "input_tokens": 6655,
+    "output_tokens": 114,
+    "thoughts_tokens": 6146,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0884,
+   "parse_error": false,
+   "raw_text": "{\"results\": [{\"title\": \"Cinnamon Toast Crunch Breakfast Cereal - 12oz - General Mills\", \"price\": 2.99, \"shipping\": 5.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.target.com/p/cinnamon-toast-crunch-breakfast-cereal-12oz-general-mills/-/A-13191146\", \"retailer\": \"Target\", \"same_product\": true}]}"
+  },
+  "n100_038__amazon-basics-2-ply-flex-sheets-paper-to": {
+   "results": [
+    {
+     "title": "Sparkle Tear-A-Square Paper Towels, 8 Double Rolls, 110 Sheets per Roll",
+     "price": 9.98,
+     "shipping": 6.99,
+     "pack_count": 8,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Sparkle-Tear-A-Square-Paper-Towels-8-Double-Rolls/683713025",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Sparkle Tear-A-Square Paper Towels, 6 Double Rolls, 110 Sheets per Roll",
+     "price": 7.92,
+     "shipping": 6.99,
+     "pack_count": 6,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Sparkle-Tear-A-Square-Paper-Towels-6-Double-Rolls/54728514",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 89.7,
+   "usage": {
+    "input_tokens": 5901,
+    "output_tokens": 249,
+    "thoughts_tokens": 8279,
+    "search_queries": 0
+   },
+   "cost_usd": 0.1141,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Sparkle Tear-A-Square Paper Towels, 8 Double Rolls, 110 Sheets per Roll\", \"price\": 9.98, \"shipping\": 6.99, \"pack_count\": 8, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Sparkle-Tear-A-Square-Paper-Towels-8-Double-Rolls/683713025\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"Sparkle Tear-A-Square Paper Towels, 6 Double Rolls, 110 Sheets per Roll\", \"price\": 7.92, \"shipping\": 6.99, \"pack_count\": 6, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Sparkle-Tear-A-Square-Paper-Towels-6-Double-Rolls/54728514\", \"retailer\": \"Walmart\", \"same_product\": false}]}\n```"
+  },
+  "n100_039__original-pillow-standard": {
+   "results": [
+    {
+     "title": "The Casper Original Pillow - Standard: Medium Fill, Universal Sleeper, 100% Cotton, Machine Washable, 18\"x26\" White",
+     "price": 67.5,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.target.com/p/the-casper-original-pillow-standard-medium-fill-universal-sleeper-100-cotton-machine-washable-18-x26-white/-/A-80126485",
+     "retailer": "Target",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Casper Original Pillow",
+     "price": 67.5,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.kohls.com/product/prd-4654924/casper-original-pillow.jsp",
+     "retailer": "Kohl's",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Casper Original Pillow",
+     "price": 67.5,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.sitnsleep.com/products/casper-original-pillow",
+     "retailer": "Sit 'n Sleep",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 78.2,
+   "usage": {
+    "input_tokens": 5515,
+    "output_tokens": 324,
+    "thoughts_tokens": 5280,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0783,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"The Casper Original Pillow - Standard: Medium Fill, Universal Sleeper, 100% Cotton, Machine Washable, 18\\\"x26\\\" White\", \"price\": 67.50, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.target.com/p/the-casper-original-pillow-standard-medium-fill-universal-sleeper-100-cotton-machine-washable-18-x26-white/-/A-80126485\", \"retailer\": \"Target\", \"same_product\": true}, {\"title\": \"Casper Original Pillow\", \"price\": 67.50, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.kohls.com/product/prd-4654924/casper-original-pillow.jsp\", \"retailer\": \"Kohl's\", \"same_product\": true}, {\"title\": \"Casper Original Pillow\", \"price\": 67.50, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.sitnsleep.com/products/casper-original-pillow\", \"retailer\": \"Sit 'n Sleep\", \"same_product\": true}]}\n```"
+  },
+  "n100_042__oyxser-kids-girls-button-down-cardigan-s": {
+   "results": [],
+   "latency_s": 27.6,
+   "usage": {
+    "input_tokens": 3351,
+    "output_tokens": 5,
+    "thoughts_tokens": 2184,
+    "search_queries": 0
+   },
+   "cost_usd": 0.033,
+   "parse_error": false,
+   "raw_text": "{\"results\": []}"
+  },
+  "n100_041__benchmark-bouquets-flowering-fields-sunf": {
+   "results": [
+    {
+     "title": "Kabloom Fresh Bouquet of 10 Bright Sunflowers with Vase",
+     "price": 40.8,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Kabloom-Fresh-Bouquet-of-10-Bright-Sunflowers-with-Vase/925345700",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 53.4,
+   "usage": {
+    "input_tokens": 3843,
+    "output_tokens": 120,
+    "thoughts_tokens": 3094,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0463,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Kabloom Fresh Bouquet of 10 Bright Sunflowers with Vase\", \"price\": 40.80, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Kabloom-Fresh-Bouquet-of-10-Bright-Sunflowers-with-Vase/925345700\", \"retailer\": \"Walmart\", \"same_product\": false}]}\n```"
+  },
+  "n100_040__niagara-sleep-solution-queen-ultra-soft": {
+   "results": [
+    {
+     "title": "SONORO KATE Mattress Topper Queen Size, Cooling Bamboo Extra Thick Mattress Pad, 900GSM Fluffy Down Alternative Fill with 21\" Deep Pocket",
+     "price": 36.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/SONORO-KATE-Mattress-Topper-Queen-Size-Cooling-Bamboo-Extra-Thick-Mattress-Pad/987654321",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 80.0,
+   "usage": {
+    "input_tokens": 5275,
+    "output_tokens": 147,
+    "thoughts_tokens": 5995,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0843,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"SONORO KATE Mattress Topper Queen Size, Cooling Bamboo Extra Thick Mattress Pad, 900GSM Fluffy Down Alternative Fill with 21\\\" Deep Pocket\", \"price\": 36.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/SONORO-KATE-Mattress-Topper-Queen-Size-Cooling-Bamboo-Extra-Thick-Mattress-Pad/987654321\", \"retailer\": \"Walmart\", \"same_product\": false}]}\n```"
+  },
+  "n100_043__sierra-upholstered-modular-sofa-with-cha": {
+   "results": [
+    {
+     "title": "Haven 2-Piece Chaise Sectional (106\")",
+     "price": 2898.0,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.westelm.com/products/haven-2-piece-chaise-sectional-106/",
+     "retailer": "West Elm",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Lounge Deep 2-Piece Sectional Sofa with Chaise Lounge",
+     "price": 3928.0,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.crateandbarrel.com/lounge-deep-2-piece-sectional-sofa-with-chaise-lounge/",
+     "retailer": "Crate & Barrel",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Dawson Chaise Sectional Couch",
+     "price": 4146.0,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.castlery.com/us/products/dawson-chaise-sectional-sofa",
+     "retailer": "Castlery",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 39.9,
+   "usage": {
+    "input_tokens": 3087,
+    "output_tokens": 293,
+    "thoughts_tokens": 3374,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0502,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Haven 2-Piece Chaise Sectional (106\\\")\", \"price\": 2898.00, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.westelm.com/products/haven-2-piece-chaise-sectional-106/\", \"retailer\": \"West Elm\", \"same_product\": false}, {\"title\": \"Lounge Deep 2-Piece Sectional Sofa with Chaise Lounge\", \"price\": 3928.00, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.crateandbarrel.com/lounge-deep-2-piece-sectional-sofa-with-chaise-lounge/\", \"retailer\": \"Crate & Barrel\", \"same_product\": false}, {\"title\": \"Dawson Chaise Sectional Couch\", \"price\": 4146.00, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.castlery.com/us/products/dawson-chaise-sectional-sofa\", \"retailer\": \"Castlery\", \"same_product\": false}]}\n```"
+  },
+  "n100_046__pen-gear-college-ruled-1-subject-noteboo": {
+   "results": [],
+   "latency_s": 49.7,
+   "usage": {
+    "input_tokens": 4255,
+    "output_tokens": 10,
+    "thoughts_tokens": 2588,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0397,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": []}\n```"
+  },
+  "n100_045__hyperx-cloud-alpha-wireless-gaming-heads": {
+   "results": [
+    {
+     "title": "HyperX - Cloud Alpha Wireless Gaming Headset for PC, PS5, and PS4 - Black/Red",
+     "price": 108.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.bestbuy.com/site/hyperx-cloud-alpha-wireless-gaming-headset-for-pc-ps5-and-ps4-black-red/6499569.p?skuId=6499569",
+     "retailer": "Best Buy",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 67.1,
+   "usage": {
+    "input_tokens": 3732,
+    "output_tokens": 147,
+    "thoughts_tokens": 4105,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0585,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"HyperX - Cloud Alpha Wireless Gaming Headset for PC, PS5, and PS4 - Black/Red\", \"price\": 108.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.bestbuy.com/site/hyperx-cloud-alpha-wireless-gaming-headset-for-pc-ps5-and-ps4-black-red/6499569.p?skuId=6499569\", \"retailer\": \"Best Buy\", \"same_product\": true}]}\n```"
+  },
+  "n100_044__livesso-women-s-loose-white-tank-top-ele": {
+   "results": [],
+   "latency_s": 96.8,
+   "usage": {
+    "input_tokens": 8790,
+    "output_tokens": 10,
+    "thoughts_tokens": 7208,
+    "search_queries": 0
+   },
+   "cost_usd": 0.1042,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": []}\n```"
+  },
+  "n100_047__ridgid-18v-nuke-subcompact-brushless-cor": {
+   "results": [
+    {
+     "title": "RIDGID 18V SubCompact Brushless Cordless 3/8 in. Impact Wrench (Tool Only)",
+     "price": 131.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.homedepot.com/p/RIDGID-18V-SubCompact-Brushless-Cordless-3-8-in-Impact-Wrench-Tool-Only-R872071B/320285133",
+     "retailer": "Home Depot",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 100.3,
+   "usage": {
+    "input_tokens": 5764,
+    "output_tokens": 150,
+    "thoughts_tokens": 5462,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0789,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"RIDGID 18V SubCompact Brushless Cordless 3/8 in. Impact Wrench (Tool Only)\", \"price\": 131.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.homedepot.com/p/RIDGID-18V-SubCompact-Brushless-Cordless-3-8-in-Impact-Wrench-Tool-Only-R872071B/320285133\", \"retailer\": \"Home Depot\", \"same_product\": false}]}\n```"
+  },
+  "n100_048__msi-crosshair-16-qhd-240hz-gaming-laptop": {
+   "results": [
+    {
+     "title": "MSI Crosshair 16 Max HX OLED 16\" Gaming Laptop Computer - Core Black",
+     "price": 1399.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.microcenter.com/product/709576/msi-crosshair-16-max-hx-oled-16-gaming-laptop-computer-core-black",
+     "retailer": "Micro Center",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 101.0,
+   "usage": {
+    "input_tokens": 7064,
+    "output_tokens": 130,
+    "thoughts_tokens": 9780,
+    "search_queries": 0
+   },
+   "cost_usd": 0.133,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"MSI Crosshair 16 Max HX OLED 16\\\" Gaming Laptop Computer - Core Black\", \"price\": 1399.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.microcenter.com/product/709576/msi-crosshair-16-max-hx-oled-16-gaming-laptop-computer-core-black\", \"retailer\": \"Micro Center\", \"same_product\": false}]}\n```"
+  },
+  "n100_049__modern-crew-t-shirt": {
+   "results": [
+    {
+     "title": "Amazon Essentials Women's Slim-Fit Short-Sleeve Crewneck T-Shirt, Pack of 2",
+     "price": 19.9,
+     "shipping": 5.99,
+     "pack_count": 2,
+     "currency": "USD",
+     "url": "https://www.amazon.com/dp/B07XQVBQSR",
+     "retailer": "Amazon",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "EveryWear Crew-Neck T-Shirt for Women",
+     "price": 10.0,
+     "shipping": 7.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://oldnavy.gap.com/browse/product.do?pid=409743",
+     "retailer": "Old Navy",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 75.6,
+   "usage": {
+    "input_tokens": 4363,
+    "output_tokens": 196,
+    "thoughts_tokens": 4979,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0708,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Amazon Essentials Women's Slim-Fit Short-Sleeve Crewneck T-Shirt, Pack of 2\", \"price\": 19.90, \"shipping\": 5.99, \"pack_count\": 2, \"currency\": \"USD\", \"url\": \"https://www.amazon.com/dp/B07XQVBQSR\", \"retailer\": \"Amazon\", \"same_product\": false}, {\"title\": \"EveryWear Crew-Neck T-Shirt for Women\", \"price\": 10.00, \"shipping\": 7.00, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://oldnavy.gap.com/browse/product.do?pid=409743\", \"retailer\": \"Old Navy\", \"same_product\": false}]}\n```"
+  },
+  "n100_050__purina-fancy-feast-gravy-lovers-poultry": {
+   "results": [
+    {
+     "title": "Fancy Feast Gravy Lovers Poultry & Beef Feast Variety Pack Canned Cat Food, 3-oz, case of 24",
+     "price": 22.86,
+     "shipping": 4.95,
+     "pack_count": 24,
+     "currency": "USD",
+     "url": "https://www.chewy.com/fancy-feast-gravy-lovers-poultry-beef/dp/104033",
+     "retailer": "Chewy",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Purina Fancy Feast Gravy Lovers Chicken, Turkey & Beef Flavor Wet Cat Food Cans Variety Pack - 3oz/24ct",
+     "price": 22.99,
+     "shipping": 5.99,
+     "pack_count": 24,
+     "currency": "USD",
+     "url": "https://www.target.com/p/purina-fancy-feast-gravy-lovers-chicken-turkey-beef-flavor-wet-cat-food-cans-variety-pack-3oz-24ct/-/A-14766221",
+     "retailer": "Target",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 42.1,
+   "usage": {
+    "input_tokens": 3155,
+    "output_tokens": 270,
+    "thoughts_tokens": 2893,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0443,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Fancy Feast Gravy Lovers Poultry & Beef Feast Variety Pack Canned Cat Food, 3-oz, case of 24\", \"price\": 22.86, \"shipping\": 4.95, \"pack_count\": 24, \"currency\": \"USD\", \"url\": \"https://www.chewy.com/fancy-feast-gravy-lovers-poultry-beef/dp/104033\", \"retailer\": \"Chewy\", \"same_product\": true}, {\"title\": \"Purina Fancy Feast Gravy Lovers Chicken, Turkey & Beef Flavor Wet Cat Food Cans Variety Pack - 3oz/24ct\", \"price\": 22.99, \"shipping\": 5.99, \"pack_count\": 24, \"currency\": \"USD\", \"url\": \"https://www.target.com/p/purina-fancy-feast-gravy-lovers-chicken-turkey-beef-flavor-wet-cat-food-cans-variety-pack-3oz-24ct/-/A-14766221\", \"retailer\": \"Target\", \"same_product\": true}]}\n```"
+  },
+  "n100_052__charmking-compression-socks-for-women-me": {
+   "results": [
+    {
+     "title": "Compression Socks for swelling (6 Pairs)",
+     "price": 18.99,
+     "shipping": 0.0,
+     "pack_count": 6,
+     "currency": "USD",
+     "url": "https://www.charmkingus.com/products/compression-socks-for-swelling-6-pairs",
+     "retailer": "Charmking",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Compression Socks for swelling (8 Pairs)",
+     "price": 26.99,
+     "shipping": 0.0,
+     "pack_count": 8,
+     "currency": "USD",
+     "url": "https://www.charmkingus.com/products/compression-socks-for-swelling-8-pairs",
+     "retailer": "Charmking",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Compression Socks (3 Pairs) 15-20 mmhg for Men & Women",
+     "price": 14.99,
+     "shipping": 0.0,
+     "pack_count": 3,
+     "currency": "USD",
+     "url": "https://www.charmkingus.com/products/3-pairs-compression-socks-",
+     "retailer": "Charmking",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 73.5,
+   "usage": {
+    "input_tokens": 4834,
+    "output_tokens": 273,
+    "thoughts_tokens": 5054,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0736,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Compression Socks for swelling (6 Pairs)\", \"price\": 18.99, \"shipping\": 0, \"pack_count\": 6, \"currency\": \"USD\", \"url\": \"https://www.charmkingus.com/products/compression-socks-for-swelling-6-pairs\", \"retailer\": \"Charmking\", \"same_product\": false}, {\"title\": \"Compression Socks for swelling (8 Pairs)\", \"price\": 26.99, \"shipping\": 0, \"pack_count\": 8, \"currency\": \"USD\", \"url\": \"https://www.charmkingus.com/products/compression-socks-for-swelling-8-pairs\", \"retailer\": \"Charmking\", \"same_product\": false}, {\"title\": \"Compression Socks (3 Pairs) 15-20 mmhg for Men & Women\", \"price\": 14.99, \"shipping\": 0, \"pack_count\": 3, \"currency\": \"USD\", \"url\": \"https://www.charmkingus.com/products/3-pairs-compression-socks-\", \"retailer\": \"Charmking\", \"same_product\": true}]}\n```"
+  },
+  "n100_051__shokz-openrun-pro-2-wireless-bone-conduc": {
+   "results": [
+    {
+     "title": "SHOKZ OpenRun Pro 2 Bone Conduction Bluetooth Sport Headphones, Black",
+     "price": 139.95,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.amazon.com/dp/B0D2HKCMBP",
+     "retailer": "Amazon",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "SHOKZ OpenRun Pro 2 Wireless Hybrid Sports Headphones (Black)",
+     "price": 139.95,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.bhphotovideo.com/c/product/1846650-REG",
+     "retailer": "B&H Photo Video",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 77.9,
+   "usage": {
+    "input_tokens": 5002,
+    "output_tokens": 244,
+    "thoughts_tokens": 6235,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0878,
+   "parse_error": false,
+   "raw_text": "```json\n{\n  \"results\": [\n    {\n      \"title\": \"SHOKZ OpenRun Pro 2 Bone Conduction Bluetooth Sport Headphones, Black\",\n      \"price\": 139.95,\n      \"shipping\": 0,\n      \"pack_count\": 1,\n      \"currency\": \"USD\",\n      \"url\": \"https://www.amazon.com/dp/B0D2HKCMBP\",\n      \"retailer\": \"Amazon\",\n      \"same_product\": true\n    },\n    {\n      \"title\": \"SHOKZ OpenRun Pro 2 Wireless Hybrid Sports Headphones (Black)\",\n      \"price\": 139.95,\n      \"shipping\": 0,\n      \"pack_count\": 1,\n      \"currency\": \"USD\",\n      \"url\": \"https://www.bhphotovideo.com/c/product/1846650-REG\",\n      \"retailer\": \"B&H Photo Video\",\n      \"same_product\": true\n    }\n  ]\n}\n```"
+  },
+  "n100_053__entenmann-s-little-bites-chocolate-chip": {
+   "results": [
+    {
+     "title": "Entenmann's Little Bites Chocolate Chip Muffins - 15oz/10ct",
+     "price": 7.19,
+     "shipping": 5.99,
+     "pack_count": 10,
+     "currency": "USD",
+     "url": "https://www.target.com/p/entenmann-s-little-bites-chocolate-chip-muffins-15oz-10ct/-/A-17079216",
+     "retailer": "Target",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Entenmann's Little Bites Chocolate Chip Mini Muffins, 5 ct / 1.5 oz",
+     "price": 3.5,
+     "shipping": 4.99,
+     "pack_count": 5,
+     "currency": "USD",
+     "url": "https://www.ralphs.com/p/entenmann-s-little-bites-chocolate-chip-mini-muffins/0007203096039",
+     "retailer": "Ralphs",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 81.4,
+   "usage": {
+    "input_tokens": 5896,
+    "output_tokens": 254,
+    "thoughts_tokens": 6500,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0928,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Entenmann's Little Bites Chocolate Chip Muffins - 15oz/10ct\", \"price\": 7.19, \"shipping\": 5.99, \"pack_count\": 10, \"currency\": \"USD\", \"url\": \"https://www.target.com/p/entenmann-s-little-bites-chocolate-chip-muffins-15oz-10ct/-/A-17079216\", \"retailer\": \"Target\", \"same_product\": true}, {\"title\": \"Entenmann's Little Bites Chocolate Chip Mini Muffins, 5 ct / 1.5 oz\", \"price\": 3.50, \"shipping\": 4.99, \"pack_count\": 5, \"currency\": \"USD\", \"url\": \"https://www.ralphs.com/p/entenmann-s-little-bites-chocolate-chip-mini-muffins/0007203096039\", \"retailer\": \"Ralphs\", \"same_product\": true}]}\n```"
+  },
+  "n100_054__2pcs-set-yellow-pink-long-rectangular-er": {
+   "results": [],
+   "latency_s": 89.6,
+   "usage": {
+    "input_tokens": 6168,
+    "output_tokens": 10,
+    "thoughts_tokens": 4883,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0711,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": []}\n```"
+  },
+  "n100_055__amazon-grocery-seltzer-sparkling-water-6": {
+   "results": [
+    {
+     "title": "Great Value Low Sodium Club Soda Sparkling Water, 33.8 fl oz Bottle",
+     "price": 0.97,
+     "shipping": 6.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Great-Value-Low-Sodium-Club-Soda-Sparkling-Water-33-8-fl-oz-Bottle/10448106",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Great Value Club Soda, 7.5 fl oz, 6 Cans",
+     "price": 3.87,
+     "shipping": 6.99,
+     "pack_count": 6,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Great-Value-Club-Soda-7-5-fl-oz-6-Cans/52378939",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Canada Dry Original Sparkling Seltzer Water, 12 fl oz, 12 Pack Cans",
+     "price": 16.99,
+     "shipping": 6.99,
+     "pack_count": 12,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Canada-Dry-Original-Sparkling-Seltzer-Water-12-fl-oz-12-Pack-Cans/10448104",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 100.4,
+   "usage": {
+    "input_tokens": 7755,
+    "output_tokens": 366,
+    "thoughts_tokens": 8219,
+    "search_queries": 0
+   },
+   "cost_usd": 0.1185,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Great Value Low Sodium Club Soda Sparkling Water, 33.8 fl oz Bottle\", \"price\": 0.97, \"shipping\": 6.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Great-Value-Low-Sodium-Club-Soda-Sparkling-Water-33-8-fl-oz-Bottle/10448106\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"Great Value Club Soda, 7.5 fl oz, 6 Cans\", \"price\": 3.87, \"shipping\": 6.99, \"pack_count\": 6, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Great-Value-Club-Soda-7-5-fl-oz-6-Cans/52378939\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"Canada Dry Original Sparkling Seltzer Water, 12 fl oz, 12 Pack Cans\", \"price\": 16.99, \"shipping\": 6.99, \"pack_count\": 12, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Canada-Dry-Original-Sparkling-Seltzer-Water-12-fl-oz-12-Pack-Cans/10448104\", \"retailer\": \"Walmart\", \"same_product\": false}]}\n```"
+  },
+  "n100_056__impact-whey-isolate-6lb-vanilla-ice-crea": {
+   "results": [
+    {
+     "title": "Nutricost Whey Protein Isolate Powder (Vanilla, 5 LB)",
+     "price": 65.97,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://nutricost.com/products/nutricost-whey-protein-isolate-powder",
+     "retailer": "Nutricost",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Myprotein Impact Whey Isolate (5.5 lbs)",
+     "price": 109.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.muscleandstrength.com/store/myprotein-impact-whey-isolate.html",
+     "retailer": "Muscle & Strength",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 59.2,
+   "usage": {
+    "input_tokens": 5122,
+    "output_tokens": 191,
+    "thoughts_tokens": 5343,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0767,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Nutricost Whey Protein Isolate Powder (Vanilla, 5 LB)\", \"price\": 65.97, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://nutricost.com/products/nutricost-whey-protein-isolate-powder\", \"retailer\": \"Nutricost\", \"same_product\": false}, {\"title\": \"Myprotein Impact Whey Isolate (5.5 lbs)\", \"price\": 109.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.muscleandstrength.com/store/myprotein-impact-whey-isolate.html\", \"retailer\": \"Muscle & Strength\", \"same_product\": false}]}\n```"
+  },
+  "n100_059__nautica-voyage-eau-de-toilette-men-s-fra": {
+   "results": [
+    {
+     "title": "Nautica Voyage Men's EDT Spray - 3.3 fl oz",
+     "price": 17.49,
+     "shipping": 5.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.target.com/p/nautica-voyage-men-s-edt-spray-3-3-fl-oz/-/A-14785437",
+     "retailer": "Target",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 57.8,
+   "usage": {
+    "input_tokens": 5033,
+    "output_tokens": 123,
+    "thoughts_tokens": 3431,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0527,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Nautica Voyage Men's EDT Spray - 3.3 fl oz\", \"price\": 17.49, \"shipping\": 5.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.target.com/p/nautica-voyage-men-s-edt-spray-3-3-fl-oz/-/A-14785437\", \"retailer\": \"Target\", \"same_product\": true}]}\n```"
+  },
+  "n100_057__wired-doorbell-2k-newest-model": {
+   "results": [
+    {
+     "title": "Blink Battery Doorbell 2K+ (Add On) \u2014 Wireless video doorbell, 2K resolution, enhanced audio - Black",
+     "price": 41.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.bestbuy.com/site/blink-battery-doorbell-2k-add-on-wireless-video-doorbell-2k-resolution-enhanced-audio-black/6674963.p?skuId=6674963",
+     "retailer": "Best Buy",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Blink Battery Doorbell 2K+ Sync Module Core included \u2014 Wireless video doorbell, 2K resolution, enhanced audio - White",
+     "price": 47.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.bestbuy.com/site/blink-battery-doorbell-2k-sync-module-core-included-wireless-video-doorbell-2k-resolution-enhanced-audio-white/6674959.p?skuId=6674959",
+     "retailer": "Best Buy",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 83.7,
+   "usage": {
+    "input_tokens": 5447,
+    "output_tokens": 302,
+    "thoughts_tokens": 7462,
+    "search_queries": 0
+   },
+   "cost_usd": 0.1041,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Blink Battery Doorbell 2K+ (Add On) \u2014 Wireless video doorbell, 2K resolution, enhanced audio - Black\", \"price\": 41.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.bestbuy.com/site/blink-battery-doorbell-2k-add-on-wireless-video-doorbell-2k-resolution-enhanced-audio-black/6674963.p?skuId=6674963\", \"retailer\": \"Best Buy\", \"same_product\": false}, {\"title\": \"Blink Battery Doorbell 2K+ Sync Module Core included \u2014 Wireless video doorbell, 2K resolution, enhanced audio - White\", \"price\": 47.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.bestbuy.com/site/blink-battery-doorbell-2k-sync-module-core-included-wireless-video-doorbell-2k-resolution-enhanced-audio-white/6674959.p?skuId=6674959\", \"retailer\": \"Best Buy\", \"same_product\": false}]}\n```"
+  },
+  "n100_058__axis-88-bench-sofa": {
+   "results": [
+    {
+     "title": "Sven Biscuit Cream Tufted Sofa",
+     "price": 1299.0,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.article.com/product/23885/sven-biscuit-cream-tufted-sofa",
+     "retailer": "Article",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Aris 88\" Bench Sofa",
+     "price": 1999.0,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.crateandbarrel.com/aris-88-bench-sofa/",
+     "retailer": "Crate & Barrel",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 100.1,
+   "usage": {
+    "input_tokens": 5978,
+    "output_tokens": 184,
+    "thoughts_tokens": 5148,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0759,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Sven Biscuit Cream Tufted Sofa\", \"price\": 1299.00, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.article.com/product/23885/sven-biscuit-cream-tufted-sofa\", \"retailer\": \"Article\", \"same_product\": false}, {\"title\": \"Aris 88\\\" Bench Sofa\", \"price\": 1999.00, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.crateandbarrel.com/aris-88-bench-sofa/\", \"retailer\": \"Crate & Barrel\", \"same_product\": false}]}\n```"
+  },
+  "n100_061__hanes-men-s-undershirt-packs-stay-tucked": {
+   "results": [
+    {
+     "title": "Hanes Men's Super Value Pack White Crew T-Shirt Undershirts, 10 Pack",
+     "price": 23.98,
+     "shipping": 6.99,
+     "pack_count": 10,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Hanes-Men-s-Super-Value-Pack-White-Crew-T-Shirt-Undershirts-10-Pack/460395213",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Hanes Ultimate Men's Undershirts Pack - 5-Pack - ComfortSoft Crewneck Cotton T-Shirts - Moisture-Wicking",
+     "price": 18.98,
+     "shipping": null,
+     "pack_count": 5,
+     "currency": "USD",
+     "url": "https://www.hanes.com/hanes-ultimate-mens-undershirts-pack-5-pack-comfortsoft-crewneck-cotton-t-shirts-moisture-wicking-7870c5.html",
+     "retailer": "Hanes",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 73.0,
+   "usage": {
+    "input_tokens": 4285,
+    "output_tokens": 275,
+    "thoughts_tokens": 4881,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0704,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Hanes Men's Super Value Pack White Crew T-Shirt Undershirts, 10 Pack\", \"price\": 23.98, \"shipping\": 6.99, \"pack_count\": 10, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Hanes-Men-s-Super-Value-Pack-White-Crew-T-Shirt-Undershirts-10-Pack/460395213\", \"retailer\": \"Walmart\", \"same_product\": true}, {\"title\": \"Hanes Ultimate Men's Undershirts Pack - 5-Pack - ComfortSoft Crewneck Cotton T-Shirts - Moisture-Wicking\", \"price\": 18.98, \"shipping\": null, \"pack_count\": 5, \"currency\": \"USD\", \"url\": \"https://www.hanes.com/hanes-ultimate-mens-undershirts-pack-5-pack-comfortsoft-crewneck-cotton-t-shirts-moisture-wicking-7870c5.html\", \"retailer\": \"Hanes\", \"same_product\": true}]}\n```"
+  },
+  "n100_060__milwaukee-4-1-2-in-x-045-in-x-7-8-in-met": {
+   "results": [
+    {
+     "title": "50 Pack Cut Off Wheels 4 1/2 inch Thin Metal & Stainless Steel Cutting Wheel, Professional Fast Cutting Disc for Angle Grinder",
+     "price": 19.69,
+     "shipping": 6.99,
+     "pack_count": 50,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/50-Pack-Cut-Off-Wheels-4-1-2-inch-Thin-Metal-Stainless-Steel-Cutting-Wheel-Professional-Fast-Cutting-Disc-for-Angle-Grinder/218735266",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "DEWALT Cut-Off Wheel DW8062 Type 1 - Reinforced, 4.5 In x 0.045 In, 7/8 In Arbor, 25 Pack",
+     "price": 17.71,
+     "shipping": 6.99,
+     "pack_count": 25,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/DEWALT-Cut-Off-Wheel-DW8062-Type-1-Reinforced-4-5-In-x-0-045-In-7-8-In-Arbor-25-Pack/660003628",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 123.0,
+   "usage": {
+    "input_tokens": 8079,
+    "output_tokens": 336,
+    "thoughts_tokens": 9537,
+    "search_queries": 0
+   },
+   "cost_usd": 0.1346,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"50 Pack Cut Off Wheels 4 1/2 inch Thin Metal & Stainless Steel Cutting Wheel, Professional Fast Cutting Disc for Angle Grinder\", \"price\": 19.69, \"shipping\": 6.99, \"pack_count\": 50, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/50-Pack-Cut-Off-Wheels-4-1-2-inch-Thin-Metal-Stainless-Steel-Cutting-Wheel-Professional-Fast-Cutting-Disc-for-Angle-Grinder/218735266\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"DEWALT Cut-Off Wheel DW8062 Type 1 - Reinforced, 4.5 In x 0.045 In, 7/8 In Arbor, 25 Pack\", \"price\": 17.71, \"shipping\": 6.99, \"pack_count\": 25, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/DEWALT-Cut-Off-Wheel-DW8062-Type-1-Reinforced-4-5-In-x-0-045-In-7-8-In-Arbor-25-Pack/660003628\", \"retailer\": \"Walmart\", \"same_product\": false}]}\n```"
+  },
+  "n100_062__heatproof-glass-bowl-dia-6-9": {
+   "results": [
+    {
+     "title": "Heatproof Glass Bowl (Dia. 5.9\")",
+     "price": 6.9,
+     "shipping": 9.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.muji.us/products/heatproof-glass-bowl-dia-5-9",
+     "retailer": "MUJI",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 94.1,
+   "usage": {
+    "input_tokens": 6972,
+    "output_tokens": 100,
+    "thoughts_tokens": 6302,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0908,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Heatproof Glass Bowl (Dia. 5.9\\\")\", \"price\": 6.90, \"shipping\": 9.00, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.muji.us/products/heatproof-glass-bowl-dia-5-9\", \"retailer\": \"MUJI\", \"same_product\": false}]}\n```"
+  },
+  "n100_064__five-star-spiral-notebook-study-app-5-su": {
+   "results": [
+    {
+     "title": "Five Star School Supplies - Spiral Notebook with Study App, 5 Subject, College Ruled, 200 Sheets, Black (72081)",
+     "price": 12.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Five-Star-School-Supplies-Spiral-Notebook-with-Study-App-5-Subject-College-Ruled-200-Sheets-Black-72081/15160867",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 59.7,
+   "usage": {
+    "input_tokens": 4792,
+    "output_tokens": 155,
+    "thoughts_tokens": 4225,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0621,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Five Star School Supplies - Spiral Notebook with Study App, 5 Subject, College Ruled, 200 Sheets, Black (72081)\", \"price\": 12.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Five-Star-School-Supplies-Spiral-Notebook-with-Study-App-5-Subject-College-Ruled-200-Sheets-Black-72081/15160867\", \"retailer\": \"Walmart\", \"same_product\": true}]}\n```"
+  },
+  "n100_063__nature-valley-peanut-butter-chocolate-cr": {
+   "results": [
+    {
+     "title": "Nature Valley Peanut Butter Chocolate Crispy Creamy Wafer Bars, 15 Bars, 19.5 oz",
+     "price": 10.63,
+     "shipping": 6.99,
+     "pack_count": 15,
+     "currency": "USD",
+     "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFs55iXurLXU-ejNbL6PiapZqoWtIdQDAyIL0VY65bkdfVO_uai6hsOSwhCE492T4aS6mZY6w5cjCOZFub-dEASdMc3cx1E4T-fTuV0Rt3o6O-7NVTewFwcVPOKphc-zCEOC7kdUfSgqesgJRAW8eIY3RwGe1HwZ091lUcAtvCR1mQvMiOKjnvfYcnjQ6h2VERRoZBUwSfsr1XhWD2yDDf2oJam",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 106.7,
+   "usage": {
+    "input_tokens": 8741,
+    "output_tokens": 268,
+    "thoughts_tokens": 7909,
+    "search_queries": 0
+   },
+   "cost_usd": 0.1156,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Nature Valley Peanut Butter Chocolate Crispy Creamy Wafer Bars, 15 Bars, 19.5 oz\", \"price\": 10.63, \"shipping\": 6.99, \"pack_count\": 15, \"currency\": \"USD\", \"url\": \"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFs55iXurLXU-ejNbL6PiapZqoWtIdQDAyIL0VY65bkdfVO_uai6hsOSwhCE492T4aS6mZY6w5cjCOZFub-dEASdMc3cx1E4T-fTuV0Rt3o6O-7NVTewFwcVPOKphc-zCEOC7kdUfSgqesgJRAW8eIY3RwGe1HwZ091lUcAtvCR1mQvMiOKjnvfYcnjQ6h2VERRoZBUwSfsr1XhWD2yDDf2oJam\", \"retailer\": \"Walmart\", \"same_product\": false}]}\n```"
+  },
+  "n100_067__culverbach-6-drawer-dresser": {
+   "results": [
+    {
+     "title": "Signature Design by Ashley Culverbach 6-Drawer Dresser B070-31",
+     "price": 259.99,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.americanfurnitureofslidell.com/products/signature-design-by-ashley-culverbach-6-drawer-dresser-b070-31",
+     "retailer": "American Furniture of Slidell",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Culverbach 8 Drawer Dresser in Gray B070-31",
+     "price": 290.64,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://emmamason.com/culverbach-8-drawer-dresser-in-gray-b070-31.html",
+     "retailer": "Emma Mason",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Culverbach Driftwood Dresser",
+     "price": 298.0,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://lexingtonoverstockwarehouse.com/product/culverbach-driftwood-dresser/",
+     "retailer": "Lexington Overstock Warehouse",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Culverbach Gray Dresser",
+     "price": 298.0,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://evansvilleoverstockwarehouse.com/product/culverbach-gray-dresser/",
+     "retailer": "Evansville Overstock Warehouse",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Culverbach Dresser",
+     "price": 309.99,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://redshedfurniture.com/products/culverbach-dresser",
+     "retailer": "Red Shed Furniture",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 45.7,
+   "usage": {
+    "input_tokens": 3300,
+    "output_tokens": 475,
+    "thoughts_tokens": 3194,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0506,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Signature Design by Ashley Culverbach 6-Drawer Dresser B070-31\", \"price\": 259.99, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.americanfurnitureofslidell.com/products/signature-design-by-ashley-culverbach-6-drawer-dresser-b070-31\", \"retailer\": \"American Furniture of Slidell\", \"same_product\": true}, {\"title\": \"Culverbach 8 Drawer Dresser in Gray B070-31\", \"price\": 290.64, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://emmamason.com/culverbach-8-drawer-dresser-in-gray-b070-31.html\", \"retailer\": \"Emma Mason\", \"same_product\": true}, {\"title\": \"Culverbach Driftwood Dresser\", \"price\": 298.0, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://lexingtonoverstockwarehouse.com/product/culverbach-driftwood-dresser/\", \"retailer\": \"Lexington Overstock Warehouse\", \"same_product\": true}, {\"title\": \"Culverbach Gray Dresser\", \"price\": 298.0, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://evansvilleoverstockwarehouse.com/product/culverbach-gray-dresser/\", \"retailer\": \"Evansville Overstock Warehouse\", \"same_product\": true}, {\"title\": \"Culverbach Dresser\", \"price\": 309.99, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://redshedfurniture.com/products/culverbach-dresser\", \"retailer\": \"Red Shed Furniture\", \"same_product\": true}]}\n```"
+  },
+  "n100_065__hearthz-men-s-hoodie-tracksuit-2-pieces": {
+   "results": [
+    {
+     "title": "THATRICH Men's 2-Piece Tracksuit \u2013 Solid Color Hoodie & Loose Sweatpants Set, Casual Athletic Sportswear",
+     "price": 6.75,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/THATRICH-Men-s-2-Piece-Tracksuit-Solid-Color-Hoodie-Loose-Sweatpants-Set-Casual-Athletic-Sportswear",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Dwelliawo Men's Tracksuit 2 Piece Hoodie and Sweatpants Solid Color Relaxed Fit Hoodie Joggers Sport Pant Set Sweat Winter Suit with Pockets Black L",
+     "price": 12.99,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Dwelliawo-Men-s-Tracksuit-2-Piece-Hoodie-and-Sweatpants-Solid-Color-Relaxed-Fit-Hoodie-Joggers-Sport-Pant-Set-Sweat-Winter-Suit-with-Pockets-Black-L",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Zimjoy Brown Sweat Suits Men Gym Track Suits Mens Casual Pullover Hoodie and Sweatpants Set Fall Jogging Suit with Pockets, Khaki L",
+     "price": 13.99,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Zimjoy-Brown-Sweat-Suits-Men-Gym-Track-Suits-Mens-Casual-Pullover-Hoodie-and-Sweatpants-Set-Fall-Jogging-Suit-with-Pockets-Khaki-L",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 114.4,
+   "usage": {
+    "input_tokens": 7000,
+    "output_tokens": 509,
+    "thoughts_tokens": 7275,
+    "search_queries": 0
+   },
+   "cost_usd": 0.1074,
+   "parse_error": false,
+   "raw_text": "{\n  \"results\": [\n    {\n      \"title\": \"THATRICH Men's 2-Piece Tracksuit \u2013 Solid Color Hoodie & Loose Sweatpants Set, Casual Athletic Sportswear\",\n      \"price\": 6.75,\n      \"shipping\": 0,\n      \"pack_count\": 1,\n      \"currency\": \"USD\",\n      \"url\": \"https://www.walmart.com/ip/THATRICH-Men-s-2-Piece-Tracksuit-Solid-Color-Hoodie-Loose-Sweatpants-Set-Casual-Athletic-Sportswear\",\n      \"retailer\": \"Walmart\",\n      \"same_product\": false\n    },\n    {\n      \"title\": \"Dwelliawo Men's Tracksuit 2 Piece Hoodie and Sweatpants Solid Color Relaxed Fit Hoodie Joggers Sport Pant Set Sweat Winter Suit with Pockets Black L\",\n      \"price\": 12.99,\n      \"shipping\": null,\n      \"pack_count\": 1,\n      \"currency\": \"USD\",\n      \"url\": \"https://www.walmart.com/ip/Dwelliawo-Men-s-Tracksuit-2-Piece-Hoodie-and-Sweatpants-Solid-Color-Relaxed-Fit-Hoodie-Joggers-Sport-Pant-Set-Sweat-Winter-Suit-with-Pockets-Black-L\",\n      \"retailer\": \"Walmart\",\n      \"same_product\": false\n    },\n    {\n      \"title\": \"Zimjoy Brown Sweat Suits Men Gym Track Suits Mens Casual Pullover Hoodie and Sweatpants Set Fall Jogging Suit with Pockets, Khaki L\",\n      \"price\": 13.99,\n      \"shipping\": null,\n      \"pack_count\": 1,\n      \"currency\": \"USD\",\n      \"url\": \"https://www.walmart.com/ip/Zimjoy-Brown-Sweat-Suits-Men-Gym-Track-Suits-Mens-Casual-Pullover-Hoodie-and-Sweatpants-Set-Fall-Jogging-Suit-with-Pockets-Khaki-L\",\n      \"retailer\": \"Walmart\",\n      \"same_product\": false\n    }\n  ]\n}"
+  },
+  "n100_066__bic-xtra-smooth-mechanical-pencils-0-7-m": {
+   "results": [],
+   "latency_s": 96.4,
+   "usage": {
+    "input_tokens": 8266,
+    "output_tokens": 10,
+    "thoughts_tokens": 7451,
+    "search_queries": 0
+   },
+   "cost_usd": 0.1061,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": []}\n```"
+  },
+  "n100_068__crep-protect-shoe-protector-spray-rain-s": {
+   "results": [
+    {
+     "title": "Crep Protect Spray Protector 2-Pack - Adult",
+     "price": 30.0,
+     "shipping": 8.99,
+     "pack_count": 2,
+     "currency": "USD",
+     "url": "https://www.footlocker.com/product/crep-protect-spray-protector-2-pack-adult/1000X2.html",
+     "retailer": "Foot Locker",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Crep Protect Spray Protector 2-Pack - Adult",
+     "price": 30.0,
+     "shipping": 8.99,
+     "pack_count": 2,
+     "currency": "USD",
+     "url": "https://www.champssports.com/product/crep-protect-spray-protector-2-pack-adult/1000X2.html",
+     "retailer": "Champs Sports",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 70.0,
+   "usage": {
+    "input_tokens": 6150,
+    "output_tokens": 216,
+    "thoughts_tokens": 5032,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0753,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Crep Protect Spray Protector 2-Pack - Adult\", \"price\": 30.0, \"shipping\": 8.99, \"pack_count\": 2, \"currency\": \"USD\", \"url\": \"https://www.footlocker.com/product/crep-protect-spray-protector-2-pack-adult/1000X2.html\", \"retailer\": \"Foot Locker\", \"same_product\": true}, {\"title\": \"Crep Protect Spray Protector 2-Pack - Adult\", \"price\": 30.0, \"shipping\": 8.99, \"pack_count\": 2, \"currency\": \"USD\", \"url\": \"https://www.champssports.com/product/crep-protect-spray-protector-2-pack-adult/1000X2.html\", \"retailer\": \"Champs Sports\", \"same_product\": true}]}\n```"
+  },
+  "n100_069__cotton-jersey-long-sleeve-t-shirt-soot-x": {
+   "results": [
+    {
+     "title": "SKIMS Stretch Cotton Jersey Long Sleeve T-Shirt",
+     "price": 58.0,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.nordstrom.com/s/skims-stretch-cotton-jersey-long-sleeve-t-shirt-women/6194917",
+     "retailer": "Nordstrom",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Modern Crewneck T-Shirt",
+     "price": 39.95,
+     "shipping": 7.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.gap.com/browse/product.do?pid=801470",
+     "retailer": "Gap",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 89.9,
+   "usage": {
+    "input_tokens": 6378,
+    "output_tokens": 191,
+    "thoughts_tokens": 5613,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0824,
+   "parse_error": false,
+   "raw_text": "{\"results\": [{\"title\": \"SKIMS Stretch Cotton Jersey Long Sleeve T-Shirt\", \"price\": 58.00, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.nordstrom.com/s/skims-stretch-cotton-jersey-long-sleeve-t-shirt-women/6194917\", \"retailer\": \"Nordstrom\", \"same_product\": true}, {\"title\": \"Modern Crewneck T-Shirt\", \"price\": 39.95, \"shipping\": 7.00, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.gap.com/browse/product.do?pid=801470\", \"retailer\": \"Gap\", \"same_product\": false}]}"
+  },
+  "n100_070__fillos-tamale-wlk-bn-slsa-verde-4-oz-pac": {
+   "results": [],
+   "latency_s": 83.4,
+   "usage": {
+    "input_tokens": 6152,
+    "output_tokens": 10,
+    "thoughts_tokens": 5465,
+    "search_queries": 0
+   },
+   "cost_usd": 0.078,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": []}\n```"
+  },
+  "n100_071__persona-5-royal": {
+   "results": [
+    {
+     "title": "Persona 5 Royal - Nintendo Switch",
+     "price": 17.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.humblebundle.com/store/persona-5-royal",
+     "retailer": "Humble Bundle",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 64.7,
+   "usage": {
+    "input_tokens": 5995,
+    "output_tokens": 88,
+    "thoughts_tokens": 4889,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0717,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Persona 5 Royal - Nintendo Switch\", \"price\": 17.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.humblebundle.com/store/persona-5-royal\", \"retailer\": \"Humble Bundle\", \"same_product\": true}]}\n```"
+  },
+  "n100_072__harper-high-rise-wide-leg-jeans-denim-bl": {
+   "results": [
+    {
+     "title": "Women's High-Rise Wide Leg Jeans - Universal Thread\u2122 Medium Wash",
+     "price": 28.0,
+     "shipping": 5.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.target.com/p/-/A-94335739",
+     "retailer": "Target",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "High-Rise Wide-Leg Jeans - Light Denim",
+     "price": 29.99,
+     "shipping": 5.95,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.forever21.com/us/2001274038.html",
+     "retailer": "Forever 21",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Extra High-Waisted Wide-Leg Jeans - Medium Wash",
+     "price": 32.99,
+     "shipping": 7.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://oldnavy.gap.com/browse/product.do?pid=514553",
+     "retailer": "Old Navy",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 73.1,
+   "usage": {
+    "input_tokens": 5246,
+    "output_tokens": 287,
+    "thoughts_tokens": 5792,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0834,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Women's High-Rise Wide Leg Jeans - Universal Thread\u2122 Medium Wash\", \"price\": 28.00, \"shipping\": 5.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.target.com/p/-/A-94335739\", \"retailer\": \"Target\", \"same_product\": false}, {\"title\": \"High-Rise Wide-Leg Jeans - Light Denim\", \"price\": 29.99, \"shipping\": 5.95, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.forever21.com/us/2001274038.html\", \"retailer\": \"Forever 21\", \"same_product\": false}, {\"title\": \"Extra High-Waisted Wide-Leg Jeans - Medium Wash\", \"price\": 32.99, \"shipping\": 7.00, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://oldnavy.gap.com/browse/product.do?pid=514553\", \"retailer\": \"Old Navy\", \"same_product\": false}]}\n```"
+  },
+  "n100_073__new-c-for-iphone-17-iphone-17-pro-iphone": {
+   "results": [
+    {
+     "title": "3-PACK Qixxronics for iPhone 17 Pro / 17 Screen Protector, Tempered Glass Screen Protector for iPhone 17 Pro / 17 Clear",
+     "price": 6.98,
+     "shipping": 0.0,
+     "pack_count": 3,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/3-PACK-Qixxronics-for-iPhone-17-Pro-17-Screen-Protector-Tempered-Glass-Screen-Protector-for-iPhone-17-Pro-17-Clear",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "TOPVISION 3-Pack Screen Protector for iPhone 16 Pro(6.3\"), HD Clear Tempered Glass, Case Friendly",
+     "price": 9.0,
+     "shipping": 0.0,
+     "pack_count": 3,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/TOPVISION-3-Pack-Screen-Protector-for-iPhone-16-Pro-6-3-HD-Clear-Tempered-Glass-Case-Friendly",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "3 PACK BLUUMTEK For iPhone 16 Pro Screen Protector Tempered Glass Designed For iPhone 16 Pro",
+     "price": 10.5,
+     "shipping": 0.0,
+     "pack_count": 3,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/3-PACK-BLUUMTEK-For-iPhone-16-Pro-Screen-Protector-Tempered-Glass-Designed-For-iPhone-16-Pro",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "(3 Pack) Supershieldz Designed for iPhone 17/ iPhone 17 Pro/ iPhone 16 Pro (6.3 inch) Tempered Glass Screen Protector, Anti Scratch, Bubble Free",
+     "price": 10.99,
+     "shipping": 0.0,
+     "pack_count": 3,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/3-Pack-Supershieldz-Designed-for-iPhone-17-iPhone-17-Pro-iPhone-16-Pro-6-3-inch-Tempered-Glass-Screen-Protector-Anti-Scratch-Bubble-Free",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 126.1,
+   "usage": {
+    "input_tokens": 5964,
+    "output_tokens": 579,
+    "thoughts_tokens": 7681,
+    "search_queries": 0
+   },
+   "cost_usd": 0.111,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"3-PACK Qixxronics for iPhone 17 Pro / 17 Screen Protector, Tempered Glass Screen Protector for iPhone 17 Pro / 17 Clear\", \"price\": 6.98, \"shipping\": 0, \"pack_count\": 3, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/3-PACK-Qixxronics-for-iPhone-17-Pro-17-Screen-Protector-Tempered-Glass-Screen-Protector-for-iPhone-17-Pro-17-Clear\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"TOPVISION 3-Pack Screen Protector for iPhone 16 Pro(6.3\\\"), HD Clear Tempered Glass, Case Friendly\", \"price\": 9.00, \"shipping\": 0, \"pack_count\": 3, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/TOPVISION-3-Pack-Screen-Protector-for-iPhone-16-Pro-6-3-HD-Clear-Tempered-Glass-Case-Friendly\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"3 PACK BLUUMTEK For iPhone 16 Pro Screen Protector Tempered Glass Designed For iPhone 16 Pro\", \"price\": 10.50, \"shipping\": 0, \"pack_count\": 3, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/3-PACK-BLUUMTEK-For-iPhone-16-Pro-Screen-Protector-Tempered-Glass-Designed-For-iPhone-16-Pro\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"(3 Pack) Supershieldz Designed for iPhone 17/ iPhone 17 Pro/ iPhone 16 Pro (6.3 inch) Tempered Glass Screen Protector, Anti Scratch, Bubble Free\", \"price\": 10.99, \"shipping\": 0, \"pack_count\": 3, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/3-Pack-Supershieldz-Designed-for-iPhone-17-iPhone-17-Pro-iPhone-16-Pro-6-3-inch-Tempered-Glass-Screen-Protector-Anti-Scratch-Bubble-Free\", \"retailer\": \"Walmart\", \"same_product\": false}]}\n```"
+  },
+  "n100_075__rice-krispies-treats-crispy-marshmallow": {
+   "results": [
+    {
+     "title": "Kellogg's Rice Krispies Treats Original Bars - 12.4oz/16ct",
+     "price": 5.19,
+     "shipping": 5.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.target.com/p/kellogg-s-rice-krispies-treats-original-bars-12-4oz-16ct/-/A-12960641",
+     "retailer": "Target",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 95.1,
+   "usage": {
+    "input_tokens": 5881,
+    "output_tokens": 134,
+    "thoughts_tokens": 6491,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0913,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Kellogg's Rice Krispies Treats Original Bars - 12.4oz/16ct\", \"price\": 5.19, \"shipping\": 5.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.target.com/p/kellogg-s-rice-krispies-treats-original-bars-12-4oz-16ct/-/A-12960641\", \"retailer\": \"Target\", \"same_product\": true}]}\n```"
+  },
+  "n100_074__carory-cabin-air-filter-w-activated-carb": {
+   "results": [],
+   "latency_s": 152.0,
+   "usage": {
+    "input_tokens": 9928,
+    "output_tokens": null,
+    "thoughts_tokens": 9099,
+    "search_queries": 0
+   },
+   "cost_usd": 0.129,
+   "parse_error": true,
+   "raw_text": ""
+  },
+  "n100_078__k65-plus-wireless-75-rgb-mechanical-gami": {
+   "results": [
+    {
+     "title": "CORSAIR - K65 PLUS RGB 75% Wireless Mechanical Pre-Lubricated MLX Red Linear Switch Gaming Keyboard with Hot-Swappable Switches - Black/Gray",
+     "price": 109.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.bestbuy.com/site/corsair-k65-plus-rgb-75-wireless-mechanical-pre-lubricated-mlx-red-linear-switch-gaming-keyboard-with-hot-swappable-switches-black-gray/6572502.p?skuId=6572502",
+     "retailer": "Best Buy",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Corsair K65 Plus Wireless 75% RGB Hot-Swappable Mechanical Gaming Keyboard - MLX Red Linear Switches - Black/Grey",
+     "price": 129.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.amazon.com/dp/B0CQ31VFT4",
+     "retailer": "Amazon",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 65.9,
+   "usage": {
+    "input_tokens": 4930,
+    "output_tokens": 287,
+    "thoughts_tokens": 4757,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0704,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"CORSAIR - K65 PLUS RGB 75% Wireless Mechanical Pre-Lubricated MLX Red Linear Switch Gaming Keyboard with Hot-Swappable Switches - Black/Gray\", \"price\": 109.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.bestbuy.com/site/corsair-k65-plus-rgb-75-wireless-mechanical-pre-lubricated-mlx-red-linear-switch-gaming-keyboard-with-hot-swappable-switches-black-gray/6572502.p?skuId=6572502\", \"retailer\": \"Best Buy\", \"same_product\": true}, {\"title\": \"Corsair K65 Plus Wireless 75% RGB Hot-Swappable Mechanical Gaming Keyboard - MLX Red Linear Switches - Black/Grey\", \"price\": 129.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.amazon.com/dp/B0CQ31VFT4\", \"retailer\": \"Amazon\", \"same_product\": true}]}\n```"
+  },
+  "n100_076__elmer-s-all-purpose-school-glue-sticks-w": {
+   "results": [],
+   "latency_s": 127.2,
+   "usage": {
+    "input_tokens": 8461,
+    "output_tokens": null,
+    "thoughts_tokens": 6734,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0977,
+   "parse_error": true,
+   "raw_text": ""
+  },
+  "n100_077__cotton-rope-double-hammock-with-pillow-a": {
+   "results": [],
+   "latency_s": 119.7,
+   "usage": {
+    "input_tokens": 6743,
+    "output_tokens": null,
+    "thoughts_tokens": 5521,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0797,
+   "parse_error": true,
+   "raw_text": ""
+  },
+  "n100_080__horizon-organic-shelf-stable-whole-milk": {
+   "results": [],
+   "latency_s": 42.2,
+   "usage": {
+    "input_tokens": 3975,
+    "output_tokens": 10,
+    "thoughts_tokens": 2999,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0441,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": []}\n```"
+  },
+  "n100_079__peet-s-coffee-espresso-capsules-classic": {
+   "results": [
+    {
+     "title": "Lavazza Espresso Intenso Medium-Dark Roast Aluminum Capsules Compatible with Nespresso Original Machines (Pack of 60)",
+     "price": 29.89,
+     "shipping": 6.99,
+     "pack_count": 60,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Lavazza-Espresso-Intenso-Medium-Dark-Roast-Aluminum-Capsules-Compatible-with-Nespresso-Original-Machines-Pack-of-60/888390772",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Nespresso Capsules Original, Dark Roast Variety Pack Espresso Coffee, 40-Count Espresso Coffee Pods",
+     "price": 36.0,
+     "shipping": 0.0,
+     "pack_count": 40,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Nespresso-Capsules-Original-Dark-Roast-Variety-Pack-Espresso-Coffee-40-Count-Espresso-Coffee-Pods-Brews-1-35oz",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 109.9,
+   "usage": {
+    "input_tokens": 7236,
+    "output_tokens": 277,
+    "thoughts_tokens": 6932,
+    "search_queries": 0
+   },
+   "cost_usd": 0.101,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Lavazza Espresso Intenso Medium-Dark Roast Aluminum Capsules Compatible with Nespresso Original Machines (Pack of 60)\", \"price\": 29.89, \"shipping\": 6.99, \"pack_count\": 60, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Lavazza-Espresso-Intenso-Medium-Dark-Roast-Aluminum-Capsules-Compatible-with-Nespresso-Original-Machines-Pack-of-60/888390772\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"Nespresso Capsules Original, Dark Roast Variety Pack Espresso Coffee, 40-Count Espresso Coffee Pods\", \"price\": 36.00, \"shipping\": 0, \"pack_count\": 40, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Nespresso-Capsules-Original-Dark-Roast-Variety-Pack-Espresso-Coffee-40-Count-Espresso-Coffee-Pods-Brews-1-35oz\", \"retailer\": \"Walmart\", \"same_product\": false}]}\n```"
+  },
+  "n100_081__varmblixt-led-table-wall-lamp-orange-gla": {
+   "results": [
+    {
+     "title": "Rechargeable Donut Wall Lamp, Touch Control Bedside Light for Bedroom, Orange Bauhaus Style Decor",
+     "price": 18.98,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Rechargeable-Donut-Wall-Lamp-Touch-Control-Bedside-Light-for-Bedroom-Orange-Bauhaus-Style-Decor/5450849649",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Orange Donut Lamp Dimmable Modern Ambient Lighting Bedroom and Office Wall Lamp",
+     "price": 79.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Orange-Donut-Lamp-Dimmable-Modern-Ambient-Lighting-Bedroom-and-Office-Wall-Lamp/5202868019",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Glass Donut Table Lamp (Final Sale / Open Box)",
+     "price": 98.0,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.letifly.com/products/glass-donut-table-lamp",
+     "retailer": "Letifly",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 89.2,
+   "usage": {
+    "input_tokens": 5878,
+    "output_tokens": 338,
+    "thoughts_tokens": 5982,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0876,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Rechargeable Donut Wall Lamp, Touch Control Bedside Light for Bedroom, Orange Bauhaus Style Decor\", \"price\": 18.98, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Rechargeable-Donut-Wall-Lamp-Touch-Control-Bedside-Light-for-Bedroom-Orange-Bauhaus-Style-Decor/5450849649\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"Orange Donut Lamp Dimmable Modern Ambient Lighting Bedroom and Office Wall Lamp\", \"price\": 79.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Orange-Donut-Lamp-Dimmable-Modern-Ambient-Lighting-Bedroom-and-Office-Wall-Lamp/5202868019\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"Glass Donut Table Lamp (Final Sale / Open Box)\", \"price\": 98.00, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.letifly.com/products/glass-donut-table-lamp\", \"retailer\": \"Letifly\", \"same_product\": false}]}\n```"
+  },
+  "n100_084__moft-find-my-magsafe-wallet-stand": {
+   "results": [
+    {
+     "title": "ESR Geo for MagSafe Wallet with Full Find My Functionality, 5 Card Holder, Adjustable Stand with Grip",
+     "price": 43.98,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.amazon.com/dp/B0DT4F6M5R",
+     "retailer": "Amazon",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 47.5,
+   "usage": {
+    "input_tokens": 4290,
+    "output_tokens": 103,
+    "thoughts_tokens": 3021,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0461,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"ESR Geo for MagSafe Wallet with Full Find My Functionality, 5 Card Holder, Adjustable Stand with Grip\", \"price\": 43.98, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.amazon.com/dp/B0DT4F6M5R\", \"retailer\": \"Amazon\", \"same_product\": false}]}\n```"
+  },
+  "n100_082__pehael-for-iphone-17-pro-max-privacy-scr": {
+   "results": [
+    {
+     "title": "2+2 Pack for iPhone 17 Pro Max Screen Protector Privacy and Camera Lens Protector, 9H Anti Spy Tempered Glass, Easy Installation, Bubble Free",
+     "price": 8.99,
+     "shipping": 0.0,
+     "pack_count": 2,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/2-2-Pack-for-iPhone-17-Pro-Max-Screen-Protector-Privacy-and-Camera-Lens-Protector/123456789",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 111.8,
+   "usage": {
+    "input_tokens": 6688,
+    "output_tokens": 172,
+    "thoughts_tokens": 7147,
+    "search_queries": 0
+   },
+   "cost_usd": 0.1012,
+   "parse_error": false,
+   "raw_text": "{\n  \"results\": [\n    {\n      \"title\": \"2+2 Pack for iPhone 17 Pro Max Screen Protector Privacy and Camera Lens Protector, 9H Anti Spy Tempered Glass, Easy Installation, Bubble Free\",\n      \"price\": 8.99,\n      \"shipping\": 0,\n      \"pack_count\": 2,\n      \"currency\": \"USD\",\n      \"url\": \"https://www.walmart.com/ip/2-2-Pack-for-iPhone-17-Pro-Max-Screen-Protector-Privacy-and-Camera-Lens-Protector/123456789\",\n      \"retailer\": \"Walmart\",\n      \"same_product\": false\n    }\n  ]\n}"
+  },
+  "n100_083__ninja-foodi-air-fryer-8-qt-dualzone-flex": {
+   "results": [],
+   "latency_s": 97.7,
+   "usage": {
+    "input_tokens": 6415,
+    "output_tokens": 10,
+    "thoughts_tokens": 5716,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0815,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": []}\n```"
+  },
+  "n100_085__earth-rated-dog-poop-bags-on-refill-roll": {
+   "results": [
+    {
+     "title": "EARTH RATED Dog Poop Bags, Refill Rolls, Unscented, 270 count",
+     "price": 10.96,
+     "shipping": 4.95,
+     "pack_count": 270,
+     "currency": "USD",
+     "url": "https://www.chewy.com/dp/578716",
+     "retailer": "Chewy",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Earth Rated Leak-Proof Dog Poop Bags, Unscented, 300 Count, 15 Refill Rolls",
+     "price": 11.68,
+     "shipping": 6.99,
+     "pack_count": 300,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Earth-Rated-Unscented-Leak-Proof-Dog-Poop-Bags-300-Count-on-15-Single-Refill-Rolls/722216828",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Earth Rated Unscented Dog Waste Disposal Bags Refill Rolls - 340ct",
+     "price": 18.99,
+     "shipping": 5.99,
+     "pack_count": 340,
+     "currency": "USD",
+     "url": "https://www.target.com/p/earth-rated-unscented-dog-waste-disposal-bags-refill-rolls-340ct/-/A-83935293",
+     "retailer": "Target",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 83.9,
+   "usage": {
+    "input_tokens": 6388,
+    "output_tokens": 375,
+    "thoughts_tokens": 5436,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0825,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"EARTH RATED Dog Poop Bags, Refill Rolls, Unscented, 270 count\", \"price\": 10.96, \"shipping\": 4.95, \"pack_count\": 270, \"currency\": \"USD\", \"url\": \"https://www.chewy.com/dp/578716\", \"retailer\": \"Chewy\", \"same_product\": true}, {\"title\": \"Earth Rated Leak-Proof Dog Poop Bags, Unscented, 300 Count, 15 Refill Rolls\", \"price\": 11.68, \"shipping\": 6.99, \"pack_count\": 300, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Earth-Rated-Unscented-Leak-Proof-Dog-Poop-Bags-300-Count-on-15-Single-Refill-Rolls/722216828\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"Earth Rated Unscented Dog Waste Disposal Bags Refill Rolls - 340ct\", \"price\": 18.99, \"shipping\": 5.99, \"pack_count\": 340, \"currency\": \"USD\", \"url\": \"https://www.target.com/p/earth-rated-unscented-dog-waste-disposal-bags-refill-rolls-340ct/-/A-83935293\", \"retailer\": \"Target\", \"same_product\": false}]}\n```"
+  },
+  "n100_086__e-l-f-power-grip-primer-4-niacinamide-0": {
+   "results": [
+    {
+     "title": "Essence Jelly Grip Hydrating Primer",
+     "price": 5.99,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.ulta.com/p/jelly-grip-hydrating-primer-pimprod2043685",
+     "retailer": "Ulta",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Hard Candy Grip On Lock Water-Based 12-Hour Face Primer, Hydrating, Aloe Vera, Niacinamide, 1.52 fluid ounces",
+     "price": 6.96,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Hard-Candy-Grip-On-Lock-Water-Based-12-Hour-Face-Primer-Hydrating-Aloe-Vera-Niacinamide-1-52-fluid-ounces/3103448408",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "e.l.f. Power Grip Primer + 4% Niacinamide Mini, 0.5 fl oz",
+     "price": 7.0,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/e-l-f-Power-Grip-Primer-4-Niacinamide-Mini-0-5-fl-oz/2395861103",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 80.6,
+   "usage": {
+    "input_tokens": 6869,
+    "output_tokens": 449,
+    "thoughts_tokens": 6953,
+    "search_queries": 0
+   },
+   "cost_usd": 0.1026,
+   "parse_error": false,
+   "raw_text": "```json\n{\n  \"results\": [\n    {\n      \"title\": \"Essence Jelly Grip Hydrating Primer\",\n      \"price\": 5.99,\n      \"shipping\": null,\n      \"pack_count\": 1,\n      \"currency\": \"USD\",\n      \"url\": \"https://www.ulta.com/p/jelly-grip-hydrating-primer-pimprod2043685\",\n      \"retailer\": \"Ulta\",\n      \"same_product\": false\n    },\n    {\n      \"title\": \"Hard Candy Grip On Lock Water-Based 12-Hour Face Primer, Hydrating, Aloe Vera, Niacinamide, 1.52 fluid ounces\",\n      \"price\": 6.96,\n      \"shipping\": null,\n      \"pack_count\": 1,\n      \"currency\": \"USD\",\n      \"url\": \"https://www.walmart.com/ip/Hard-Candy-Grip-On-Lock-Water-Based-12-Hour-Face-Primer-Hydrating-Aloe-Vera-Niacinamide-1-52-fluid-ounces/3103448408\",\n      \"retailer\": \"Walmart\",\n      \"same_product\": false\n    },\n    {\n      \"title\": \"e.l.f. Power Grip Primer + 4% Niacinamide Mini, 0.5 fl oz\",\n      \"price\": 7.00,\n      \"shipping\": null,\n      \"pack_count\": 1,\n      \"currency\": \"USD\",\n      \"url\": \"https://www.walmart.com/ip/e-l-f-Power-Grip-Primer-4-Niacinamide-Mini-0-5-fl-oz/2395861103\",\n      \"retailer\": \"Walmart\",\n      \"same_product\": false\n    }\n  ]\n}\n```"
+  },
+  "n100_087__3-piece-upholstered-modular-sectional-so": {
+   "results": [
+    {
+     "title": "3-Piece Living Room Sectional Sofa Set, Modern Upholstered Couch Set with Nailhead Trim Design, Living Room Furniture Set- Armchair Loveseat and 3 Seat Sofa, Beige",
+     "price": 799.9,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/3-Piece-Living-Room-Sectional-Sofa-Set-Modern-Upholstered-Couch-Set-with-Nailhead-Trim-Design-Living-Room-Furniture-Set-Armchair-Loveseat-and-3-Seat-Sofa-Beige/",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 107.4,
+   "usage": {
+    "input_tokens": 8486,
+    "output_tokens": 175,
+    "thoughts_tokens": 7622,
+    "search_queries": 0
+   },
+   "cost_usd": 0.1105,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"3-Piece Living Room Sectional Sofa Set, Modern Upholstered Couch Set with Nailhead Trim Design, Living Room Furniture Set- Armchair Loveseat and 3 Seat Sofa, Beige\", \"price\": 799.90, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/3-Piece-Living-Room-Sectional-Sofa-Set-Modern-Upholstered-Couch-Set-with-Nailhead-Trim-Design-Living-Room-Furniture-Set-Armchair-Loveseat-and-3-Seat-Sofa-Beige/\", \"retailer\": \"Walmart\", \"same_product\": false}]}\n```"
+  },
+  "n100_088__french-toast-boys-pull-on-relaxed-fit-sc": {
+   "results": [
+    {
+     "title": "Boys' Straight Fit Woven Pull-On Pants - Cat & Jack",
+     "price": 12.0,
+     "shipping": 5.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.target.com/p/boys-straight-fit-woven-pull-on-pants-cat-jack/-/A-79354093",
+     "retailer": "Target",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 60.4,
+   "usage": {
+    "input_tokens": 3656,
+    "output_tokens": 116,
+    "thoughts_tokens": 4533,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0631,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Boys' Straight Fit Woven Pull-On Pants - Cat & Jack\", \"price\": 12.0, \"shipping\": 5.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.target.com/p/boys-straight-fit-woven-pull-on-pants-cat-jack/-/A-79354093\", \"retailer\": \"Target\", \"same_product\": false}]}\n```"
+  },
+  "n100_089__kitsure-shoe-rack-non-woven-shoe-rack-sh": {
+   "results": [
+    {
+     "title": "3-Tier Shoe Rack, Shoe Storage Rack, Stackable Shoe Shelf and Storage Holds, for Entryway, Entrance, Dorm",
+     "price": 8.79,
+     "shipping": 6.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/3-Tier-Shoe-Rack-Shoe-Storage-Rack-Stackable-Shoe-Shelf-and-Storage-Holds-for-Entryway-Entrance-Dorm/SEOMatch",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 118.0,
+   "usage": {
+    "input_tokens": 6324,
+    "output_tokens": 143,
+    "thoughts_tokens": 6039,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0868,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"3-Tier Shoe Rack, Shoe Storage Rack, Stackable Shoe Shelf and Storage Holds, for Entryway, Entrance, Dorm\", \"price\": 8.79, \"shipping\": 6.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/3-Tier-Shoe-Rack-Shoe-Storage-Rack-Stackable-Shoe-Shelf-and-Storage-Holds-for-Entryway-Entrance-Dorm/SEOMatch\", \"retailer\": \"Walmart\", \"same_product\": false}]}\n```"
+  },
+  "n100_091__yesteryear-a-gma-book-club-pick-a-novel": {
+   "results": [
+    {
+     "title": "Yesteryear: A GMA Book Club Pick (059380421X) Hardcover",
+     "price": 19.9,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.ebay.com/itm/227333211840",
+     "retailer": "eBay",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 64.3,
+   "usage": {
+    "input_tokens": 4407,
+    "output_tokens": 107,
+    "thoughts_tokens": 4846,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0683,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Yesteryear: A GMA Book Club Pick (059380421X) Hardcover\", \"price\": 19.90, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.ebay.com/itm/227333211840\", \"retailer\": \"eBay\", \"same_product\": true}]}\n```"
+  },
+  "n100_090__gerber-stage-2-chicken-and-gravy-baby-fo": {
+   "results": [
+    {
+     "title": "(10 pack) Beech-Nut Stage 1 Baby Food, Chicken & Chicken Broth, 2.5 oz Jar",
+     "price": 10.18,
+     "shipping": 6.99,
+     "pack_count": 10,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/10-pack-Beech-Nut-Stage-1-Baby-Food-Chicken-Chicken-Broth-2-5-oz-Jar/9736c8cd",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 102.9,
+   "usage": {
+    "input_tokens": 6236,
+    "output_tokens": 142,
+    "thoughts_tokens": 5906,
+    "search_queries": 0
+   },
+   "cost_usd": 0.085,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"(10 pack) Beech-Nut Stage 1 Baby Food, Chicken & Chicken Broth, 2.5 oz Jar\", \"price\": 10.18, \"shipping\": 6.99, \"pack_count\": 10, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/10-pack-Beech-Nut-Stage-1-Baby-Food-Chicken-Chicken-Broth-2-5-oz-Jar/9736c8cd\", \"retailer\": \"Walmart\", \"same_product\": false}]}\n```"
+  },
+  "n100_092__treluxe-hi-definition-curl-enhancer-styl": {
+   "results": [
+    {
+     "title": "TreLuxe Hi! Definition Curl Enhancer Styling Gel, 8.0 oz",
+     "price": 16.99,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walgreens.com/store/c/treluxe-hi-definition-curl-enhancer-styling-gel/ID=prod618530-product",
+     "retailer": "Walgreens",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "Hi! Definition\u2122 Gel",
+     "price": 19.0,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://discovertreluxe.com/products/hi-definition",
+     "retailer": "Tr\u00e9Luxe",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 41.7,
+   "usage": {
+    "input_tokens": 3658,
+    "output_tokens": 199,
+    "thoughts_tokens": 2937,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0449,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"TreLuxe Hi! Definition Curl Enhancer Styling Gel, 8.0 oz\", \"price\": 16.99, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walgreens.com/store/c/treluxe-hi-definition-curl-enhancer-styling-gel/ID=prod618530-product\", \"retailer\": \"Walgreens\", \"same_product\": true}, {\"title\": \"Hi! Definition\u2122 Gel\", \"price\": 19.00, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://discovertreluxe.com/products/hi-definition\", \"retailer\": \"Tr\u00e9Luxe\", \"same_product\": true}]}\n```"
+  },
+  "n100_093__omega-3-fish-oil-16oz": {
+   "results": [
+    {
+     "title": "Wuffes Advanced Omega 3 Fish Oil for Dogs, Natural EPA & DHA Fatty Acids, Supports Healthy Skin and Coat, Joint Nutrition, Digestion & Immune System - 100% Pure Wild Alaskan Fish Oil, 16 Oz",
+     "price": 35.99,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Wuffes-Advanced-Omega-3-Fish-Oil-Dogs/80916448",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    },
+    {
+     "title": "VITAL PET LIFE Salmon Oil Skin & Coat Health Liquid Omega-3 Supplement for Dogs & Cats, 16-fl oz bottle",
+     "price": 24.95,
+     "shipping": 4.95,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.chewy.com/vital-pet-life-salmon-oil-skin-coat/dp/278149",
+     "retailer": "Chewy",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "ZESTY PAWS Wild Alaskan Omega-3 Pollock+Salmon Oil Liquid Skin & Coat Supplement for Dogs & Cats, 16-fl oz bottle",
+     "price": 29.97,
+     "shipping": 4.95,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.chewy.com/zesty-paws-wild-alaskan-omega-3/dp/262590",
+     "retailer": "Chewy",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Zesty Paws Wild Alaskan Omega-3 Blend Pollock + Salmon Oil 16oz",
+     "price": 27.97,
+     "shipping": 6.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Zesty-Paws-Wild-Alaskan-Omega-3-Blend-Pollock-Salmon-Oil-16oz/713333333",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 80.6,
+   "usage": {
+    "input_tokens": 4473,
+    "output_tokens": 505,
+    "thoughts_tokens": 6924,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0981,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Wuffes Advanced Omega 3 Fish Oil for Dogs, Natural EPA & DHA Fatty Acids, Supports Healthy Skin and Coat, Joint Nutrition, Digestion & Immune System - 100% Pure Wild Alaskan Fish Oil, 16 Oz\", \"price\": 35.99, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Wuffes-Advanced-Omega-3-Fish-Oil-Dogs/80916448\", \"retailer\": \"Walmart\", \"same_product\": true}, {\"title\": \"VITAL PET LIFE Salmon Oil Skin & Coat Health Liquid Omega-3 Supplement for Dogs & Cats, 16-fl oz bottle\", \"price\": 24.95, \"shipping\": 4.95, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.chewy.com/vital-pet-life-salmon-oil-skin-coat/dp/278149\", \"retailer\": \"Chewy\", \"same_product\": false}, {\"title\": \"ZESTY PAWS Wild Alaskan Omega-3 Pollock+Salmon Oil Liquid Skin & Coat Supplement for Dogs & Cats, 16-fl oz bottle\", \"price\": 29.97, \"shipping\": 4.95, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.chewy.com/zesty-paws-wild-alaskan-omega-3/dp/262590\", \"retailer\": \"Chewy\", \"same_product\": false}, {\"title\": \"Zesty Paws Wild Alaskan Omega-3 Blend Pollock + Salmon Oil 16oz\", \"price\": 27.97, \"shipping\": 6.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Zesty-Paws-Wild-Alaskan-Omega-3-Blend-Pollock-Salmon-Oil-16oz/713333333\", \"retailer\": \"Walmart\", \"same_product\": false}]}\n```"
+  },
+  "n100_095__it-will-be-more-beautiful-than-you-could": {
+   "results": [
+    {
+     "title": "It Will Be More Beautiful Than You Could Ever Imagine - by Christina Amini (Hardcover)",
+     "price": 39.49,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.target.com/p/it-will-be-more-beautiful-than-you-could-ever-imagine-by-christina-amini-hardcover/-/A-1011208928",
+     "retailer": "Target",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 55.1,
+   "usage": {
+    "input_tokens": 3707,
+    "output_tokens": 132,
+    "thoughts_tokens": 2771,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0423,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"It Will Be More Beautiful Than You Could Ever Imagine - by Christina Amini (Hardcover)\", \"price\": 39.49, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.target.com/p/it-will-be-more-beautiful-than-you-could-ever-imagine-by-christina-amini-hardcover/-/A-1011208928\", \"retailer\": \"Target\", \"same_product\": true}]}\n```"
+  },
+  "n100_094__original-collagen-peptides-56s-bag": {
+   "results": [
+    {
+     "title": "Garden of Life Grass Fed Collagen Peptides Powder, 28 Servings (19.75 oz)",
+     "price": 32.89,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.walmart.com/ip/Garden-of-Life-Grass-Fed-Collagen-Peptides-Powder-28-Servings",
+     "retailer": "Walmart",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Orgain Hydrolyzed Grass Fed 20g Collagen Peptides Powder, Unflavored, 16 oz",
+     "price": 29.99,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.kroger.com/p/orgain-hydrolyzed-grass-fed-20g-collagen-peptides-powder-unflavored/0085177000727",
+     "retailer": "Kroger",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Sports Research Collagen Peptides, Unflavored, 16 oz",
+     "price": 32.95,
+     "shipping": null,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.sportsresearch.com/products/collagen-peptides",
+     "retailer": "Sports Research",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 79.7,
+   "usage": {
+    "input_tokens": 3753,
+    "output_tokens": 328,
+    "thoughts_tokens": 7609,
+    "search_queries": 0
+   },
+   "cost_usd": 0.1027,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Garden of Life Grass Fed Collagen Peptides Powder, 28 Servings (19.75 oz)\", \"price\": 32.89, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.walmart.com/ip/Garden-of-Life-Grass-Fed-Collagen-Peptides-Powder-28-Servings\", \"retailer\": \"Walmart\", \"same_product\": false}, {\"title\": \"Orgain Hydrolyzed Grass Fed 20g Collagen Peptides Powder, Unflavored, 16 oz\", \"price\": 29.99, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.kroger.com/p/orgain-hydrolyzed-grass-fed-20g-collagen-peptides-powder-unflavored/0085177000727\", \"retailer\": \"Kroger\", \"same_product\": false}, {\"title\": \"Sports Research Collagen Peptides, Unflavored, 16 oz\", \"price\": 32.95, \"shipping\": null, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.sportsresearch.com/products/collagen-peptides\", \"retailer\": \"Sports Research\", \"same_product\": false}]}\n```"
+  },
+  "n100_097__tumella-strongest-windproof-travel-umbre": {
+   "results": [
+    {
+     "title": "Rain-Mate Compact Travel Umbrella - Windproof, Reinforced Canopy, Ergonomic Handle, Auto Open/Close",
+     "price": 13.99,
+     "shipping": 5.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.amazon.com/dp/B01LZ75ROQ",
+     "retailer": "Amazon",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "SY COMPACT Travel Umbrella - Windproof Automatic Compact Umbrellas for Rain",
+     "price": 9.96,
+     "shipping": 5.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.amazon.com/dp/B083K4MJLL",
+     "retailer": "Amazon",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 90.2,
+   "usage": {
+    "input_tokens": 5235,
+    "output_tokens": 187,
+    "thoughts_tokens": 4873,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0712,
+   "parse_error": false,
+   "raw_text": "{\"results\": [{\"title\": \"Rain-Mate Compact Travel Umbrella - Windproof, Reinforced Canopy, Ergonomic Handle, Auto Open/Close\", \"price\": 13.99, \"shipping\": 5.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.amazon.com/dp/B01LZ75ROQ\", \"retailer\": \"Amazon\", \"same_product\": false}, {\"title\": \"SY COMPACT Travel Umbrella - Windproof Automatic Compact Umbrellas for Rain\", \"price\": 9.96, \"shipping\": 5.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.amazon.com/dp/B083K4MJLL\", \"retailer\": \"Amazon\", \"same_product\": false}]}"
+  },
+  "n100_098__cute-apple-shaped-funny-prank-toy-kids-p": {
+   "results": [],
+   "latency_s": 90.2,
+   "usage": {
+    "input_tokens": 6675,
+    "output_tokens": 5,
+    "thoughts_tokens": 5632,
+    "search_queries": 0
+   },
+   "cost_usd": 0.081,
+   "parse_error": false,
+   "raw_text": "{\"results\": []}"
+  },
+  "n100_096__naturium-the-glow-getter-multi-oil-hydra": {
+   "results": [
+    {
+     "title": "2x (TWO) Byoma Hydrating Body Wash, 16.9 fl oz (500ml) each B1-02 Brand NEW",
+     "price": 21.85,
+     "shipping": 0.0,
+     "pack_count": 2,
+     "currency": "USD",
+     "url": "https://www.ebay.com/itm/2x-TWO-Byoma-Hydrating-Body-Wash-16-9-fl-oz",
+     "retailer": "eBay",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    },
+    {
+     "title": "Byoma Hydrating Body Wash, 16.9 fl oz - FREE SHIPPING",
+     "price": 15.16,
+     "shipping": 0.0,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.ebay.com/itm/Byoma-Hydrating-Body-Wash-16-9-fl-oz-FREE-SHIPPING",
+     "retailer": "eBay",
+     "image": null,
+     "claimed_same": false,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 148.5,
+   "usage": {
+    "input_tokens": 10514,
+    "output_tokens": 232,
+    "thoughts_tokens": 10875,
+    "search_queries": 0
+   },
+   "cost_usd": 0.1543,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"2x (TWO) Byoma Hydrating Body Wash, 16.9 fl oz (500ml) each B1-02 Brand NEW\", \"price\": 21.85, \"shipping\": 0, \"pack_count\": 2, \"currency\": \"USD\", \"url\": \"https://www.ebay.com/itm/2x-TWO-Byoma-Hydrating-Body-Wash-16-9-fl-oz\", \"retailer\": \"eBay\", \"same_product\": false}, {\"title\": \"Byoma Hydrating Body Wash, 16.9 fl oz - FREE SHIPPING\", \"price\": 15.16, \"shipping\": 0, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.ebay.com/itm/Byoma-Hydrating-Body-Wash-16-9-fl-oz-FREE-SHIPPING\", \"retailer\": \"eBay\", \"same_product\": false}]}\n```"
+  },
+  "n100_100__oreo-reese-s-peanut-buttery-creme-chocol": {
+   "results": [
+    {
+     "title": "Oreo Reese's Peanut Buttery Creme Chocolate Sandwich Cookies - 12.35oz",
+     "price": 5.39,
+     "shipping": 5.99,
+     "pack_count": 1,
+     "currency": "USD",
+     "url": "https://www.target.com/p/oreo-reese-s-peanut-buttery-creme-chocolate-sandwich-cookies-12-35oz/-/A-89467657",
+     "retailer": "Target",
+     "image": null,
+     "claimed_same": true,
+     "source": "gemini"
+    }
+   ],
+   "latency_s": 43.4,
+   "usage": {
+    "input_tokens": 3192,
+    "output_tokens": 132,
+    "thoughts_tokens": 2694,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0403,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": [{\"title\": \"Oreo Reese's Peanut Buttery Creme Chocolate Sandwich Cookies - 12.35oz\", \"price\": 5.39, \"shipping\": 5.99, \"pack_count\": 1, \"currency\": \"USD\", \"url\": \"https://www.target.com/p/oreo-reese-s-peanut-buttery-creme-chocolate-sandwich-cookies-12-35oz/-/A-89467657\", \"retailer\": \"Target\", \"same_product\": true}]}\n```"
+  },
+  "n100_099__great-value-purified-drinking-water-16-9": {
+   "results": [],
+   "latency_s": 88.9,
+   "usage": {
+    "input_tokens": 6013,
+    "output_tokens": 10,
+    "thoughts_tokens": 6382,
+    "search_queries": 0
+   },
+   "cost_usd": 0.0887,
+   "parse_error": false,
+   "raw_text": "```json\n{\"results\": []}\n```"
+  }
+ }
+}
